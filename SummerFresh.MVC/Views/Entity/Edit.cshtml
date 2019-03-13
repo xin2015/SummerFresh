@@ -1,0 +1,108 @@
+﻿@model SummerFresh.MVC.Controllers.FormModel
+@using SummerFresh.Controls
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link href="~/content/css/reset.css" rel="stylesheet" />
+    <link href="~/content/css/icon.css" rel="stylesheet" />
+    <link href="~/content/css/common.css" rel="stylesheet" />
+    <link href="~/content/themes/default/default.css" rel="stylesheet" />
+    <style>
+        .form-group textarea.xheditor {
+            height: 300px;
+            width: 70%;
+        }
+
+
+        .form-group textarea.form-control {
+            height: 200px;
+            width: 70%;
+        }
+        .ti {
+            padding:15px;
+            padding-bottom:0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        @Html.CustomControl(Model.Tab == null ? (Model.Form as SummerFresh.Business.IComponent) : (Model.Tab as SummerFresh.Business.IComponent))
+    </div>
+    <script src="~/Content/js/jquery-1.9.1.min.js"></script>
+    <script src="~/content/js/Validator/jquery.validation.js"></script>
+    <script src="~/Content/js/showModalDialog.js"></script>
+    <script src="~/content/js/common.js"></script>
+    <script src="~/content/js/datepicker/WdatePicker.js"></script>
+    <script src="~/content/js/xheditor-1.1.14-zh-cn.min.js"></script>
+    <script>
+        $(function () {
+            $(document.forms[0]).validation();
+            $(".input,.select").addClass("big");
+            $("form").bind("submit", function () {
+                if ($.validation.validate(this).isError) {
+                    return false;
+                }
+                summerFresh.dataService($(this).attr("action"), $(this).serialize(), function (res) {
+                    if (res) {
+                        var finishFunc=function () {
+                            if (window.top && window.top.onDialogClose && window.top.onDialogClose.length > 0) {
+                                window.top.onDialogClose.pop()('true');
+                                window.top.onDialogClose.pop()('true');
+                            }
+                        };
+
+                        summerFresh.showSuccess("保存成功", "提示");
+                        $(window.top.document).find(".overlay:last").unbind("click").bind("click", finishFunc);
+                        var dialogArray = window.top.dialogArray;
+                        $(dialogArray[dialogArray.length - 1]).find("button.close").removeAttr("onclick").bind("click", finishFunc);
+                        
+                    }
+
+                });
+                return false;
+            });
+            var tabs = $("[tabItemTag]");
+            if (tabs.length > 0) {
+                var tabbox = "<div widget='Tab' initIndex='0'><div class='tab-box'>{0}</div>{1}</div>";
+                var tabItemTemplate = "<span key='{0}' class='tab-item'>{1}</span>";
+                var tabhideTemplate = "<div tabItem='{0}' class='ti'>{1}</div>";
+                var tabItem = summerFresh.stringFormat(tabItemTemplate, "baseInfo", "基本信息");
+                var tabHide = "";
+                var k = 100;
+                tabs.each(function () {
+                    var key = k++;
+                    var li = $(this).closest(".form-group");
+                    li.find("label").remove();
+                    $(this).addClass("full");
+                    tabItem += summerFresh.stringFormat(tabItemTemplate, key, $(this).attr("tabItemTag"));
+                    tabHide += summerFresh.stringFormat(tabhideTemplate, key, li.html());
+                    li.remove();
+                });
+                tabHide += summerFresh.stringFormat(tabhideTemplate, "baseInfo", $("form").html());
+                var result = summerFresh.stringFormat(tabbox, tabItem, tabHide);
+                $("form").html("").css("padding", "0px");
+                $(result).appendTo($("form"));
+                var button = $("#btnSubmit");
+                $(button).appendTo($(".tab-box")).css("margin-left", "30px");
+                summerFresh.widget.initTab();
+            }
+            autoHeight();
+            $(window).resize(autoHeight);
+        });
+
+        function autoHeight() {
+            var screenHeight = Math.min($(window).height(), $(document).height());
+            var tabBox = $(".tab-box").height();
+            var ulHeight = screenHeight - tabBox - 30;
+            $("[tabItem]").css("height", ulHeight-30).css("overflow-y", "auto");
+            $("[tabitemtag]").css("width", "98%").css("height", ulHeight -60);
+        }
+    </script>
+</body>
+</html>

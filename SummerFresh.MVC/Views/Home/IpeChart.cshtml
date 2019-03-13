@@ -1,0 +1,1117 @@
+﻿
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Environmental Maps-Air Emissions</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link href="../favicon.ico" rel="icon" />
+    <link href="http://localhost:3108/Content/css/ipe/main.css" type="text/css" rel="stylesheet" />
+
+    <link href="http://localhost:3108/Content/css/ipe/sprite.css" rel="stylesheet" />
+
+    <script src="http://webapi.amap.com/maps?v=1.3&key=2b0da99cab161d1d6e1afac83e786cd2"></script><!--高德地图API-->
+
+    <link href="http://localhost:3108/Content/css/ipe/style.css" rel="stylesheet" />
+</head>
+<body class="page-of-air page-of-waste-gas">
+    <div class="container clearfix">
+        <!--左侧边栏-->
+        <div class="side-panel side-city" id="side_panel">
+            <a class="arrow-btn" id="arrow_btn"><i></i></a>
+            <div class="side-wrap" id="leftdiv_list">
+                <h1>
+                    <!--<span class="side-date">03-14 23:00</span>-->
+                    <span id="site_title">全国大气监测数据</span>
+                    <input id="hidType" type="hidden" value="1" />
+                </h1>
+                <div class="side-con">
+                    <div class="side-search clearfix">
+
+                        <div class="form-filed">
+                            <div class="complex actions">
+                                <button type="button" onclick="solve();" class="button button-primary">
+                                    搜索
+                                </button>
+                                <div class="input-icon">
+                                    <i class="icon icon-search"></i>
+                                    <input type="text" class="input" id="txtkey" placeholder="监测站搜索" />
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-filed clearfix">
+                            <select class="select float-end" name="select" id="city" onchange="solve();" disabled="disabled">
+                                <option value="0">城市/直辖市区县</option>
+                            </select>
+                            <select class="select" name="select" id="province" onchange="setCity(); solve();">
+                                <option value="0">全国</option>
+                                <option value='2'>安徽</option>
+                                <option value='3'>内蒙古</option>
+                                <option value='4'>重庆</option>
+                                <option value='5'>福建</option>
+                                <option value='6'>甘肃</option>
+                                <option value='7'>广东</option>
+                                <option value='8'>广西</option>
+                                <option value='9'>贵州</option>
+                                <option value='10'>海南</option>
+                                <option value='11'>河北</option>
+                                <option value='12'>河南</option>
+                                <option value='13'>黑龙江</option>
+                                <option value='14'>湖北</option>
+                                <option value='15'>湖南</option>
+                                <option value='16'>吉林</option>
+                                <option value='17'>江苏</option>
+                                <option value='18'>辽宁</option>
+                                <option value='19'>江西</option>
+                                <option value='20'>青海</option>
+                                <option value='21'>山东</option>
+                                <option value='22'>山西</option>
+                                <option value='23'>陕西</option>
+                                <option value='24'>上海</option>
+                                <option value='25'>四川</option>
+                                <option value='26'>台湾</option>
+                                <option value='27'>浙江</option>
+                                <option value='28'>西藏</option>
+                                <option value='29'>香港</option>
+                                <option value='30'>新疆</option>
+                                <option value='31'>云南</option>
+                                <option value='32'>天津</option>
+                                <option value='33'>北京</option>
+                                <option value='34'>澳门</option>
+                                <option value='35'>宁夏</option>
+                                <option value='36'>中国</option>
+                            </select>
+                            <select class="select" name="select" id="area" style="display: none;" disabled="disabled"></select>
+                        </div>
+                        <script type="text/javascript">
+                            function setCity() {
+                                var pro = $('#province').val();
+                                var cityObj = $('#city');
+                                cityObj.val('0');
+                                if (pro == '0') {
+                                    cityObj.attr('disabled', 'disabled').html('<option value="0">城市/直辖市区县</option>');
+                                } else {
+                                    $.post('../data_ashx/GetAirData.ashx', { cmd: 'getSpaces', p_val: pro }, function (data) {
+                                        var jsonData = eval('(' + data + ')');
+                                        if (jsonData.isSuccess == '1') {
+                                            cityObj.removeAttr('disabled').html(unescape(jsonData.content));
+                                        } else {
+                                            cityObj.attr('disabled', 'disabled').html('<option value="0">城市/直辖市区县</option>');
+                                        }
+                                    });
+                                }
+                            }
+
+                        </script>
+                        <div class="form-filed clearfix condition-wrap" id="condition_wrap">
+                            <a class="condition-btn">筛选<i class="icon icon-arrowDown"></i></a>
+                            <div class="condition-con">
+                                <dl class="clearfix">
+                                    <dt>污染物：</dt>
+
+                                    <dd>
+                                        <label class="radio">
+                                            <input type="radio" name="pollution" checked="" value="0" /><i class="icon icon-radio-checked"></i><span class="text">全部</span>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="pollution" value="7" /><i class="icon icon-radio"></i><span class="text">氮氧化物</span>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="pollution" value="8" /><i class="icon icon-radio"></i><span class="text">二氧化硫</span>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="pollution" value="13" /><i class="icon icon-radio"></i><span class="text">烟尘</span>
+                                        </label>
+
+                                    </dd>
+                                </dl>
+                                <dl class="clearfix">
+                                    <dt>企业类型：</dt>
+
+                                    <dd>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="0" name="enterprise" data-role="all" checked=checked /><i class="icon icon-checkbox"></i><span class="text">全部</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1" name="enterprise" checked=checked /><i class="icon icon-checkbox"></i><span class="text">国控重点污染源</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="2" name="enterprise" checked=checked /><i class="icon icon-checkbox"></i><span class="text">非国控重点污染源</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="3" name="enterprise" checked=checked /><i class="icon icon-checkbox"></i><span class="text">上市公司及其关联方</span>
+                                        </label>
+                                    </dd>
+                                </dl>
+                                <dl class="clearfix">
+                                    <dt>达标情况：</dt>
+
+                                    <dd>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="0" name="standard" data-role="all" checked=checked /><i class="icon icon-checkbox"></i><span class="text">全部</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1" name="standard" checked=checked /><i class="icon icon-checkbox"></i><span class="text">超标</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="2" name="standard" checked=checked /><i class="icon icon-checkbox"></i><span class="text">不超标</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="3" name="standard" checked=checked /><i class="icon icon-checkbox"></i><span class="text">无数据</span>
+                                        </label>
+                                    </dd>
+                                </dl>
+                                <dl class="clearfix">
+                                    <dt>企业反馈：</dt>
+
+                                    <dd>
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="feedback" value="0" data-role="all" checked=checked /><i class="icon icon-checkbox"></i><span class="text">全部</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="feedback" value="1" checked=checked /><i class="icon icon-checkbox"></i><span class="text">有反馈</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="feedback" value="2" checked=checked /><i class="icon icon-checkbox"></i><span class="text">无反馈</span>
+                                        </label>
+                                    </dd>
+                                </dl>
+                                <dl class="clearfix">
+                                    <dd class="clearfix">
+                                        <input class="button-secondary filter-btn float-end" id="filter_btn" name="" type="button"
+                                               onclick="solve();" value="筛选" />
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-an clearfix" id="side_info">
+                        <div class="side-an-info">
+                            <div class="side-title">
+                                <h1 class="clearfix">
+                                    <a class="switch-arrow-btn float-end arrow-right" href="javascript:void(0);" id="side_info_btn">
+                                        <i class="icon icon-an-right"></i>
+                                    </a>
+                                </h1>
+                            </div>
+                            <div class="table-con" id="table_con">
+                            </div>
+                            <div class="pager-wrap">
+                                <div id="pagination">
+                                    <div class="pagination-wrap">
+                                        <div class="pagination">
+                                            <div class="pagers" id="idpage">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-ext" id="side_ext">
+                        <div class="side-source">
+                            <p>
+                                <i class="icon icon-view-record"></i>带有该标签的则有企业监管记录，点击可查看其监管记录数据
+                            </p>
+                            <div class="statistics-con clearfix">
+                                <div class="statistics-ext" id="div_tongji">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-source">
+                            <a href="javascript:void(0);">全市年度环境数据统计</a>
+                            <p>
+                                数据来源：环保部、各省市环保厅(局)网站
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-wrap" id="leftdiv_content" style="display:none;">
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-aside clearfix">
+                <!--地图类型及缩放-->
+
+                <input id="idnostr" type="hidden" value="0" />
+                <input id="nowzoom" type="hidden" value="0" />
+                <input id="nowprovince" type="hidden" value="0" />
+                <input id="zoomchange" type="hidden" value="5.5" />
+
+                <input id="isStopChange" type="hidden" value="0" />
+
+                <input id="timer_province" type="hidden" value="" />
+                <input id="timer_level" type="hidden" value="" />
+                <input id="timer_issearch" type="hidden" value="" />
+
+
+                <div class="map-type">
+                    <div class="map-type-bg maptype-tab clearfix">
+                        <a href="javascript:void(0);" class="map-kind" id="sate_llite">卫星</a> <a href="javascript:void(0);"
+                                                                                                 class="map-road" id="traffic">
+                            路况
+                            <div class="road">
+                                <i></i>
+                                <div class="road-state clearfix">
+                                    <p>
+                                        <span class="badge-green"></span>畅
+                                    </p>
+                                    <p>
+                                        <span class="badge-orange"></span>缓
+                                    </p>
+                                    <p>
+                                        <span class="badge-red"></span>堵
+                                    </p>
+                                </div>
+                                <p class="road-time" id="road_time">
+                                    17:47
+                                </p>
+                                <button class="road-refresh" id="road_refresh">
+                                    刷新
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="map-tool">
+                        <div class="map-type-bg">
+                            <a class="screen" id="screen" href="javascript:void(0);"></a>
+                        </div>
+                        <div class="map-type-bg map-zoom">
+                            <a class="magnify" id="magnify" href="javascript:void(0);"></a><a class="narrow"
+                                                                                              id="narrow" href="javascript:void(0);"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--导航栏目-->
+
+                <div class="nav-wrap">
+                    <div class="nav-panel clearfix">
+                        <div class="map-column">
+                            <!--<a href="/index.aspx" class="map-logo">
+                                <span>首页</span>
+                                <br /><i class="icon icon-arrowDown"></i>
+                            </a>
+                            <ul style="margin-left:-40px;width:1.8rem">
+
+                                <li><a href="/AirMap_fxy/AirMap.aspx">环境地图</a></li>
+                                <li><a href="/IndustryRecord/Regulatory.aspx">企业表现</a></li>
+                                <li><a href="/GreenSupplyChain/Main.aspx">绿色供应链</a></li>
+                                <li><a href="/IndustryRecord/Regulatory.aspx?isYH=2">绿色信贷</a></li>
+                                <li><a href="/GreenSecurities/Securities.aspx?isYH=2">绿色证券</a></li>
+                                <li><a href="/reports/NewsReport.aspx">研究报告</a></li>
+                                <li><a href="/about/DataServices.aspx">数据服务</a></li>
+                            </ul>-->
+                        </div>
+                        <!--<div class="map-nav">
+                            <ul class="clearfix">
+                                <li><a href="/AirMap_fxy/AirMap.aspx?q=1"><i class="air"></i>空气</a></li>
+                                <li><a href="/MapWater/water.aspx?q=2"><i class="water"></i>水质</a></li>
+                                <li class="selected"><a href="/MapPollution/Pollution.aspx?q=3&type=1"><i class="waste-gas"></i>废气源</a></li>
+                                <li><a href="/MapPollution/Pollution.aspx?q=4&type=2"><i class="waste-water"></i>废水源</a></li>
+                                <li><a href="/MapWindy/Windy_V.aspx?q=5" class="last"><i class="weather"></i>气象</a></li>
+                            </ul>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="section-ext clearfix">
+                <!--地图时间轴-->
+                <button class="refresh-btn" id="refresh_btn">
+                    返回实时数据
+                </button>
+
+                <div id="time_line">
+                    <div class="tl-wrap clearfix">
+                        <div class="tl-con">
+                            <div class="control-op">
+                                <a class="control-btn pause disabled" href="javascript:void(0);"><i class="icon"></i></a>
+                            </div>
+                            <div class="tl-main">
+                                <div class="tl-events">
+                                    <ul>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 10:00:00">10:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 11:00:00">11:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 12:00:00">12:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 13:00:00">13:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 14:00:00">14:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 15:00:00">15:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 16:00:00">16:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 17:00:00">17:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 18:00:00">18:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 19:00:00">19:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 20:00:00">20:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 21:00:00">21:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 22:00:00">22:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/29 23:00:00">23:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 0:00:00">2016-12-30</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 1:00:00">1:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 2:00:00">2:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 3:00:00">3:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 4:00:00">4:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 5:00:00">5:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 6:00:00">6:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 7:00:00">7:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 8:00:00">8:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 9:00:00">9:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 10:00:00">10:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 11:00:00">11:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 12:00:00">12:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 13:00:00">13:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 14:00:00">14:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 15:00:00">15:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 16:00:00">16:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 17:00:00">17:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 18:00:00">18:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 19:00:00">19:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 20:00:00">20:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 21:00:00">21:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 22:00:00">22:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/30 23:00:00">23:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 0:00:00">2016-12-31</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 1:00:00">1:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 2:00:00">2:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 3:00:00">3:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 4:00:00">4:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 5:00:00">5:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 6:00:00">6:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 7:00:00">7:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 8:00:00">8:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 9:00:00">9:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 10:00:00">10:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 11:00:00">11:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 12:00:00">12:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 13:00:00">13:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 14:00:00">14:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 15:00:00">15:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 16:00:00">16:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 17:00:00">17:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 18:00:00">18:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 19:00:00">19:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 20:00:00">20:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 21:00:00">21:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 22:00:00">22:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2016/12/31 23:00:00">23:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 0:00:00">2017-01-01</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 1:00:00">1:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 2:00:00">2:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 3:00:00">3:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 4:00:00">4:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 5:00:00">5:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 6:00:00">6:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 7:00:00">7:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 8:00:00">8:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 9:00:00">9:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 10:00:00">10:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 11:00:00">11:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 12:00:00">12:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 13:00:00">13:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 14:00:00">14:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 15:00:00">15:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 16:00:00">16:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 17:00:00">17:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 18:00:00">18:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 19:00:00">19:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 20:00:00">20:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 21:00:00">21:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 22:00:00">22:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/1 23:00:00">23:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 0:00:00">2017-01-02</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 1:00:00">1:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 2:00:00">2:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 3:00:00">3:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 4:00:00">4:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 5:00:00">5:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 6:00:00">6:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 7:00:00">7:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 8:00:00">8:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 9:00:00">9:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 10:00:00">10:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 11:00:00">11:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 12:00:00">12:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 13:00:00">13:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 14:00:00">14:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 15:00:00">15:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 16:00:00">16:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 17:00:00">17:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 18:00:00">18:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 19:00:00">19:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 20:00:00">20:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 21:00:00">21:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 22:00:00">22:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/2 23:00:00">23:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 0:00:00">2017-01-03</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 1:00:00">1:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 2:00:00">2:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 3:00:00">3:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 4:00:00">4:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 5:00:00">5:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 6:00:00">6:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 7:00:00">7:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 8:00:00">8:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 9:00:00">9:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 10:00:00">10:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 11:00:00">11:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 12:00:00">12:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 13:00:00">13:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 14:00:00">14:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 15:00:00">15:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 16:00:00">16:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 17:00:00">17:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 18:00:00">18:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 19:00:00">19:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 20:00:00">20:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 21:00:00">21:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 22:00:00">22:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/3 23:00:00">23:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 0:00:00">2017-01-04</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 1:00:00">1:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 2:00:00">2:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 3:00:00">3:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 4:00:00">4:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 5:00:00">5:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 6:00:00">6:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 7:00:00">7:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 8:00:00">8:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 9:00:00">9:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 10:00:00">10:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 11:00:00">11:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 12:00:00">12:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 13:00:00">13:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 14:00:00">14:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 15:00:00">15:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 16:00:00">16:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 17:00:00">17:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 18:00:00">18:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 19:00:00">19:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 20:00:00">20:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 21:00:00">21:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 22:00:00">22:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/4 23:00:00">23:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/5 0:00:00">2017-01-05</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/5 1:00:00">1:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/5 2:00:00">2:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/5 3:00:00">3:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/5 4:00:00">4:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/5 5:00:00">5:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/5 6:00:00">6:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/5 7:00:00">7:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/5 8:00:00">8:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+                                        <li>
+                                            <span class="tl-date" data-val="2017/1/5 9:00:00">9:00</span>
+                                            <span class="tl-split"></span>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                                <div class="tl-process-wrap">
+                                    <div class="tl-process" style="width: 5760px;">
+                                        <div class="tl-process-inner" style="width: 5760px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="tl-prompt">
+                                    <div class="tl-prompt-con">
+                                        <p>59</p>
+                                        <div class="tl-arrow"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tl-bg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container" id="map" style="cursor: url(http://webapi.amap.com/theme/v1.3/openhand.cur), default; background: rgb(252, 249, 242);">
+                <object style="display:block; position:absolute; top:0; left:0;height:100%; width:100%; overflow:hidden; pointer-events:none;z-index:-1;" type="text/html" data="about:blank">
+                 #document
+                  <html>
+                     <head></head>
+                     <body></body>
+                  </html>
+                </object>
+                <div style="display:none;">
+                        <div class="amap-marker" style="top: 344px; left:-616px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                            <div class="amap-marker-content" style="opacity: 1;">
+                                <div onclick="getInfoWindow(2363,0,'');" class="iconszf g_0_0">
+                                    59.66
+                                </div>
+                            </div>
+                    </div>
+                        <div class="amap-marker" style="top:342px; left:-616px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                            <div class="amap-marker-content" style="opacity: 1;">
+                                <div onclick="getInfoWindow(14032,0,'');" class="iconszf g_0_0">
+                                    70
+                                </div>
+                            </div>
+                    </div>
+                        <div class="amap-marker" style="top:346px; left:-621px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                            <div class="amap-marker-content" style="opacity: 1;">
+                                <div onclick="getInfoWindow(14018,0,'');" class="iconszf g_0_0">
+                                    217
+                                </div>
+                            </div>
+                    </div>
+                        <div class="amap-marker" style="top: 371px; left:-621px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                            <div class="amap-marker-content" style="opacity: 1;">
+                                <div onclick="getInfoWindow(14670,0,'');" class="iconszf g_0_0">
+                                    217
+                                </div>
+                            </div>
+                    </div>
+                    <div class="amap-info" style="position:absolute;left:527.593px;top:227.917px">
+                        <div style="position:absolute;bottom:33px;left:2px;display:block"></div>
+                        <div style="position:absolute;bottom:33px;left:2px;">
+                        <div>
+                            <div>
+                        </div>
+
+                        </div>
+
+
+                    </div>
+            </div>
+            <!--地图污染等级划分-->
+            <div class="map-level waste-gas-level">
+                <ul class="map-level-list">
+                    <li class="badge-level level1 first"><span class="map-level-des">达标</span></li>
+                    <li class="badge-level level2"><span class="map-level-des">超标</span></li>
+                    <li class="badge-level level3"><span class="map-level-des">未知</span></li>
+                    <li class="badge-level level4"><span class="map-level-des"><em>——</em>无数据</span></li>
+                    <li class="badge-level level5 last">
+                        <span class="map-level-des">
+                            <i class="icon icon-feedback">
+                            </i>已反馈
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--点地图上的点，弹出的详情层模板-->
+<script>
+    $(function(){
+        $.ajax({
+            url: "http://202.104.69.204:8087/Home/GetAllDcStationInfo",
+            type: "GET",
+            dataType: "jsonp",
+            success: function (data) {
+                var jsondata = data;
+            }
+
+        })
+    }
+    )
+      </script>
+    <script src="~/Content/js/ipe/Map.js"></script> 
+    <script src="~/Content/js/ipe/chart.js"></script> 
+    <script src="~/Content/js/ipe/mapcommon.js"></script>    
+</body>
+</html>

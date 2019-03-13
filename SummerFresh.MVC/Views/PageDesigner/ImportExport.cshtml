@@ -1,0 +1,156 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>其它</title>
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/common.css" rel="stylesheet" />
+    <link href="~/Content/css/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/default/default.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/js/showModalDialog.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/Content/js/jquery.form.js"></script>
+    <script src="~/Content/js/datepicker/WdatePicker.js"></script>
+    <style>
+        html, body {
+            background-color: #EEE;
+        }
+
+        fieldset {
+            width: 700px;
+            text-align: left;
+            padding: 20px;
+            border: 1px solid #CCC;
+            vertical-align: middle;
+            background-color: white;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        legend {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;width:100%;">
+        <fieldset>
+            <legend>导出</legend>
+            <form action="/PageDesigner/BatchExport" method="post" id="exportForm">
+                <input type="text" id="LastUpdateTime" name="LastUpdateTime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+                <button onclick="batchExport()" class="btn btn-success btn-big">按更新时间批量导出</button>
+                <button onclick="exportPage(); return false;" class="btn btn-success btn-big">导出当前配置</button>
+                <button onclick="exportSystem(); return false;" class="btn btn-success btn-big">导出系统</button>
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend>导入</legend>
+            <form action="/PageDesigner/Import" id="importForm" method="post" enctype="multipart/form-data">
+                <input type="file" id="xmlFile" name="xmlFile" />
+                @*<input onclick="Import();return false;" type="submit" class="btn btn-danger btn-big" value="导入XML"/>*@
+                <input onclick="Import()" type="button" class="btn btn-danger btn-big" value="导入XML" />
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend>其它</legend>
+            <button onclick="saveCopy()" class="btn btn-primary btn-big">另存副本</button>
+            <button onclick="addToFunction()" class="btn btn-primary btn-big">发布到功能管理</button>
+            <button onclick="clearCache()" class="btn btn-primary btn-big">清除页面缓存</button>
+        </fieldset>
+        <div id="divToUpdate" style="visibility:hidden"></div>
+    </div>
+    <script>
+        @{ var page = ViewData["page"] as SummerFresh.Business.Entity.PageEntity;
+
+              }
+
+        var pageId = '@page.PageId';
+        var pageName = '@page.PageName'
+        var pageTitle = '@page.PageTitle';
+        function exportPage() {
+            window.open("/PageDesigner/Export/" + pageId);
+        }
+
+        function batchExport() {
+            $("#exportForm").submit();
+            //window.open("/PageDesigner/BatchExport?LastUpdateTime=" + $("#LastUpdateTime").val());
+        }
+
+        
+
+        function Import()
+        {
+            var url = "/PageDesigner/Import";
+            if ($("#xmlFile").val().indexOf(".json") != -1)
+            {
+                url = "/PageDesigner/ImportSystem";
+            }
+                $("#importForm").ajaxForm({
+                    type: 'POST',
+                    clearForm: true,
+                    //target: $('#divToUpdate'),
+                    datatype: $("#importForm").formSerialize(),
+                    url: url,
+                    async: true,
+                    success: function ()
+                    {
+                        alert("上传成功");
+                        window.parent.location.reload();
+                    },
+                    error: function ()
+                    {
+                        alert("上传失败");
+                    },
+                }).submit();
+        }
+
+        function saveCopy() {
+            summerFresh.dataService("/PageDesigner/Copy", { id: pageId }, function (res) {
+                if (res) {
+                    alert("复制成功");
+                }
+            }, "post", true);
+        }
+
+        function addToFunction() {
+            var url = "/Entity/Insert/Permission";
+            var param = { PermissionType: 2, PermissionName: pageTitle, PermissionCode: pageName, Url: '/Page/' + pageName };
+            url = summerFresh.buildUrl(url, param);
+            $.showModalDialog({
+                url: url,
+                onClose: function (res) {
+                    if (res != 'false') {
+                        alert("添加成功！");
+                    }
+                },
+                width: 700,
+                height: 500,
+                overlayClose: true
+            });
+        }
+
+        function clearCache() {
+            summerFresh.dataService("/PageDesigner/CleanCache", { id: pageName }, function (res) {
+                if (res) {
+                    alert("清除成功!");
+                }
+                else {
+                    alert("页面未缓存！")
+                }
+            }, "post", true);
+        }
+
+        function exportSystem()
+        {
+            window.open("/PageDesigner/ExportSystem");
+        }
+    </script>
+</body>
+</html>

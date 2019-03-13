@@ -1,0 +1,89 @@
+﻿@using SummerFresh.Controls
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="~/content/css/reset.css" rel="stylesheet" />
+    <link href="~/content/css/common.css" rel="stylesheet" />
+    <link href="~/content/themes/default/default.css" rel="stylesheet" />
+    <style>
+        html, body {
+            overflow: hidden;
+        }
+
+        .list-container {
+            padding: 10px;
+        }
+
+            .list-container label {
+                display: block;
+                margin-top: 10px;
+            }
+    </style>
+    <script src="~/content/js/jquery-1.9.1.min.js"></script>
+    <script src="~/content/js/common.js"></script>
+    <script>
+        var param = summerFresh.getQueryString();
+        var values = [];
+        var texts = [];
+        $(function () {
+            var v = $("#" + param.id, window.parent.document).val();
+            if (v && v != '') {
+                values = v.split(',');
+            }
+            var t = $("#" + param.text, window.parent.document).val();
+            if (t && t != '') {
+                texts = t.split(',');
+            }
+            initCk();
+        });
+        function initCk() {
+            var cks = $("#ddList").find("input[type='checkbox']");
+            cks.bind("click", function () {
+                onCkClick(this, this.checked);
+            });
+            cks.each(function () {
+                for (var i = 0; i < values.length; i++) {
+                    if (values[i] == $(this).val()) {
+                        $(this).attr("checked", true);
+                        break;
+                    }
+                }
+            });
+        }
+
+        function onCkClick(ck, checked) {
+            if (checked) {
+                if (values.indexOf($(ck).val()) == -1) {
+                    values.push($(ck).val());
+                    texts.push($(ck).attr("txt"));
+                }
+            }
+            else {
+                for (var i = 0; i < values.length; i++) {
+                    if (values[i] == $(ck).val()) {
+                        values.splice(i, 1);
+                        texts.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+            $("#" + param.id, window.parent.document).val(values.join(','));
+            $("#" + param.text, window.parent.document).val(texts.join(','));
+        }
+    </script>
+</head>
+<body>
+    <div class="list-container">
+        @Html.CustomControl(ViewData["Ck"] as SummerFresh.Business.IComponent)
+    </div>
+</body>
+</html>

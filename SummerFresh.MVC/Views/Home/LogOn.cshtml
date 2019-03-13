@@ -1,0 +1,161 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="ie-stand" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录系统</title>
+    <link href="~/Content/css/animate.min.css" rel="stylesheet" />
+    <link href="~/content/css/login.css" rel="stylesheet" />
+
+    <script src="~/content/js/jquery-1.9.1.min.js"></script>
+
+
+</head>
+<body>
+    <div class="login-body-bg">
+        <img src="~/content/images/login-bg.jpg" />
+    </div>
+    <div class="header">
+        <div class="login-title" title="">
+            <img src="~/content/images/login-title.png" />
+        </div>
+    </div>
+    <div class="login-wrapper">
+        <div class="login-left-img" style="display: none;">
+            <div class="big-img">
+                <div class="img-box t1 animated flipInY">
+                    <img src="~/content/images/t1.jpg" />
+                </div>
+                <div class="img-box  t2 animated flipInY">
+                    <img src="~/content/images/t2.jpg" />
+                </div>
+                <div class="img-box t3 animated flipInY">
+                    <img src="~/content/images/t3.jpg" />
+                </div>
+                <div class="img-box m1 animated fadeInLeft">
+                    <img src="~/content/images/m1.jpg" />
+                </div>
+                <div class="img-box m2 animated flipInY">
+                    <img src="~/content/images/m2.jpg" />
+                </div>
+                <div class="img-box m3 animated flipInY">
+                    <img src="~/content/images/m3.jpg" />
+                </div>
+                <div class="img-box m4 animated flipInY">
+                    <img src="~/content/images/m4.jpg" />
+                </div>
+                <div class="img-box m5 animated fadeInRight">
+                    <img src="~/content/images/m5.jpg" />
+                </div>
+                <div class="img-box b1 animated slideInUp">
+                    <img src="~/content/images/b1.jpg" />
+                </div>
+                <div class="img-box b2 animated slideInUp">
+                    <img src="~/content/images/b2.jpg" />
+                </div>
+            </div>
+            <div class="gezi animated fadeInLeft">
+                <img src="~/content/images/gezi.png" />
+            </div>
+            <div class="no2 animated bounceIn">
+                <img src="~/content/images/no2.png" />
+            </div>
+            <div class="co animated bounceIn">
+                <img src="~/content/images/co.png" />
+            </div>
+            <div class="so2 animated bounceIn">
+                <img src="~/content/images/so2.png" />
+            </div>
+            <div class="o3 animated bounceIn">
+                <img src="~/content/images/o3.png" />
+            </div>
+        </div>
+        <div class="login-box">
+            @using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    <em class="user-icon"></em>
+                    <input type="text" class="form-control user" id="userName" name="userName" value="" placeholder="账号" />
+                </div>
+                <div class="form-group">
+                    <em class="passw-icon "></em>
+                    <input type="password" class="form-control user" id="password" name="password" value="" placeholder="密码" />
+                </div>
+                <div class="form-group submit-box">
+                    <button type="submit" id="login-submit" class="btn btn-login">登&nbsp;录</button>
+                </div>
+                <div class="form-group error-box">
+                    <span class="error-message">@ViewData["ErrorMessage"]</span>
+                </div>
+            }
+            <div class="support">建议使用IE9以上及火狐、谷歌浏览器浏览</div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>发布单位：xxx环保监测站</p>
+        <p>技术支持：@SummerFresh.Basic.SysConfig.CopyRightName</p>
+
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            if (window.top != self) {
+                window.top.location.href = "/Home/LogOn";
+            }
+            document.getElementById('userName').focus();
+        }
+        $(document).ready(function () {
+            $("#UserAccount").focus(function () {
+                $(".erro-message").html("");
+            });
+
+            $("#Password").focus(function () {
+                $(".erro-message").html("");
+            });
+
+            $(".login-body-bg").animate({ left: "-150px", right: "-150px", top: "-150px", bottom: "-150px" }, 15000);
+
+            setTimeout(function () {
+                $(".login-left-img").show()
+            }, 800);
+            //$(".img-box").mouseover(function () {
+            //    $(this).removeClass("flipInY fadeInLeft fadeInRight slideInUp").addClass("flipInX");
+            //});
+            //$(".img-box").mouseout(function () {
+            //    $(this).removeClass("flipInX");
+            //});
+        });
+
+
+        $("#login-submit").click(function () {
+            $(this).attr("disabled", true);
+
+            if ($("#UserAccount").val() === "") {
+                $(".erro-message").html("");
+                $(".erro-message").html("请输入账号");
+                $(this).attr("disabled", false);
+                return;
+            }
+            if ($("#Password").val() === "") {
+                $(".erro-message").html("");
+                $(".erro-message").html("请输入密码");
+                $(this).attr("disabled", false);
+                return;
+            }
+            $("form").submit();
+        });
+        $("body").keydown(function (event) {
+            if (event.keyCode == 13)   //回车键的键值为13
+                $("#login-submit").click();  //调用登录按钮的登录事件
+        });
+    </script>
+</body>
+</html>

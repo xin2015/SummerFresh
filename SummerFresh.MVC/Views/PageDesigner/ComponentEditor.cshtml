@@ -1,0 +1,90 @@
+﻿@model SummerFresh.MVC.Controllers.FormModel
+@using SummerFresh.Controls
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>组件列表</title>
+    <link href="~/content/css/reset.css" rel="stylesheet" />
+    <link href="~/content/css/icon.css" rel="stylesheet" />
+    <link href="~/content/css/common.css" rel="stylesheet" />
+    <link href="~/content/themes/default/default.css" rel="stylesheet" />
+    <style>
+        textarea.xheditor {
+            height: 300px;
+            width: 60%;
+        }
+
+        .form-group textarea.form-control {
+            height: 100px;
+            width: 70%;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 13px;
+            padding: 10px;
+            background-color: #EEE;
+            border-bottom: 1px solid #CCC;
+        }
+    </style>
+    <script src="~/Content/js/jquery-1.9.1.min.js"></script>
+    <script src="~/content/js/common.js"></script>
+    <script src="~/content/js/Validator/jquery.tipsy.js"></script>
+    <script src="~/content/js/Validator/jquery.validationConfig.js"></script>
+    <script src="~/content/js/Validator/jquery.validation.js"></script>
+    <script src="~/content/js/datepicker/WdatePicker.js"></script>
+    <script src="~/content/js/xheditor-1.1.14-zh-cn.min.js"></script>
+    <script>
+        $(function () {
+            $("form").bind("submit", function () {
+                if ($.validation.validate(this).isError) {
+                    return false;
+                }
+                summerFresh.dataService($(this).attr("action"), $(this).serialize(), function (res) {
+                    if (res) {
+                        alert("保存成功！！");
+                        if (window.location.href.indexOf("componentId") >= 0) {
+                            window.location.href = window.location.href;
+                        }
+                        else {
+                            window.location.href += "&componentId=" + res;
+                        }
+                    }
+                }, "post", false);
+                return false;
+            });
+            summerFresh.widget.init();
+            autoHeight();
+            $(window).resize(autoHeight);
+            $("[description]").each(function () {
+                if ($(this).attr("description") != '') {
+                    $(this).append("<img alt='' title='" + $(this).attr("description") + "' src=\"../../Content/themes/default/images/icon-tip.png\" />");
+                }
+            });
+        });
+
+        function autoHeight() {
+            var screenHeight = Math.min($(window).height(), $(document).height());
+            var toolbarHeight = 0;//$(".form-submit").outerHeight();
+            var ulHeight = screenHeight - toolbarHeight;
+            if ($(".tab-box").length == 1) {
+                ulHeight -= $(".tab-box").outerHeight();
+                $("[tabItem]").css("height", ulHeight + toolbarHeight).css("overflow-y", "auto");
+            }
+            //$(".form-content").css("height", ulHeight).css("overflow-y", "auto");
+        }
+    </script>
+
+</head>
+<body>
+    <div class="main-container">
+        @Html.CustomControl(Model.Tab == null ? (Model.Form as SummerFresh.Business.IComponent) : (Model.Tab as SummerFresh.Business.IComponent))
+    </div>
+</body>
+</html>

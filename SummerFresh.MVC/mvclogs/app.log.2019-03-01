@@ -1,0 +1,45 @@
+2019-03-01 21:07:41,830 [23260] INFO  PageAccessLogger - 用户：，Url:/Home/Logon，Form：，耗时：855
+2019-03-01 21:07:50,549 [23260] INFO  LogOnLogger - 用户：liuhf,IP：::1
+2019-03-01 21:07:50,563 [23260] INFO  PageAccessLogger - 用户：，Url:/Home/Logon，Form：userName=liuhf
+password=111
+，耗时：522
+2019-03-01 21:07:50,779 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/，Form：，耗时：8
+2019-03-01 21:07:51,121 [23280] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetMenu，Form：，耗时：122
+2019-03-01 21:07:52,383 [23280] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/Department，Form：，耗时：199
+2019-03-01 21:07:52,720 [23292] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.DepartmentEntity.Tree
+，耗时：34
+2019-03-01 21:07:58,862 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/Permission，Form：，耗时：37
+2019-03-01 21:07:58,996 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.PermissionEntity.Tree
+，耗时：19
+2019-03-01 21:08:00,330 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/User，Form：，耗时：32
+2019-03-01 21:08:00,427 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.DepartmentEntity.Tree
+，耗时：18
+2019-03-01 21:08:01,330 [23260] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/RoleType，Form：，耗时：31
+2019-03-01 21:08:02,557 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/Role，Form：，耗时：20
+2019-03-01 21:08:04,379 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/DataDictionary，Form：，耗时：22
+2019-03-01 21:08:06,808 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/AllCache，Form：，耗时：9
+2019-03-01 21:08:09,924 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/PageDesigner/Index，Form：，耗时：933
+2019-03-01 21:08:10,027 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.PageEntity.Tree
+，耗时：26
+2019-03-01 21:08:14,035 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/ExternalFile，Form：，耗时：22
+2019-03-01 21:08:15,075 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/Layout，Form：，耗时：23
+2019-03-01 21:08:16,317 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/DataField，Form：，耗时：44
+2019-03-01 21:08:16,419 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.DataFieldEntity.Tree
+，耗时：32
+2019-03-01 21:08:17,398 [23280] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/CRUD，Form：，耗时：29
+2019-03-01 21:08:25,350 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/ChangePassword，Form：，耗时：3
+2019-03-01 21:08:51,613 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/，Form：，耗时：1
+2019-03-01 21:08:51,700 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetMenu，Form：，耗时：21
+2019-03-01 21:08:51,731 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/Department，Form：，耗时：1
+2019-03-01 21:08:51,840 [23260] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.DepartmentEntity.Tree
+，耗时：20
+2019-03-01 22:04:22,244 [24848] INFO  PageAccessLogger - 用户：，Url:/Home/Logon，Form：，耗时：930
+2019-03-01 22:07:31,683 [24776] INFO  LogOnLogger - 用户：liuhf,IP：::1
+2019-03-01 22:07:31,696 [24776] INFO  PageAccessLogger - 用户：，Url:/Home/Logon，Form：userName=liuhf
+password=111
+，耗时：624
+2019-03-01 22:07:31,885 [24832] INFO  PageAccessLogger - 用户：liuhf，Url:/，Form：，耗时：8
+2019-03-01 22:07:32,136 [24852] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetMenu，Form：，耗时：136
+2019-03-01 22:07:33,343 [24848] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/Department，Form：，耗时：142
+2019-03-01 22:07:33,529 [24852] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.DepartmentEntity.Tree
+，耗时：22

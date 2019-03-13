@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns="http://schemas.SummerFresh.net/netframework/environment" 
+           targetNamespace="http://schemas.SummerFresh.net/netframework/environment" 
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <xs:element name="environment" type="EnvironmentSection" />
+    <xs:element name="variable" type="VariableElement" />
+
+    <xs:complexType name="EnvironmentSection">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="factory" type="FactoryElement" />
+            </xs:choice>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="provider" type="ProviderElement" />
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FactoryElement">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:any processContents="lax" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="type" type="xs:string" use="required" />
+        <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+
+    <xs:complexType name="ProviderElement">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:any processContents="lax" />
+        </xs:sequence>
+        <xs:attribute name="prefix" type="xs:string" />
+        <xs:attribute name="type" type="xs:string" use="required" />
+        <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+
+    <xs:complexType name="VariableElement">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:any processContents="lax" />
+        </xs:sequence>
+        <xs:attribute name="name"    type="xs:string" use="required" />
+        <xs:attribute name="value"   type="xs:string" />
+        <xs:attribute name="type"    type="xs:string" />
+        <xs:attribute name="scope"   type="ScopeType" />
+        <xs:attribute name="factory" type="xs:string" />
+        <xs:anyAttribute processContents="lax" />
+    </xs:complexType>
+
+    <xs:simpleType name="ScopeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="application" />
+            <xs:enumeration value="session" />
+            <xs:enumeration value="request" />
+            <xs:enumeration value="none" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

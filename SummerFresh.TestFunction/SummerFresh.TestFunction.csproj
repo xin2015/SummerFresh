@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C471C8B-00EE-45A1-9574-ACF39CF88E7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SummerFresh.TestFunction</RootNamespace>
+    <AssemblyName>SummerFresh.TestFunction</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataSource\IconTimePointDataSource.cs" />
+    <Compile Include="DataSource\NetStatusIconDataSource.cs" />
+    <Compile Include="DataSource\PollutantValueDataSource.cs" />
+    <Compile Include="DataSource\QCResultDataSource.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entity\DailyReviewEntity.cs" />
+    <Compile Include="Entity\DataTimeShowEntity.cs" />
+    <Compile Include="Entity\EquipmentBrandEntity.cs" />
+    <Compile Include="Entity\EquipmentEntity.cs" />
+    <Compile Include="Entity\EquipmentModelEntity.cs" />
+    <Compile Include="Entity\EquipmentNameEntity.cs" />
+    <Compile Include="Entity\EquipmentTypeEntity.cs" />
+    <Compile Include="Entity\LiveDataShowEntity.cs" />
+    <Compile Include="Entity\MaintenanceHeadEntity.cs" />
+    <Compile Include="Entity\QCHistoryEntity.cs" />
+    <Compile Include="Entity\StationEntity.cs" />
+    <Compile Include="Entity\StationHourDataEntity.cs" />
+    <Compile Include="Entity\StationTypeEntity.cs" />
+    <Compile Include="Entity\VDataTimeShowEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SummerFresh.Basic\SummerFresh.Basic.csproj">
+      <Project>{2d3e8be2-c86d-4dd1-a00b-10ac11639c83}</Project>
+      <Name>SummerFresh.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Business\SummerFresh.Business.csproj">
+      <Project>{036c62a7-8562-4dd9-8fb0-ab208e457b8a}</Project>
+      <Name>SummerFresh.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Data\SummerFresh.Data.csproj">
+      <Project>{50a54473-c485-4cb0-9869-651e5ab2c43b}</Project>
+      <Name>SummerFresh.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Environment\SummerFresh.Environment.csproj">
+      <Project>{e2405e71-a00b-44c8-9278-70c23e45b719}</Project>
+      <Name>SummerFresh.Environment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Security\SummerFresh.Security.csproj">
+      <Project>{e68b8bc3-37e0-444a-bf10-7c832cd40862}</Project>
+      <Name>SummerFresh.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Util\SummerFresh.Util.csproj">
+      <Project>{a83775dc-c5ad-45e7-9c28-a721338668a3}</Project>
+      <Name>SummerFresh.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interface\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

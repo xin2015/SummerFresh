@@ -1,0 +1,406 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Environmental Maps-Air Emissions</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link href="../favicon.ico" rel="icon" />
+    <link href="http://localhost:3108/Content/css/ipe/main.css" type="text/css" rel="stylesheet" />
+
+    <link href="http://localhost:3108/Content/css/ipe/sprite.css" rel="stylesheet" />
+
+    <script src="http://webapi.amap.com/maps?v=1.3&key=2b0da99cab161d1d6e1afac83e786cd2"></script><!--高德地图API-->
+
+    <link href="http://localhost:3108/Content/css/ipe/style.css" rel="stylesheet" />
+</head>
+<body class="page-of-air page-of-waste-gas">
+    <div class="container clearfix">
+        <!--左侧边栏-->
+        <div class="side-panel side-city" id="side_panel">
+            <a class="arrow-btn" id="arrow_btn"><i></i></a>
+            <div class="side-wrap" id="leftdiv_list">
+                <div class="side-con">
+                    <div class="side-search clearfix">
+
+                        <div class="form-filed">
+                            <div class="complex actions">
+                                <button type="button" onclick="solve();" class="button button-primary">
+                                    搜索
+                                </button>
+                                <div class="input-icon">
+                                    <i class="icon icon-search"></i>
+                                    <input type="text" class="input" id="txtkey" placeholder="监测站搜索" />
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-filed clearfix">
+                            <select class="select" name="select" id="area" style="display: none;" disabled="disabled"></select>
+                        </div>
+                        <script type="text/javascript">
+                            function setCity() {
+                                var pro = $('#province').val();
+                                var cityObj = $('#city');
+                                cityObj.val('0');
+                                if (pro == '0') {
+                                    cityObj.attr('disabled', 'disabled').html('<option value="0">城市/直辖市区县</option>');
+                                } else {
+                                    $.post('../data_ashx/GetAirData.ashx', { cmd: 'getSpaces', p_val: pro }, function (data) {
+                                        var jsonData = eval('(' + data + ')');
+                                        if (jsonData.isSuccess == '1') {
+                                            cityObj.removeAttr('disabled').html(unescape(jsonData.content));
+                                        } else {
+                                            cityObj.attr('disabled', 'disabled').html('<option value="0">城市/直辖市区县</option>');
+                                        }
+                                    });
+                                }
+                            }
+
+                        </script>
+                        <div class="form-filed clearfix condition-wrap" id="condition_wrap">
+                            <a class="condition-btn">筛选<i class="icon icon-arrowDown"></i></a>
+                            <div class="condition-con">
+                                <dl class="clearfix">
+                                    <dt>污染物：</dt>
+
+                                    <dd>
+                                        <label class="radio">
+                                            <input type="radio" name="pollution" checked="" value="0" /><i class="icon icon-radio-checked"></i><span class="text">全部</span>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="pollution" value="7" /><i class="icon icon-radio"></i><span class="text">氮氧化物</span>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="pollution" value="8" /><i class="icon icon-radio"></i><span class="text">二氧化硫</span>
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="pollution" value="13" /><i class="icon icon-radio"></i><span class="text">烟尘</span>
+                                        </label>
+
+                                    </dd>
+                                </dl>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-an clearfix" id="side_info">
+                        <div class="side-an-info">
+                            <div class="side-title">
+                                <h1 class="clearfix">
+                                    <a class="switch-arrow-btn float-end arrow-right" href="javascript:void(0);" id="side_info_btn">
+                                        <i class="icon icon-an-right"></i>
+                                    </a>
+                                </h1>
+                            </div>
+                            <div class="table-con" id="table_con">
+                            </div>
+                            <div class="pager-wrap">
+                                <div id="pagination">
+                                    <div class="pagination-wrap">
+                                        <div class="pagination">
+                                            <div class="pagers" id="idpage">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-ext" id="side_ext">
+                        <div class="side-source">
+                      
+                            <div class="statistics-con clearfix">
+                                <div class="statistics-ext" id="div_tongji">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-wrap" id="leftdiv_content" style="display:none;">
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-aside clearfix">
+                <!--地图类型及缩放-->
+
+                <input id="idnostr" type="hidden" value="0" />
+                <input id="nowzoom" type="hidden" value="0" />
+                <input id="nowprovince" type="hidden" value="0" />
+                <input id="zoomchange" type="hidden" value="5.5" />
+
+                <input id="isStopChange" type="hidden" value="0" />
+
+                <input id="timer_province" type="hidden" value="" />
+                <input id="timer_level" type="hidden" value="" />
+                <input id="timer_issearch" type="hidden" value="" />
+
+
+                <div class="map-type">
+                    <div class="map-type-bg maptype-tab clearfix">
+                        <a href="javascript:void(0);" class="map-kind" id="sate_llite">卫星</a> <a href="javascript:void(0);"
+                                                                                                 class="map-road" id="traffic">
+                            路况
+                            <div class="road">
+                                <i></i>
+                                <div class="road-state clearfix">
+                                    <p>
+                                        <span class="badge-green"></span>畅
+                                    </p>
+                                    <p>
+                                        <span class="badge-orange"></span>缓
+                                    </p>
+                                    <p>
+                                        <span class="badge-red"></span>堵
+                                    </p>
+                                </div>
+                                <p class="road-time" id="road_time">
+                                    17:47
+                                </p>
+                                <button class="road-refresh" id="road_refresh">
+                                    刷新
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="map-tool">
+                        <div class="map-type-bg">
+                            <a class="screen" id="screen" href="javascript:void(0);"></a>
+                        </div>
+                        <div class="map-type-bg map-zoom">
+                            <a class="magnify" id="magnify" href="javascript:void(0);"></a><a class="narrow"
+                                                                                              id="narrow" href="javascript:void(0);"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--导航栏目-->
+
+                <div class="nav-wrap">
+                    <div class="nav-panel clearfix">
+                        <div class="map-column">                    
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="section-ext clearfix">
+                <!--地图时间轴-->
+                <button class="refresh-btn" id="refresh_btn">
+                    返回实时数据
+                </button>
+
+                <div id="time_line">
+                    <div class="tl-wrap clearfix">
+                        <div class="tl-con">
+                            <div class="control-op">
+                                <a class="control-btn pause disabled" href="javascript:void(0);"><i class="icon"></i></a>
+                            </div>
+                            <div class="tl-main">                            
+                                <div class="tl-process-wrap">
+                                    <div class="tl-process" style="width: 5760px;">
+                                        <div class="tl-process-inner" style="width: 5760px;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="tl-prompt">
+                                    <div class="tl-prompt-con">
+                                        <p>59</p>
+                                        <div class="tl-arrow"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tl-bg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container" id="map" style="cursor: url(http://webapi.amap.com/theme/v1.3/openhand.cur), default; background: rgb(252, 249, 242);">
+                <object style="display:block; position:absolute; top:0; left:0;height:100%; width:100%; overflow:hidden; pointer-events:none;z-index:-1;" type="text/html" data="about:blank">
+                    #document
+                    <html>
+                    <head>
+                    </head>
+                    <body>
+                    </body>
+                </html>
+            </object>
+            <div class="amap-maps">
+                <div class="amap-drags">
+                    <div class="amap-layers" style="transform: translateZ(0px);">
+                        <canvas class="amap-layer" width="1512" height="150" style="position: absolute; z-index: 0; top: 0px; left: 0px; height: 150px; width: 1512px;"></canvas>
+                        <canvas class="amap-labels" width="1512" height="150" style="position: absolute; z-index: 99; height: 150px; width: 1512px; top: 0px; left: 0px;"></canvas>
+                        <div class="amap-markers" style="position: absolute; z-index: 120; top: 75px; left: 756px;">
+                            <div class="amap-marker" style="top: -68px; left: 151px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                                <div class="amap-marker-content" style="opacity: 1;">
+                                    <div onclick="getInfoWindow(2363,0,'aqi','');" class="marker-level level2">
+                                        92
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="amap-marker" style="top: -63px; left: 148px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                                <div class="amap-marker-content" style="opacity: 1;">
+                                    <div onclick="getInfoWindow(2365,0,'aqi','');" class="marker-level level2">62</div>
+                                </div>
+                            </div>
+                            <div class="amap-marker" style="top: 16px; left: -346px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                                <div class="amap-marker-content" style="opacity: 1;">
+                                    <div onclick="getInfoWindow(1849,0,'aqi','');" class="marker-level level5">245</div>
+                                </div>
+                            </div>
+                            <div class="amap-marker" style="top: 3px; left: -344px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                                <div class="amap-marker-content" style="opacity: 1;">
+                                    <div onclick="getInfoWindow(1854,0,'aqi','');" class="marker-level level5">223</div>
+                                </div>
+                            </div>
+                            <div class="amap-marker" style="top: 19px; left: -339px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                                <div class="amap-marker-content" style="opacity: 1;">
+                                    <div onclick="getInfoWindow(1859,0,'aqi','');" class="marker-level level4">196</div>
+                                </div>
+                            </div>
+                            <div class="amap-marker" style="top: 12px; left: -337px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                                <div class="amap-marker-content" style="opacity: 1;">
+                                    <div onclick="getInfoWindow(1853,0,'aqi','');" class="marker-level level4">179</div>
+                                </div>
+                            </div>
+                            <div class="amap-marker" style="top: 15px; left: -336px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                                <div class="amap-marker-content" style="opacity: 1;">
+                                    <div onclick="getInfoWindow(1852,0,'aqi','');" class="marker-level level4">163</div>
+                                </div>
+                            </div>
+                            <div class="amap-marker" style="top: -70px; left: 154px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                                <div class="amap-marker-content" style="opacity: 1;">
+                                    <div onclick="getInfoWindow(2364,0,'aqi','');" class="marker-level level3">110</div>
+                                </div>
+                            </div>
+                            <div class="amap-marker" style="top: -78px; left: 171px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                                <div class="amap-marker-content" style="opacity: 1;">
+                                    <div onclick="getInfoWindow(2366,0,'aqi','');" class="marker-level level3">105</div>
+                                </div>
+                            </div>
+                            <div class="amap-marker" style="top: -45px; left: 455px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                                <div class="amap-marker-content" style="opacity: 1;">
+                                    <div onclick="getInfoWindow(4528,0,'aqi','');" class="marker-level level2">84</div>
+                                </div>
+                            </div>
+                            <div class="amap-marker" style="top: -30px; left: 457px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4245,0,'aqi','');" class="marker-level level2">84</div></div></div>
+                            <div class="amap-marker" style="top: -31px; left: 449px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(178,0,'aqi','');" class="marker-level level2">80</div></div></div><div class="amap-marker" style="top: 95px; left: 423px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2360,0,'aqi','');" class="marker-level level2">80</div></div></div>
+                            <div class="amap-marker" style="top: -38px; left: 450px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4244,0,'aqi','');" class="marker-level level2">76</div></div></div>
+                            <div class="amap-marker" style="top: 99px; left: 405px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2358,0,'aqi','');" class="marker-level level2">74</div></div></div><div class="amap-marker" style="top: -23px; left: 457px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(174,0,'aqi','');" class="marker-level level2">72</div></div></div>
+                            <div class="amap-marker" style="top: -31px; left: 438px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4258,0,'aqi','');" class="marker-level level2">71</div></div></div>
+                            <div class="amap-marker" style="top: -38px; left: 456px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(179,0,'aqi','');" class="marker-level level2">70</div></div></div><div class="amap-marker" style="top: -28px; left: 455px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4519,0,'aqi','');" class="marker-level level2">69</div></div></div>
+                            <div class="amap-marker" style="top: 95px; left: 402px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2359,0,'aqi','');" class="marker-level level2">68</div></div></div><div class="amap-marker" style="top: -46px; left: 427px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4256,0,'aqi','');" class="marker-level level2">66</div></div></div>
+                            <div class="amap-marker" style="top: -35px; left: 460px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4247,0,'aqi','');" class="marker-level level2">64</div></div></div><div class="amap-marker" style="top: 45px; left: 454px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4252,0,'aqi','');" class="marker-level level2">59</div></div></div>
+                            <div class="amap-marker" style="top: 43px; left: 460px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4251,0,'aqi','');" class="marker-level level2">58</div></div></div><div class="amap-marker" style="top: -142px; left: 252px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2370,0,'aqi','');" class="marker-level level2">56</div></div></div>
+                            <div class="amap-marker" style="top: -147px; left: 253px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2369,0,'aqi','');" class="marker-level level2">54</div></div></div><div class="amap-marker" style="top: -54px; left: 431px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4257,0,'aqi','');" class="marker-level level2">54</div></div></div>
+                            <div class="amap-marker" style="top: 12px; left: 390px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4263,0,'aqi','');" class="marker-level level2">54</div></div></div>
+                            <div class="amap-marker" style="top: -146px; left: 252px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2368,0,'aqi','');" class="marker-level level1">50</div></div></div><div class="amap-marker" style="top: -157px; left: 242px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2367,0,'aqi','');" class="marker-level level1">41</div></div></div>
+                            <div class="amap-marker" style="top: 90px; left: 392px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2362,0,'aqi','');" class="marker-level level1">40</div></div></div>
+                            <div class="amap-marker" style="top: -32px; left: 459px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(175,0,'aqi','');" class="marker-level level4">199</div></div></div>
+                            <div class="amap-marker" style="top: -114px; left: 503px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4261,0,'aqi','');" class="marker-level level2">91</div></div></div><div class="amap-marker" style="top: -8px; left: 495px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4255,0,'aqi','');" class="marker-level level2">88</div></div></div><div class="amap-marker" style="top: -149px; left: 500px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2377,0,'aqi','');" class="marker-level level2">84</div></div></div>
+                            <div class="amap-marker" style="top: -151px; left: 498px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2376,0,'aqi','');" class="marker-level level2">69</div></div></div><div class="amap-marker" style="top: -8px; left: 497px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4254,0,'aqi','');" class="marker-level level2">68</div></div></div><div class="amap-marker" style="top: 61px; left: 489px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4517,0,'aqi','');" class="marker-level level2">66</div></div></div><div class="amap-marker" style="top: -7px; left: 494px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4253,0,'aqi','');" class="marker-level level2">63</div></div></div><div class="amap-marker" style="top: 40px; left: 472px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4250,0,'aqi','');" class="marker-level level2">60</div></div></div><div class="amap-marker" style="top: -56px; left: 498px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4259,0,'aqi','');" class="marker-level level2">58</div></div></div><div class="amap-marker" style="top: -27px; left: 472px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(177,0,'aqi','');" class="marker-level level1">33</div></div></div><div class="amap-marker" style="top: -30px; left: 495px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4249,0,'aqi','');" class="marker-level level3">133</div></div></div>
+                            <div class="amap-marker" style="top: -21px; left: 477px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(176,0,'aqi','');" class="marker-level level3">114</div></div></div>
+                            <div class="amap-marker" style="top: -156px; left: 492px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(2375,0,'aqi','');" class="marker-level level3">106</div></div></div>
+                            <div class="amap-marker" style="top: -14px; left: 485px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-marker-content" style="opacity: 1;"><div onclick="getInfoWindow(4248,0,'aqi','');" class="marker-level level3">103</div></div></div>
+                        </div>
+                    </div>
+                    <div class="amap-overlays"></div>
+                </div>
+            </div>
+            <div style="display:none;">
+                <div class="amap-marker" style="top: 344px; left:-616px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                    <div class="amap-marker-content" style="opacity: 1;">
+                        <div onclick="getInfoWindow(2363,0,'');" class="iconszf g_0_0">
+                            59.66
+                        </div>
+                    </div>
+                </div>
+                <div class="amap-marker" style="top:342px; left:-616px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                    <div class="amap-marker-content" style="opacity: 1;">
+                        <div onclick="getInfoWindow(14032,0,'');" class="iconszf g_0_0">
+                            70
+                        </div>
+                    </div>
+                </div>
+                <div class="amap-marker" style="top:346px; left:-621px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                    <div class="amap-marker-content" style="opacity: 1;">
+                        <div onclick="getInfoWindow(14018,0,'');" class="iconszf g_0_0">
+                            217
+                        </div>
+                    </div>
+                </div>
+                <div class="amap-marker" style="top: 371px; left:-621px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;">
+                    <div class="amap-marker-content" style="opacity: 1;">
+                        <div onclick="getInfoWindow(14670,0,'');" class="iconszf g_0_0">
+                            217
+                        </div>
+                    </div>
+                </div>
+                <div class="amap-info" style="position:absolute;left:527.593px;top:227.917px">
+                    <div style="position:absolute;bottom:33px;left:2px;display:block"></div>
+                    <div style="position:absolute;bottom:33px;left:2px;">
+                        <div>
+                            <div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--地图污染等级划分-->
+                <div class="map-level waste-gas-level">
+                    <ul class="map-level-list">
+                        <li class="badge-level level1 first"><span class="map-level-des">达标</span></li>
+                        <li class="badge-level level2"><span class="map-level-des">超标</span></li>
+                        <li class="badge-level level3"><span class="map-level-des">未知</span></li>
+                        <li class="badge-level level4"><span class="map-level-des"><em>——</em>无数据</span></li>
+                        <li class="badge-level level5 last">
+                            <span class="map-level-des">
+                                <i class="icon icon-feedback">
+                                </i>已反馈
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--点地图上的点，弹出的详情层模板-->
+        <script type="text/x-handlebars-template" id="infoContentTemplate">
+
+        </script>
+        <script src="http://localhost:3108/Content/js/jquery-1.9.1.min.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/underscore.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/underscore.mixin.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/echarts.min.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/jquery-ui.min.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/datepicker-settings.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/Map.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/Basic.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/BasicView.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/Checkbox.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/Radio.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/TimeLine.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/waste-gas.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/mapcommon.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/pollution.js"></script>
+
+        <script src="http://localhost:3108/Content/js/ipe/chart.js"></script>
+</body>
+</html>

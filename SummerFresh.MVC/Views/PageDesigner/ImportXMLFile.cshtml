@@ -1,0 +1,59 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>导入XML文件</title>
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/common.css" rel="stylesheet" />
+    <link href="~/Content/css/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/default/default.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/js/showModalDialog.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <style>
+        html, body {
+            background-color: #EEE;
+        }
+
+        fieldset {
+            width: 700px;
+            text-align: left;
+            padding: 20px;
+            border: 1px solid #CCC;
+            vertical-align: middle;
+            background-color: white;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        legend {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;width:100%;">
+        <fieldset>
+            <legend>导入</legend>
+            <form action="/PageDesigner/Import" method="post" enctype="multipart/form-data">
+                <input type="file" id="xmlFile" name="xmlFile" />
+                <input type="submit" class="btn btn-danger btn-big" value="导入XML" />
+            </form>
+        </fieldset>
+    </div>
+    <script>
+        $(function () {
+            var result = summerFresh.getQueryString();
+            if (result["xmltype"] && result["xmltype"].toString().toLocaleLowerCase().indexOf("layout") > -1)
+            {
+                $("form").attr("action", "/PageDesigner/ImportLayout");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{036C62A7-8562-4DD9-8FB0-AB208E457B8A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SummerFresh.Business</RootNamespace>
+    <AssemblyName>SummerFresh.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AjaxResultModel.cs" />
+    <Compile Include="Attribute\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Attribute\CustomHandleErrorAttribute.cs" />
+    <Compile Include="Attribute\DefaultSortFieldAttribute.cs" />
+    <Compile Include="Attribute\FormFieldAttribute.cs" />
+    <Compile Include="Attribute\HtmlEncodeAttribute.cs" />
+    <Compile Include="Attribute\MyValidateInputAttribute.cs" />
+    <Compile Include="Attribute\ParentFieldAttribute.cs" />
+    <Compile Include="Attribute\SearchFieldAttribute.cs" />
+    <Compile Include="Attribute\TabItemAttribute.cs" />
+    <Compile Include="Attribute\TableFieldAttribute.cs" />
+    <Compile Include="Attribute\TitleFieldAttribute.cs" />
+    <Compile Include="Attribute\TreeAttribute.cs" />
+    <Compile Include="Attribute\UnValidateInputeClassAttribute.cs" />
+    <Compile Include="Attribute\ValidatorAttribute.cs" />
+    <Compile Include="Attribute\ValueFieldAttribute.cs" />
+    <Compile Include="BSDContext.cs" />
+    <Compile Include="Converter\ColumnConverterBase.cs" />
+    <Compile Include="Converter\CommonColumnRowConveter.cs" />
+    <Compile Include="Converter\CommonRowColumnConveter.cs" />
+    <Compile Include="ComponentConverter.cs" />
+    <Compile Include="Converter\DataFormatColumnConverter.cs" />
+    <Compile Include="Converter\DictionaryColumnConverter.cs" />
+    <Compile Include="Converter\EntityColumnConverter.cs" />
+    <Compile Include="Converter\EnumColumnConverter.cs" />
+    <Compile Include="CRUDService.cs" />
+    <Compile Include="CustomEntityModelBinder.cs" />
+    <Compile Include="CustomException.cs" />
+    <Compile Include="DataDictionaryHelper.cs" />
+    <Compile Include="DataSource\AllCacheKeyDataSource.cs" />
+    <Compile Include="DataSource\ReferenceDataSource.cs" />
+    <Compile Include="Interface\IColumnConverter.cs" />
+    <Compile Include="Interface\IDataFilter.cs" />
+    <Compile Include="KeyValueDataSource\AllEnumDataSource.cs" />
+    <Compile Include="KeyValueDataSource\AllSqlIdDataSource.cs" />
+    <Compile Include="DataSource\EntityDataSource.cs" />
+    <Compile Include="Attribute\DataSourceAttribute.cs" />
+    <Compile Include="DataSource\DataTableDataSource.cs" />
+    <Compile Include="KeyValueDataSource\DictionaryDataSource.cs" />
+    <Compile Include="KeyValueDataSource\EnumDataSource.cs" />
+    <Compile Include="DataSource\ListDataSourceBase.cs" />
+    <Compile Include="KeyValueDataSource\KeyValueDataSourceBase.cs" />
+    <Compile Include="KeyValueDataSource\StringSplitDataSource.cs" />
+    <Compile Include="KeyValueDataSource\TypeDataSource.cs" />
+    <Compile Include="Entity\AllCacheEntity.cs" />
+    <Compile Include="Entity\ButtonEntity.cs" />
+    <Compile Include="Entity\ComponentEntity.cs" />
+    <Compile Include="Entity\CRUDEntity.cs" />
+    <Compile Include="Entity\CustomEntity.cs" />
+    <Compile Include="Entity\DataDictionaryEntity.cs" />
+    <Compile Include="Entity\DataDictionaryItemEntity.cs" />
+    <Compile Include="Entity\DataFieldEntity.cs" />
+    <Compile Include="Entity\DepartmentEntity.cs" />
+    <Compile Include="Entity\ExternalFileEntity.cs" />
+    <Compile Include="Entity\LayoutEntity.cs" />
+    <Compile Include="Entity\MenuEntity.cs" />
+    <Compile Include="Entity\PageEntity.cs" />
+    <Compile Include="Entity\PermissionEntity.cs" />
+    <Compile Include="Entity\PermissionRuleEntity.cs" />
+    <Compile Include="Entity\RoleEntity.cs" />
+    <Compile Include="Entity\RolePermissionEntity.cs" />
+    <Compile Include="Entity\RoleTypeEntity.cs" />
+    <Compile Include="Entity\RoleTypePermissionEntity.cs" />
+    <Compile Include="Entity\UserEntity.cs" />
+    <Compile Include="Entity\UserRoleEntity.cs" />
+    <Compile Include="Enum\CacheType.cs" />
+    <Compile Include="Enum\FormMode.cs" />
+    <Compile Include="Enum\LayoutType.cs" />
+    <Compile Include="Interface\IAttribute.cs" />
+    <Compile Include="Interface\IAuthorityComponent.cs" />
+    <Compile Include="Interface\IAutoGenerate.cs" />
+    <Compile Include="Interface\ICascadeDataSource.cs" />
+    <Compile Include="Interface\IChildren.cs" />
+    <Compile Include="Interface\IMaths.cs" />
+    <Compile Include="Interface\IScriptComponent.cs" />
+    <Compile Include="Interface\IControl.cs" />
+    <Compile Include="Interface\IKeyValueDataSource.cs" />
+    <Compile Include="DataSource\SqlIdDataSource.cs" />
+    <Compile Include="Enum\CellTextAlign.cs" />
+    <Compile Include="Enum\ChartEnums.cs" />
+    <Compile Include="Enum\ControlType.cs" />
+    <Compile Include="Interface\IComponent.cs" />
+    <Compile Include="Interface\IDataSourceControl.cs" />
+    <Compile Include="Interface\IFormControl.cs" />
+    <Compile Include="Interface\IFieldConverter.cs" />
+    <Compile Include="Interface\IFormService.cs" />
+    <Compile Include="Interface\IListDataSource.cs" />
+    <Compile Include="Interface\ITargetId.cs" />
+    <Compile Include="Layout.cs" />
+    <Compile Include="Math\MathCompute.cs" />
+    <Compile Include="Math\MathRound.cs" />
+    <Compile Include="NamingCenter.cs" />
+    <Compile Include="Page.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\CustomEntityService.cs" />
+    <Compile Include="Service\DataDictionaryEntityService.cs" />
+    <Compile Include="Service\DepartmentEntityService.cs" />
+    <Compile Include="Service\EntityServiceAttribute.cs" />
+    <Compile Include="Service\UserEntityService.cs" />
+    <Compile Include="SQLGenerator.cs" />
+    <Compile Include="SQLSyntaxGenerator\ISQLSyntaxGenerator.cs" />
+    <Compile Include="SQLSyntaxGenerator\MySqlSQLSyntaxGenerator.cs" />
+    <Compile Include="SQLSyntaxGenerator\OracleSQLSyntaxGenerator.cs" />
+    <Compile Include="SQLSyntaxGenerator\SqlServerSQLSyntaxGenerator.cs" />
+    <Compile Include="SQLSyntaxGenerator\SQLSyntaxGeneratorFactory.cs" />
+    <Compile Include="TypeHelper.cs" />
+    <Compile Include="Workflow\Activity.cs" />
+    <Compile Include="Workflow\Actor.cs" />
+    <Compile Include="Workflow\Condition.cs" />
+    <Compile Include="Workflow\EndActivity.cs" />
+    <Compile Include="Workflow\FlowInstance.cs" />
+    <Compile Include="Workflow\Transition.cs" />
+    <Compile Include="Workflow\Workflow.cs" />
+    <Compile Include="Workflow\WorkflowBuilder.cs" />
+    <Compile Include="Workflow\WorkflowChoice.cs" />
+    <Compile Include="Workflow\WorkflowContext.cs" />
+    <Compile Include="Workflow\WorkflowHelper.cs" />
+    <Compile Include="Workflow\WorkItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SummerFresh.Basic\SummerFresh.Basic.csproj">
+      <Project>{2d3e8be2-c86d-4dd1-a00b-10ac11639c83}</Project>
+      <Name>SummerFresh.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Data\SummerFresh.Data.csproj">
+      <Project>{50a54473-c485-4cb0-9869-651e5ab2c43b}</Project>
+      <Name>SummerFresh.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Environment\SummerFresh.Environment.csproj">
+      <Project>{e2405e71-a00b-44c8-9278-70c23e45b719}</Project>
+      <Name>SummerFresh.Environment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Security\SummerFresh.Security.csproj">
+      <Project>{e68b8bc3-37e0-444a-bf10-7c832cd40862}</Project>
+      <Name>SummerFresh.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Util\SummerFresh.Util.csproj">
+      <Project>{a83775dc-c5ad-45e7-9c28-a721338668a3}</Project>
+      <Name>SummerFresh.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IControl.cd" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,52 @@
+﻿@model SummerFresh.Controls.Tab
+@using SummerFresh.Controls
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="~/content/css/reset.css" rel="stylesheet" />
+    <link href="~/content/css/common.css" rel="stylesheet" />
+    <link href="~/content/css/icon.css" rel="stylesheet" />
+    <link href="~/content/themes/default/default.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-1.9.1.min.js"></script>
+    <script src="~/content/js/common.js"></script>
+
+</head>
+<body>
+        @Html.CustomControl(Model)
+    <script type="text/javascript">
+        $(function () {
+            summerFresh.widget.init();
+            autoHeight();
+            $(window).resize(autoHeight);
+        });
+        function autoHeight() {
+            if ($("[tabItem]").length == 0) {
+                var listHeight = $(window).height();
+                $("div[widget='IFrame']").css("height", listHeight).css("overflow-y", "hidden");
+            }
+            else {
+                var listHeight = $(window).height() - $(".tab-box").outerHeight();
+                $("[tabItem]").css("height", listHeight).css("overflow-y", "hidden");
+            }
+        }
+
+        function onTabItemClick(span, div) {
+            if (span.attr("key") == "PreView" || span.attr("key") == "Design") {
+                var iframeSrc = div.attr("src1");
+                window.open(iframeSrc);
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{07B7B38D-95B9-4526-BB03-A0DDE43299D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SummerFresh.Controls</RootNamespace>
+    <AssemblyName>SummerFresh.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\XActDependency.Antlr3.StringTemplate.0.0.9\lib\net35\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime.Debug">
+      <HintPath>..\packages\XActDependency.Antlr3.StringTemplate.0.0.9\lib\net35\Antlr3.Runtime.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.StringTemplate">
+      <HintPath>..\packages\XActDependency.Antlr3.StringTemplate.0.0.9\lib\net35\Antlr3.StringTemplate.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\Lib\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\Lib\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\Lib\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChartControl\ChartOptionAttribute.cs" />
+    <Compile Include="ChartControl\IComplexable.cs" />
+    <Compile Include="ChartControl\ISerializeable.cs" />
+    <Compile Include="ChartControl\NewChartOptionMember.cs" />
+    <Compile Include="ChartControl\NewChartSeries.cs" />
+    <Compile Include="ChartControl\NewChartXAxis.cs" />
+    <Compile Include="ChartControl\NewChartYAxis.cs" />
+    <Compile Include="ControlDefaultSetting.cs" />
+    <Compile Include="CRUDCompomentHelper.cs" />
+    <Compile Include="EntityCompomentHelper.cs" />
+    <Compile Include="ExcelHelper.cs" />
+    <Compile Include="FormControl\Button.cs" />
+    <Compile Include="FormControl\CheckLabelList.cs" />
+    <Compile Include="FormControl\FileUpload.cs" />
+    <Compile Include="FormControl\IconButton.cs" />
+    <Compile Include="FormControl\Link.cs" />
+    <Compile Include="PageControl\Chart.cs" />
+    <Compile Include="FormControl\CheckBox.cs" />
+    <Compile Include="FormControl\CheckBoxList.cs" />
+    <Compile Include="FormControl\DatePicker.cs" />
+    <Compile Include="FormControl\DropDownList.cs" />
+    <Compile Include="PageControl\ComputeColumn.cs" />
+    <Compile Include="PageControl\Echarts.cs" />
+    <Compile Include="PageControl\Form.cs" />
+    <Compile Include="FormControl\FormControlBase.cs" />
+    <Compile Include="FormControl\HiddenField.cs" />
+    <Compile Include="PageControl\IconTableButton.cs" />
+    <Compile Include="PageControl\IFrame.cs" />
+    <Compile Include="PageControl\Image.cs" />
+    <Compile Include="PageControl\ImageSilder.cs" />
+    <Compile Include="PageControl\ListControlBase.cs" />
+    <Compile Include="PageControl\Literal.cs" />
+    <Compile Include="PageControl\NavigationBar.cs" />
+    <Compile Include="ChartControl\NewChart.cs" />
+    <Compile Include="PageControl\NewForm.cs" />
+    <Compile Include="PageControl\PageControlBase.cs" />
+    <Compile Include="PageControl\Pager.cs" />
+    <Compile Include="FormControl\RadioButton.cs" />
+    <Compile Include="FormControl\RadioButtonList.cs" />
+    <Compile Include="PageControl\Panel.cs" />
+    <Compile Include="PageControl\Repeater.cs" />
+    <Compile Include="PageControl\Search.cs" />
+    <Compile Include="PageControl\Tab.cs" />
+    <Compile Include="PageControl\TabCondition.cs" />
+    <Compile Include="PageControl\Table.cs" />
+    <Compile Include="FormControl\TextArea.cs" />
+    <Compile Include="FormControl\TextBox.cs" />
+    <Compile Include="FormControl\TextEditor.cs" />
+    <Compile Include="FormControl\TextValueTextBox.cs" />
+    <Compile Include="FormControl\TimeRangePicker.cs" />
+    <Compile Include="PageControl\TableButton.cs" />
+    <Compile Include="PageControl\TableColumn.cs" />
+    <Compile Include="PageControl\Toolbar.cs" />
+    <Compile Include="PageControl\ToolTip.cs" />
+    <Compile Include="PageControl\Tree.cs" />
+    <Compile Include="CustomExtension.cs" />
+    <Compile Include="TypeControlMapping.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SummerFresh.Basic\SummerFresh.Basic.csproj">
+      <Project>{2d3e8be2-c86d-4dd1-a00b-10ac11639c83}</Project>
+      <Name>SummerFresh.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Business\SummerFresh.Business.csproj">
+      <Project>{036c62a7-8562-4dd9-8fb0-ab208e457b8a}</Project>
+      <Name>SummerFresh.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Data\SummerFresh.Data.csproj">
+      <Project>{50a54473-c485-4cb0-9869-651e5ab2c43b}</Project>
+      <Name>SummerFresh.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Environment\SummerFresh.Environment.csproj">
+      <Project>{e2405e71-a00b-44c8-9278-70c23e45b719}</Project>
+      <Name>SummerFresh.Environment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Security\SummerFresh.Security.csproj">
+      <Project>{e68b8bc3-37e0-444a-bf10-7c832cd40862}</Project>
+      <Name>SummerFresh.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Util\SummerFresh.Util.csproj">
+      <Project>{a83775dc-c5ad-45e7-9c28-a721338668a3}</Project>
+      <Name>SummerFresh.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

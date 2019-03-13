@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="ie-stand" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面出错了</title>
+    @*404css*@
+    <link href="~/content/css/404page.css" rel="stylesheet" />
+
+    <script src="~/content/js/jquery-1.9.1.min.js"></script>
+    @*404动画脚本*@
+    <script src="~/content/js/404page.js"></script>
+    <script type="text/javascript">
+        $(window).load(function () {
+
+            rotate();
+            dogRun();
+            dogTalk();
+
+        });
+
+    </script>
+
+
+</head>
+<body>
+    <div id="wrapper">
+        <div class="graphic">
+            <img src="~/content/images/404.png" />
+        </div>
+
+        <div class="top-left">
+            <div class="not-found-text">
+                <h1 class="not-found-text">Sorry，<span class="not-found-span">网页找不到了！</span></h1>
+            </div>
+
+
+            <div class="top-menu">
+                <a href="##" class="with-tooltip">回到首页</a> | 
+                <a href="##" class="with-tooltip">回到上一页</a>
+            </div>
+        </div>
+
+        <div class="planet">
+            <div class="dog-wrapper">
+
+                <div class="dog"></div>
+                <div class="dog-bubble">
+                    <p>
+                        <br>
+                        好吧, 我现在彻底迷失了...              
+                    </p>
+                </div>
+
+                <div class="bubble-options">
+                    <p class="dog-bubble">
+                        <br>
+                        亲，你走丢了吗？不必担心，我带你回家！               
+                    </p>
+                    <p class="dog-bubble">
+                        <br>
+                        哈，咱们一起加油！
+               
+                    </p>
+                    <p class="dog-bubble">
+                        <br>
+                        我正努力呢！
+               
+                    </p>
+                    <p class="dog-bubble">
+                        好像肚子饿了，我想吃一块<br>
+                        <img style="margin-top: 8px" src="~/content/images/cookie.png" alt="饼干" />
+                    </p>
+                    <p class="dog-bubble">
+                        <br>
+                        come on！ 快点到吧！      
+                    </p>
+                    <p class="dog-bubble">
+                        <br>
+                        咦，这地方好像来过？
+               
+                    </p>
+                    <p class="dog-bubble">
+                        <br>
+                        难道我也迷失了？嗷嗷！               
+                    </p>
+                    <p class="dog-bubble">
+                        <br>
+                        好吧, 我继续走走看！              
+                    </p>
+                    <p class="dog-bubble">
+                        <br>
+                        现在我不知道到哪了 %>_<%
+                    </p>
+                    <p class="dog-bubble">
+                        <br>
+                        我好像看见了一只猫，你过去让他给你带路吧，%>_<%
+                        <br>
+                        <img src="~/content/images/cat.png" />
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- 行星图片 -->
+            <img src="~/content/images/planet.png" />
+            <!-- 行星图片 -->
+        </div>
+
+    </div>
+
+</body>
+</html>

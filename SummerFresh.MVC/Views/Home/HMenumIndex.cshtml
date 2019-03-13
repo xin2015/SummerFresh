@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>水平菜单</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" type="text/css" href="/Content/index2/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/Content/index2/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/Content/index2/css/icon.css">
+    <link rel="stylesheet" type="text/css" href="/Content/index2/themes/horizontal-nav/horizontal-nav.css">
+
+    <script src="/Content/index2/js/jquery-1.9.1.min.js"></script>
+    <script src="/Content/index2/js/dropdown.js"></script>
+    <script src="/Content/js/common.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <p class="logo">
+                <a href="javascript:goHome();">
+                </a>
+            </p>
+
+            <ul class="horizontal-nav">
+            </ul>
+
+
+
+            <div class="navigation">
+                <div class="navigation-main">
+
+
+                    <ul class="nav-icon-list">
+                    </ul>
+                </div>
+                <div class="user-menu" role="menu">
+                    <p>liuhf</p>
+                    <a href="javascript:void(0);">个人信息 </a>
+                    <a href="javascript:void(0);">更改密码</a>
+                    <a href="/Home/LogOut" title="退出">
+                        退出
+                    </a>
+                    <span class="user-arrow"></span>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-title">
+                <img src="~/Content/index2/themes/default/images/icon-title.png" border="0">
+                <span id="spanTitle">基本信息</span>
+            </div>
+            <iframe id="mainFrame" width="100%" height="100%" scrolling="true" frameborder="0" src="about:blank"></iframe>
+        </div>
+    </div>
+
+    <script>
+
+        function rootNodeClick(id)
+        {
+            $("ul.horizontal-nav li[lv=2]").hide();//二级隐藏
+            $("li[pid='" + id + "']").show();//当前点中的显示
+            url = $("li[nodeId='" + id + "']").attr("pUrl");
+            if (url)
+            {
+                $("a.active").remove("active");
+                $("#mainFrame").attr("src", url);
+            }
+        }
+
+        function secNodeClick(id)
+        {
+            $("ul.horizontal-nav ul").hide();//二级、三级菜单全部隐藏
+            $("ul.second-nav ul").show();//恢复三级菜单显示
+            $("li[nodeid='" + id + "'] ul").show();//当前点中的显示
+
+            $("a[lv=2].active").removeClass("active");
+            $("li[nodeid='" + id + "'] a:first").addClass("active");
+            url = $("li[nodeid='" + id + "']").attr("purl");
+            if (url)
+            {
+                $("a.active").removeClass("active");
+                $("li[nodeid='" + id + "'] a[lv=2]").addClass("active");
+                $("#mainFrame").attr("src", url);
+            }
+        }
+
+        function thrNodeClick(id)
+        {
+            url = $("li[nodeid='" + id + "']").attr("purl");
+            $("a[lv=3].active").removeClass("active");
+            if (url)
+            {
+                $("li[nodeid='" + id + "'] a").addClass("active");
+                $("#mainFrame").attr("src", url);
+            }
+        }
+
+        $(function () {
+            Array.prototype.remove = function (dx) {
+                if (isNaN(dx) || dx > this.length) { return false; }
+                for (var i = 0, n = 0; i < this.length; i++) {
+                    if (this[i] != this[dx]) {
+                        this[n++] = this[i]
+                    }
+                }
+                this.length -= 1
+            }
+
+            $(".user-li").hover(function () {
+                $(".user-menu").fadeIn();
+            });
+            summerFresh.dataService("/Home/GetMenu", {}, function (res) {
+                rootNodes = [];
+                dic = {};
+                for (resIndex = 0; resIndex < res.length; resIndex++)
+                {
+                    dic[res[resIndex].id] = res[resIndex];
+                }
+                for(cid in dic)
+                {
+                    if (dic[dic[cid].pId]) {
+                        var pnode = dic[dic[cid].pId];
+                        if (!pnode.childs)
+                            pnode.childs = [];
+                        pnode.childs.push(dic[cid]);
+                    }
+                    else {
+                        node = dic[cid];
+                        rootNodes.push(node);
+                        if (!node.icon)
+                            node.icon = "/Content/index2/themes/horizontal-nav/images/icon-nav-user.png";
+                        var liHtml = "<li nodeid=\"" + node.id + "\" purl=\"" + node.pUrl + "\" lv=1>\r\n" +
+                                "<a href=\"javascript:rootNodeClick('" + node.id + "')\" title=\"" + node.name + "\" lv=1>\r\n" +
+                                    "<img src=\"" + node.icon + "\" />\r\n" +
+                                "</a>\r\n" +
+                            "</li>\r\n";
+                        $(liHtml).appendTo($("ul.nav-icon-list"));
+                    }
+                }
+
+                for (rootIndex = 0; rootIndex < rootNodes.length; rootIndex++)
+                {
+                    rNode=rootNodes[rootIndex];
+                    for (i = 0; i < rNode.childs.length; i++)
+                    {
+                        secNode=rNode.childs[i];
+                        var liHtml = "<li  nodeid=\"" + secNode.id + "\"  pid=\"" + secNode.pId + "\" purl=\"" + secNode.pUrl + "\" lv=2><a href=\"javascript:secNodeClick('" + secNode.id + "')\" lv=2><img src=\"" + secNode.icon + "\"></img>" + secNode.name + "</a></li>";
+                        $li = $(liHtml);
+                        $li.appendTo($("ul.horizontal-nav"));
+                        if (secNode.childs&& secNode.childs.length > 0)
+                        {
+                            var ulHtml = "<ul class=\"second-nav\">";
+                            $ul = $(ulHtml);
+                            $ul.appendTo($li);
+                            for (j = 0; j < secNode.childs.length; j++)
+                            {
+                                thrNode = secNode.childs[j];
+                                liHtml = "<li  nodeid=\"" + thrNode.id + "\"  pid=\"" + thrNode.pId + "\" purl=\"" + thrNode.pUrl + "\" lv=3><a href=\"javascript:thrNodeClick('" + thrNode.id + "')\" lv=3>" + thrNode.name + "</a></li>";
+                                $li = $(liHtml);
+                                $li.appendTo($ul);
+                            }
+                        }
+                    }
+                }
+                $("ul.horizontal-nav li").hide();
+                $("ul.second-nav li").show();
+                $("ul.horizontal-nav li[pid='"+ rootNodes[0].id +"']").show();
+            });
+
+        });
+    </script>
+</body>
+</html>

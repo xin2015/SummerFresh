@@ -1,0 +1,450 @@
+﻿.data-list {
+    font-size: 12px;
+}
+/* 审核 */
+.process {
+    padding-top: 10px;
+    height: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+    .process li {
+        display: block;
+        float: left;
+        height: 50px;
+        position: relative;
+        width: 12.5%;
+    }
+
+        .process li .line {
+            height: 2px;
+            background: #c4c4c4;
+            margin-top: 42px;
+        }
+
+        .process li span {
+            position: absolute;
+            top: 2px;
+            left: 40%;
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            color: #858585;
+            text-align: center;
+        }
+
+            .process li span em {
+                display: inline-block;
+                position: relative;
+                height: 43px;
+                line-height: 43px;
+                text-align: center;
+                width: 43px;
+                color: #ebebeb;
+                font-size: 20px;
+                font-weight: normal;
+                text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+                background-color: #c4c4c4;
+                -moz-border-radius: 43px;
+                -khtml-border-radius: 43px;
+                -webkit-border-radius: 43px;
+                border-radius: 43px;
+            }
+
+            .process li span i {
+                position: absolute;
+                top: 26px;
+                left: 32px;
+                display: block;
+                width: 16px;
+                height: 16px;
+                text-align: left;
+            }
+
+                .process li span i.yes {
+                    background: url(../images/icon-yes.png) no-repeat;
+                }
+
+                .process li span i.edit {
+                    background: url(../images/icon-edit.png) no-repeat;
+                }
+
+        .process li.active1 .line {
+            background: #56bd2c;
+        }
+
+        .process li.active1 span {
+            color: #47b11c;
+        }
+
+            .process li.active1 span em {
+                color: #ffffff;
+                text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+                background-color: #56bd2c;
+            }
+
+.re-process .line {
+    display: none;
+}
+
+.re-process li span em {
+    background-color: #ffc63e;
+    color: #f9f9f9;
+}
+
+.re-process li:hover span {
+    color: #47b11c;
+    cursor: pointer;
+}
+
+    .re-process li:hover span em {
+        color: #ffffff;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+        background-color: #56bd2c;
+    }
+
+.table .form-control {
+    margin-top: 4px;
+}
+
+.form-control-sm {
+    width: 45%;
+    float: left;
+}
+
+.space {
+    /*float:left;*/
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.table {
+    margin-bottom: 10px;
+}
+
+.fixed-table {
+    table-layout: fixed;
+}
+
+.review-oper {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.side {
+    float: left;
+    line-height: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+
+
+.page-header span {
+    position: absolute;
+    right: 0px;
+    top: 12px;
+    display: block;
+    color: #333;
+    width: 150px;
+}
+
+    .page-header span .form-control {
+        height: 22px;
+        width: 90px;
+        display: inline-block;
+        padding: 0px 5px;
+        border: none;
+        border-bottom: 1px solid #c0d1d7;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+/* 审核结束 */
+
+
+/* 首要污染物弹出选择框 */
+.picker-box {
+    position: absolute;
+    z-index: 99;
+    display: none;
+    width: 250px;
+    padding: 3px;
+    background: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+    .picker-box table {
+        width: 100%;
+    }
+
+        .picker-box table td {
+            vertical-align: top;
+            font-size: 12px;
+        }
+
+
+    .picker-box .selected-second {
+        background: #f5f5f5;
+        border-radius: 3px;
+    }
+.selected-second {
+    padding: 5px;
+}
+/* 首要污染物弹出选择框  end*/
+
+
+
+/*等级颜色背景 start*/
+.bg-1 {
+    background-color: #23CE23 !important;
+}
+
+.bg-2 {
+    background-color: #F1F140 !important;
+}
+
+.bg-3 {
+    background-color: #FB8E20 !important;
+}
+
+.bg-4 {
+    background-color: #FD3434 !important;
+}
+
+.bg-5 {
+    color: #fff !important;
+    background-color: #96024A !important;
+}
+
+.bg-6 {
+    color: #fff !important;
+    background-color: #7E0021 !important;
+}
+/*等级颜色背景 end*/
+
+
+/*等级颜色提示 start*/
+.tip-box {
+    clear: both;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+    .tip-box label {
+        display: block;
+        float: left;
+        height: 20px;
+        line-height: 20px;
+        margin-right: 5px;
+        color: #666;
+    }
+
+    .tip-box ul li {
+        float: left;
+        height: 20px;
+        line-height: 20px;
+        margin-right: 10px;
+        width: 60px;
+        text-align: center;
+        border-radius: 4px;
+    }
+/*等级颜色提示 end*/
+
+
+.data-table {
+    font-size: 12px;
+}
+.chart-table-tip td{
+    font-size: 12px;
+}
+.input,.input-xm  {
+    padding: 6px;
+    font-size: 14px;
+    line-height: 1.4285752;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.input-xm {
+    width: 40px;
+    padding: 3px;
+}
+
+
+/*全国各城市预报*/
+.map-tips {
+    width: 252px;
+    padding: 5px;
+    background: #fff;
+    border: 2px solid #3FA9F5;
+    border-radius: 5px;
+    z-index: 9999;
+    color: #333;
+}
+
+.aqi-level-box {
+    float: left;
+    padding: 2px;
+    margin-right: 15px;
+    padding: 10px 5px;
+    background: #55a9cb;
+    border-radius: 5px;
+}
+
+    .aqi-level-box img {
+        width: 69px;
+    }
+
+.aqi-info-k {
+    float: left;
+    width: 150px;
+}
+
+.aqi-info {
+    padding: 3px 0 8px 0;
+    border-bottom: 1px dashed #c1c1c1;
+}
+
+.sites-name {
+    display: inline-block;
+    vertical-align: middle;      
+    width: 80px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
+
+
+.level-box {
+    margin-top: 5px;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.aqi-num {
+    vertical-align: middle;
+    margin: 0;
+    font-size: 21px;
+    font-weight: bold;    
+}
+
+.aqi-level {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    font-size: 18px;
+    padding-top: 5px;
+}
+
+
+.aqi-wuran {
+    margin: 0;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    background: #f3fbfe;   
+    border-bottom: 1px dashed #c1c1c1;
+}
+
+    .aqi-wuran img {
+        vertical-align: middle;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+
+.aqi-item {
+    display: inline-block;
+    padding: 1px 6px;
+    margin-right: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    -webkit-text-size-adjust: none;
+    border-radius: 3px;
+    background: #219dd3;
+}
+
+
+
+
+
+/*全国各省预报*/
+.pre{
+    background: transparent none repeat scroll 0 0;
+    border: medium none;
+    color: #333333;
+    font-family: "Microsoft YaHei",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.showinfo-box {
+    background: #fff none repeat scroll 0 0;
+    border: 2px solid #3fa9f5;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    right: 30px;
+    top: 120px;
+    width: 330px;
+    z-index: 10;
+}
+.province-name {
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    font-weight: normal;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+.aqi-tips {
+    background: #fffaf4 url("../images/icon-tips.png") no-repeat scroll 5px top;
+    border: 1px solid #d7d7d7;
+    font-size: 12px;
+    margin-top: 5px;
+    padding: 10px;
+}
+.aqi-tips p {
+    margin: 0;
+}
+
+.showinfo-img {
+    margin-bottom: 8px;
+    width: 330px;
+}
+
+p.province-title {
+    border-bottom: 1px dashed #dddddd;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+}
+
+.aqi-tips pre {
+    margin-bottom: 0;
+    margin-top: 5px;
+    max-height: 260px;
+    min-height: 160px;
+    overflow-y: auto;
+    text-indent: 0;
+    display: block;
+    white-space: pre-wrap;
+    word-break: break-all;
+    word-wrap: break-word;
+}

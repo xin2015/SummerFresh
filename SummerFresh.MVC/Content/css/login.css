@@ -1,0 +1,260 @@
+﻿/* 登录页 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    box-shadow: 0 0 0 60px #fff inset;
+    -webkit-text-fill-color: #333;
+}
+
+p {
+    margin: 0;
+}
+
+.login-body-bg {
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+    .login-body-bg img {
+        width: 100%;
+        height: 100%;
+    }
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: url(../images/top-bottom-bg.png);
+}
+
+.login-title {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+    .login-title img {
+        margin-top: 12px;
+    }
+
+.login-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -230px;
+    margin-left: -600px;
+    width: 1200px;
+    height: 400px;
+    font-family: 'Microsoft YaHei';
+}
+
+@media (max-width: 1366px) {
+    .login-title {
+        width: 1020px;
+        margin: 0 auto;
+    }
+
+    .login-wrapper {
+        margin-top: -200px;
+        margin-left: -510px;
+        width: 1020px;
+        height: 400px;
+        font-family: 'Microsoft YaHei';
+    }
+}
+
+.login-left-img {
+    position: relative;
+    width: 660px;
+    float: left;
+}
+
+.big-img div {
+    float: left;
+    width: 128px;
+    height: 128px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+}
+
+.big-img .t1 {
+    margin-left: 130px;
+}
+
+.big-img .t3 {
+    margin-right: 130px;
+}
+
+.big-img .b1 {
+    margin-left: 130px;
+}
+
+.gezi {
+    position: absolute;
+    left: 0;
+    top: -10px;
+}
+
+.no2 {
+    position: absolute;
+    left: 10px;
+    top: 262px;
+}
+
+.co {
+    position: absolute;
+    left: 100px;
+    top: 300px;
+}
+
+.so2 {
+    position: absolute;
+    left: 435px;
+    top: 300px;
+}
+
+.o3 {
+    position: absolute;
+    left: 555px;
+    top: 262px;
+}
+
+.login-box {
+    position: relative;
+    width: 302px;
+    height: 362px;
+    float: right;
+    margin-right: 20px;
+    background: url(../images/login-box-bg.png) no-repeat;
+}
+
+    .login-box form {
+        padding-top: 85px;
+    }
+
+.form-group {
+    position: relative;
+    width: 80%;
+    margin: 0 auto 30px auto;
+}
+
+    .form-group input:focus {
+        border: 1px solid #24A2DD;
+        box-shadow: 0 0 6px rgba(0,0,0,.3) inset;
+        outline: none;
+    }
+
+.user {
+    display: block;
+    width: 100%;
+    padding: 13px 0;
+    line-height: inherit;
+    text-indent: 15px;
+    background: #fff;
+    border: solid 1px #c4c4c4;
+    font-size: 14px;
+    border-radius: 3px;
+    color: #454545;
+}
+
+.user-icon {
+    position: absolute;
+    bottom: 14px;
+    right: 10px;
+    display: inline-block;
+    height: 14px;
+    background: url(../images/icon1.png) no-repeat center;
+    width: 14px;
+}
+
+.passw-icon {
+    position: absolute;
+    bottom: 14px;
+    right: 10px;
+    display: inline-block;
+    height: 14px;
+    background: url(../images/icon2.png) no-repeat center;
+    width: 12px;
+}
+
+.btn-login {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    font-family: 'Microsoft YaHei';
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,.5);
+    text-align: center;
+    border: solid 1px #4d9bcd;
+    cursor: pointer;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #0574A8;
+    background-color: #0998dc;
+    *background-color: #0998dc;
+    background-image: -moz-linear-gradient(top, #24a2dd, #0998dc);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#24a2dd), to(#0998dc));
+    background-image: -webkit-linear-gradient(top, #24a2dd, #0998dc);
+    background-image: -o-linear-gradient(top, #24a2dd, #0998dc);
+    background-image: linear-gradient(to bottom, #24a2dd, #0998dc);
+    background-repeat: repeat-y;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF24a2dd', endColorstr='#FF0998dc', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 1px rgba(0,0,0,.075);
+}
+
+    .btn-login:hover, btn-login:focus {
+        background: #0998dc;
+        border: solid 1px #045A82;
+        outline: none;
+    }
+
+    .btn-login img {
+        margin: 0;
+    }
+
+.submit-box {
+    margin-bottom: 10px;
+}
+
+.error-message {
+    color: #fd2400;
+    font-size: 12px;
+    padding-right: 10px;
+}
+
+.support {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 60px;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Microsoft YaHei';
+    background: url(../images/top-bottom-bg.png);
+}
+
+    .footer p {
+        margin: 0 0 10px 0;
+    }

@@ -1,0 +1,99 @@
+﻿@model SummerFresh.MVC.Controllers.TreeListModel
+@{Layout = null;}
+@using SummerFresh.Business
+@using SummerFresh.Controls
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="~/content/css/reset.css" rel="stylesheet" />
+    <link href="~/content/css/common.css" rel="stylesheet" />
+    <link href="~/content/css/icon.css" rel="stylesheet" />
+    <link href="~/content/js/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+    <link href="~/Content/js/layout/css/easyui.css" rel="stylesheet" />
+    <link href="~/content/themes/default/default.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-1.9.1.min.js"></script>
+    <script src="~/content/js/showModalDialog.js"></script>
+    <script src="~/content/js/jquery.blockui.min.js"></script>
+    <script src="~/content/js/datepicker/WdatePicker.js"></script>
+    <script src="~/Content/js/layout/jquery.easyui.min.js"></script>
+    <script src="~/Content/js/zTree_v3/js/jquery.ztree.all-3.5.min.js"></script>
+    <script src="~/content/js/common.js"></script>
+
+</head>
+<body class="easyui-layout">
+    <div class="treeform-left" data-options="region:'west',split:true" title="树型菜单" style="width: 230px;">
+        <div class="tree-list">
+            <ul id="tree" class="ztree"></ul>
+        </div>
+    </div>
+    <div data-options="region:'center'" style="overflow:hidden;" class="main-container">
+        <div id="baseInfo">
+            <iframe id="mainFrame" width='100%' height='98%' frameborder='0' scrolling='no'></iframe>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var pageId = "";
+        var setting = {
+            view: {
+                showLine: true,
+                selectedMulti: false,
+                dblClickExpand: false
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            callback: {
+                onClick: function (e, treeId, node) {
+                    $("#mainFrame").attr("src", node.url1);
+                }
+            }
+        };
+        function autoHeight() {
+            var listHeight = $(window).height();
+            $("#baseInfo").css("height", listHeight).css("overflow-y", "hidden");
+        }
+
+        $(document).ready(function () {
+            
+            summerFresh.dataService("sqlid:SummerFresh.Business.Entity.PageEntity.Tree", {}, function (res) {
+                var treeObj = $.fn.zTree.init($("#tree"), setting, res);
+                //treeObj.expandAll(true); 
+            }, "post", true);
+            var outerLayout, middleLayout, innerLayout;
+            outerLayout = $('body').layout({
+                applyDefaultStyles: true,
+                center__paneSelector: ".outer-center"
+                , west__paneSelector: ".outer-west"
+                , east__paneSelector: ".outer-east"
+                , west__size: 200
+                , east__size: 125
+                , spacing_open: 8 // ALL panes
+                , spacing_closed: 8 // ALL panes
+                , north__spacing_open: 0
+                , south__spacing_open: 0
+                , center__onresize: "middleLayout.resizeAll"
+            });
+
+            middleLayout = $('div.outer-center').layout({
+                applyDefaultStyles: true,
+                center__paneSelector: ".middle-center"
+            , west__paneSelector: ".middle-west"
+            , east__paneSelector: ".middle-east"
+            , west__size: 300
+            , east__size: 100
+            , spacing_open: 8  // ALL panes
+            , spacing_closed: 8 // ALL panes
+            , center__onresize: "innerLayout.resizeAll"
+            });
+            autoHeight();
+            $(window).resize(autoHeight);
+        });
+    </script>
+</body>
+</html>

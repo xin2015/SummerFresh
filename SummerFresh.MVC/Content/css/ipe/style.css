@@ -1,0 +1,73 @@
+﻿
+    .g_1_0 /*超标无反馈*/
+{
+
+     background: url("/MapPollution/imgs/g_1_0.png") no-repeat -2px 17px;
+}
+.g_0_0 /*无超标无反馈*/
+{
+    background: url("/MapPollution/imgs/g_0_0.png") no-repeat -2px 17px;
+}
+
+.g_2_0 /*无数据无反馈*/
+{
+     background: url("/MapPollution/imgs/g_2_0.png") no-repeat -2px 17px;
+}
+
+
+.g_1_1 /*超标有反馈*/
+{
+       background: url("/MapPollution/imgs/g_1_1.png") no-repeat -2px 17px;
+}
+.g_0_1 /*无超标有反馈*/
+{
+       background: url("/MapPollution/imgs/g_0_1.png") no-repeat -2px 17px;
+}
+
+.g_2_1 /*无数据有反馈*/
+{
+          background: url("/MapPollution/imgs/g_2_1.png") no-repeat -2px 17px;
+}
+
+
+.iconszf
+{
+    font-size: 10px;
+    text-align: center;
+    color: #fff;
+    padding-top: 20px;
+    height: 40px;
+    width: 40px;
+}
+
+
+.w_1_0 /*超标无反馈*/
+{
+
+     background: url("/MapPollution/imgs/w_1_0.png") no-repeat -2px 17px;
+}
+.w_0_0 /*无超标无反馈*/
+{
+    background: url("/MapPollution/imgs/w_0_0.png") no-repeat -2px 17px;
+}
+
+.w_2_0 /*无数据无反馈*/
+{
+     background: url("/MapPollution/imgs/w_2_0.png") no-repeat -2px 17px;
+}
+
+
+.w_1_1 /*超标有反馈*/
+{
+       background: url("/MapPollution/imgs/w_1_1.png") no-repeat -2px 17px;
+}
+.w_0_1 /*无超标有反馈*/
+{
+       background: url("/MapPollution/imgs/w_0_1.png") no-repeat -2px 17px;
+}
+
+.w_2_1 /*无数据有反馈*/
+{
+          background: url("/MapPollution/imgs/w_2_1.png") no-repeat -2px 17px;
+}
+

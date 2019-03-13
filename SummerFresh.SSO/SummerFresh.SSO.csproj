@@ -1,0 +1,1668 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{291279E5-5371-4EC6-A77C-6FD5593CEF19}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SummerFresh.SSO</RootNamespace>
+    <AssemblyName>SummerFresh.SSO</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\Cryptogram.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CRUDController.cs" />
+    <Compile Include="Controllers\EntityController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\404page.css" />
+    <Content Include="Content\css\animate.min.css" />
+    <Content Include="Content\css\common.css" />
+    <Content Include="Content\css\forecast.css" />
+    <Content Include="Content\css\icon.css" />
+    <Content Include="Content\css\jquery.dataTables.min.css" />
+    <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\reset.css" />
+    <Content Include="Content\css\weather.css" />
+    <Content Include="Content\icons\application.gif" />
+    <Content Include="Content\icons\Component.gif" />
+    <Content Include="Content\icons\Control.gif" />
+    <Content Include="Content\icons\DataSource.gif" />
+    <Content Include="Content\icons\dg_del.gif" />
+    <Content Include="Content\icons\dg_edit.gif" />
+    <Content Include="Content\icons\dg_view.gif" />
+    <Content Include="Content\icons\folder-open.gif" />
+    <Content Include="Content\icons\folder.gif" />
+    <Content Include="Content\icons\glyphicons-halflings-white.png" />
+    <Content Include="Content\icons\glyphicons-halflings.png" />
+    <Content Include="Content\icons\header_h1.png" />
+    <Content Include="Content\icons\iconfont.css" />
+    <Content Include="Content\icons\iconfont.svg" />
+    <Content Include="Content\icons\icon_db.gif" />
+    <Content Include="Content\icons\icon_dictionary.gif" />
+    <Content Include="Content\icons\icon_disabled.gif" />
+    <Content Include="Content\icons\icon_element.gif" />
+    <Content Include="Content\icons\icon_element_reference.gif" />
+    <Content Include="Content\icons\icon_enabled.gif" />
+    <Content Include="Content\icons\icon_export.gif" />
+    <Content Include="Content\icons\icon_import.gif" />
+    <Content Include="Content\icons\icon_module.gif" />
+    <Content Include="Content\icons\icon_module_reference.gif" />
+    <Content Include="Content\icons\icon_new.gif" />
+    <Content Include="Content\icons\icon_next.gif" />
+    <Content Include="Content\icons\icon_page.gif" />
+    <Content Include="Content\icons\icon_page_reference.gif" />
+    <Content Include="Content\icons\icon_pre.gif" />
+    <Content Include="Content\icons\icon_refresh.gif" />
+    <Content Include="Content\icons\icon_reset.gif" />
+    <Content Include="Content\icons\icon_save.gif" />
+    <Content Include="Content\icons\icon_saveAndclose.gif" />
+    <Content Include="Content\icons\icon_setting.gif" />
+    <Content Include="Content\icons\icon_set_rule.gif" />
+    <Content Include="Content\icons\icon_sitemap.gif" />
+    <Content Include="Content\icons\icon_table.gif" />
+    <Content Include="Content\icons\icon_vtable.gif" />
+    <Content Include="Content\icons\ico_close_win.gif" />
+    <Content Include="Content\icons\ico_del.gif" />
+    <Content Include="Content\icons\ico_download.gif" />
+    <Content Include="Content\icons\ico_edit.gif" />
+    <Content Include="Content\icons\ico_passwordset.gif" />
+    <Content Include="Content\icons\ico_pause.gif" />
+    <Content Include="Content\icons\ico_search.gif" />
+    <Content Include="Content\icons\ico_start.gif" />
+    <Content Include="Content\icons\ico_upload.gif" />
+    <Content Include="Content\icons\leaf.gif" />
+    <Content Include="Content\icons\list.gif" />
+    <Content Include="Content\icons\relate.gif" />
+    <Content Include="Content\icons\role.gif" />
+    <Content Include="Content\icons\root.gif" />
+    <Content Include="Content\icons\user.gif" />
+    <Content Include="Content\icons\vapplication.gif" />
+    <Content Include="Content\images\403.png" />
+    <Content Include="Content\images\404-bg.jpg" />
+    <Content Include="Content\images\404.png" />
+    <Content Include="Content\images\500.png" />
+    <Content Include="Content\images\b1.jpg" />
+    <Content Include="Content\images\b2.jpg" />
+    <Content Include="Content\images\bubble.png" />
+    <Content Include="Content\images\cat.png" />
+    <Content Include="Content\images\co.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.AreaRangeSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.AreaSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.AreaSplineSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.BarSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.BoxplotSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.BubbleSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Chart.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.ColumnSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Control.CheckBox.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Control.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.DatePicker.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.DropDownList.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Echarts.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.ErrorbarSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Form.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.IFrame.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.LineSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Pager.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.PieSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.RadioButton.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Repeater.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.ScatterSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Search.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.SplineSeries.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Tab.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Table.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.TextBox.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Toolbar.png" />
+    <Content Include="Content\images\Controls\SummerFresh.Controls.Tree.png" />
+    <Content Include="Content\images\cookie.png" />
+    <Content Include="Content\images\dog1.png" />
+    <Content Include="Content\images\down-arrow.png" />
+    <Content Include="Content\images\gezi.png" />
+    <Content Include="Content\images\icon-net-white.png" />
+    <Content Include="Content\images\icon-network.png" />
+    <Content Include="Content\images\icon-outline.png" />
+    <Content Include="Content\images\icon1.png" />
+    <Content Include="Content\images\icon2.png" />
+    <Content Include="Content\images\login-bg.jpg" />
+    <Content Include="Content\images\login-body-bg.jpg" />
+    <Content Include="Content\images\login-box-bg.png" />
+    <Content Include="Content\images\login-title.png" />
+    <Content Include="Content\images\m1.jpg" />
+    <Content Include="Content\images\m2.jpg" />
+    <Content Include="Content\images\m3.jpg" />
+    <Content Include="Content\images\m4.jpg" />
+    <Content Include="Content\images\m5.jpg" />
+    <Content Include="Content\images\no2.png" />
+    <Content Include="Content\images\o3.png" />
+    <Content Include="Content\images\planet.png" />
+    <Content Include="Content\images\sky-background.png" />
+    <Content Include="Content\images\sky-shine.jpg" />
+    <Content Include="Content\images\so2.png" />
+    <Content Include="Content\images\sort_asc.png" />
+    <Content Include="Content\images\sort_asc_disabled.png" />
+    <Content Include="Content\images\sort_both.png" />
+    <Content Include="Content\images\sort_desc.png" />
+    <Content Include="Content\images\sort_desc_disabled.png" />
+    <Content Include="Content\images\t1.jpg" />
+    <Content Include="Content\images\t2.jpg" />
+    <Content Include="Content\images\t3.jpg" />
+    <Content Include="Content\images\top-bottom-bg.png" />
+    <Content Include="Content\index2\css\common.css" />
+    <Content Include="Content\index2\css\icon.css" />
+    <Content Include="Content\index2\css\reset.css" />
+    <Content Include="Content\index2\icons\application.gif" />
+    <Content Include="Content\index2\icons\Component.gif" />
+    <Content Include="Content\index2\icons\Control.gif" />
+    <Content Include="Content\index2\icons\DataSource.gif" />
+    <Content Include="Content\index2\icons\dg_del.gif" />
+    <Content Include="Content\index2\icons\dg_edit.gif" />
+    <Content Include="Content\index2\icons\dg_view.gif" />
+    <Content Include="Content\index2\icons\folder-open.gif" />
+    <Content Include="Content\index2\icons\folder.gif" />
+    <Content Include="Content\index2\icons\glyphicons-halflings-white.png" />
+    <Content Include="Content\index2\icons\glyphicons-halflings.png" />
+    <Content Include="Content\index2\icons\header_h1.png" />
+    <Content Include="Content\index2\icons\iconfont.css" />
+    <Content Include="Content\index2\icons\iconfont.svg" />
+    <Content Include="Content\index2\icons\icon_BackupOperation.gif" />
+    <Content Include="Content\index2\icons\icon_db.gif" />
+    <Content Include="Content\index2\icons\icon_DenyOperation.gif" />
+    <Content Include="Content\index2\icons\icon_dictionary.gif" />
+    <Content Include="Content\index2\icons\icon_disabled.gif" />
+    <Content Include="Content\index2\icons\icon_element.gif" />
+    <Content Include="Content\index2\icons\icon_element_reference.gif" />
+    <Content Include="Content\index2\icons\icon_enabled.gif" />
+    <Content Include="Content\index2\icons\icon_export.gif" />
+    <Content Include="Content\index2\icons\icon_import.gif" />
+    <Content Include="Content\index2\icons\icon_KeepOperation.gif" />
+    <Content Include="Content\index2\icons\icon_MarkOperation.gif" />
+    <Content Include="Content\index2\icons\icon_module.gif" />
+    <Content Include="Content\index2\icons\icon_module_reference.gif" />
+    <Content Include="Content\index2\icons\icon_new.gif" />
+    <Content Include="Content\index2\icons\icon_next.gif" />
+    <Content Include="Content\index2\icons\icon_page.gif" />
+    <Content Include="Content\index2\icons\icon_page_reference.gif" />
+    <Content Include="Content\index2\icons\icon_PassOperation.gif" />
+    <Content Include="Content\index2\icons\icon_pre.gif" />
+    <Content Include="Content\index2\icons\icon_refresh.gif" />
+    <Content Include="Content\index2\icons\icon_reset.gif" />
+    <Content Include="Content\index2\icons\icon_RestoreOperation.gif" />
+    <Content Include="Content\index2\icons\icon_RoundValueOperation.gif" />
+    <Content Include="Content\index2\icons\icon_save.gif" />
+    <Content Include="Content\index2\icons\icon_saveAndclose.gif" />
+    <Content Include="Content\index2\icons\icon_setting.gif" />
+    <Content Include="Content\index2\icons\icon_set_rule.gif" />
+    <Content Include="Content\index2\icons\icon_sitemap.gif" />
+    <Content Include="Content\index2\icons\icon_table.gif" />
+    <Content Include="Content\index2\icons\icon_UnValidToValidOperation.gif" />
+    <Content Include="Content\index2\icons\icon_ValidToUnValidOperation.gif" />
+    <Content Include="Content\index2\icons\icon_vtable.gif" />
+    <Content Include="Content\index2\icons\ico_close_win.gif" />
+    <Content Include="Content\index2\icons\ico_del.gif" />
+    <Content Include="Content\index2\icons\ico_download.gif" />
+    <Content Include="Content\index2\icons\ico_edit.gif" />
+    <Content Include="Content\index2\icons\ico_passwordset.gif" />
+    <Content Include="Content\index2\icons\ico_pause.gif" />
+    <Content Include="Content\index2\icons\ico_search.gif" />
+    <Content Include="Content\index2\icons\ico_start.gif" />
+    <Content Include="Content\index2\icons\ico_upload.gif" />
+    <Content Include="Content\index2\icons\leaf.gif" />
+    <Content Include="Content\index2\icons\list.gif" />
+    <Content Include="Content\index2\icons\relate.gif" />
+    <Content Include="Content\index2\icons\role.gif" />
+    <Content Include="Content\index2\icons\root.gif" />
+    <Content Include="Content\index2\icons\user.gif" />
+    <Content Include="Content\index2\icons\vapplication.gif" />
+    <Content Include="Content\index2\images\403.png" />
+    <Content Include="Content\index2\images\404-bg.jpg" />
+    <Content Include="Content\index2\images\404.png" />
+    <Content Include="Content\index2\images\b1.jpg" />
+    <Content Include="Content\index2\images\b2.jpg" />
+    <Content Include="Content\index2\images\bubble.png" />
+    <Content Include="Content\index2\images\cat.png" />
+    <Content Include="Content\index2\images\city-bg.png" />
+    <Content Include="Content\index2\images\City\440100.jpg" />
+    <Content Include="Content\index2\images\City\440200.jpg" />
+    <Content Include="Content\index2\images\City\440300.jpg" />
+    <Content Include="Content\index2\images\City\440400.jpg" />
+    <Content Include="Content\index2\images\City\440500.jpg" />
+    <Content Include="Content\index2\images\City\440600.jpg" />
+    <Content Include="Content\index2\images\City\440700.jpg" />
+    <Content Include="Content\index2\images\City\440800.jpg" />
+    <Content Include="Content\index2\images\City\440900.jpg" />
+    <Content Include="Content\index2\images\City\441200.jpg" />
+    <Content Include="Content\index2\images\City\441300.jpg" />
+    <Content Include="Content\index2\images\City\441400.jpg" />
+    <Content Include="Content\index2\images\City\441500.jpg" />
+    <Content Include="Content\index2\images\City\441600.jpg" />
+    <Content Include="Content\index2\images\City\441700.jpg" />
+    <Content Include="Content\index2\images\City\441800.jpg" />
+    <Content Include="Content\index2\images\City\441900.jpg" />
+    <Content Include="Content\index2\images\City\442000.jpg" />
+    <Content Include="Content\index2\images\City\445100.jpg" />
+    <Content Include="Content\index2\images\City\445200.jpg" />
+    <Content Include="Content\index2\images\City\445300.jpg" />
+    <Content Include="Content\index2\images\City\arrow-right.png" />
+    <Content Include="Content\index2\images\City\city-bg.png" />
+    <Content Include="Content\index2\images\City\data-bg.png" />
+    <Content Include="Content\index2\images\City\demo-graph-left2.jpg" />
+    <Content Include="Content\index2\images\City\demo-graph-right.jpg" />
+    <Content Include="Content\index2\images\City\demo-img.jpg" />
+    <Content Include="Content\index2\images\City\icon-data.png" />
+    <Content Include="Content\index2\images\City\icon-panel.png" />
+    <Content Include="Content\index2\images\City\icon-point.png" />
+    <Content Include="Content\index2\images\City\icon-station.png" />
+    <Content Include="Content\index2\images\City\icon-warming.png" />
+    <Content Include="Content\index2\images\City\monitoring-data-bg.jpg" />
+    <Content Include="Content\index2\images\City\pic1.jpg" />
+    <Content Include="Content\index2\images\City\pic2.jpg" />
+    <Content Include="Content\index2\images\City\pic3.jpg" />
+    <Content Include="Content\index2\images\City\pic4.jpg" />
+    <Content Include="Content\index2\images\City\site-point.png" />
+    <Content Include="Content\index2\images\City\video-control-bg.png" />
+    <Content Include="Content\index2\images\close.png" />
+    <Content Include="Content\index2\images\co.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Chart.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Control.CheckBox.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Control.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.DatePicker.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.DropDownList.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Form.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.IFrame.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Pager.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.RadioButton.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Repeater.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Search.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Tab.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Table.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.TextBox.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Toolbar.png" />
+    <Content Include="Content\index2\images\Controls\SummerFresh.Controls.Tree.png" />
+    <Content Include="Content\index2\images\cookie.png" />
+    <Content Include="Content\index2\images\data-bg.png" />
+    <Content Include="Content\index2\images\demo-aqi-chart.jpg" />
+    <Content Include="Content\index2\images\demo-img.jpg" />
+    <Content Include="Content\index2\images\dog1.png" />
+    <Content Include="Content\index2\images\down-arrow.png" />
+    <Content Include="Content\index2\images\gezi.png" />
+    <Content Include="Content\index2\images\icon-butongguo-w.png" />
+    <Content Include="Content\index2\images\icon-butongguo.png" />
+    <Content Include="Content\index2\images\icon-daishangbao-w.png" />
+    <Content Include="Content\index2\images\icon-daishangbao.png" />
+    <Content Include="Content\index2\images\icon-daishen-w.png" />
+    <Content Include="Content\index2\images\icon-daishen.png" />
+    <Content Include="Content\index2\images\icon-daogua-w.png" />
+    <Content Include="Content\index2\images\icon-daogua.png" />
+    <Content Include="Content\index2\images\icon-daoru-w.png" />
+    <Content Include="Content\index2\images\icon-daoru.png" />
+    <Content Include="Content\index2\images\icon-data.png" />
+    <Content Include="Content\index2\images\icon-level-0.png" />
+    <Content Include="Content\index2\images\icon-level-1.png" />
+    <Content Include="Content\index2\images\icon-level-2.png" />
+    <Content Include="Content\index2\images\icon-level-3.png" />
+    <Content Include="Content\index2\images\icon-level-4.png" />
+    <Content Include="Content\index2\images\icon-level-5.png" />
+    <Content Include="Content\index2\images\icon-level-6.png" />
+    <Content Include="Content\index2\images\icon-level-—.png" />
+    <Content Include="Content\index2\images\icon-network.png" />
+    <Content Include="Content\index2\images\icon-outline.png" />
+    <Content Include="Content\index2\images\icon-panel.png" />
+    <Content Include="Content\index2\images\icon-pizhu-w.png" />
+    <Content Include="Content\index2\images\icon-pizhu.png" />
+    <Content Include="Content\index2\images\icon-point.png" />
+    <Content Include="Content\index2\images\icon-s-pc1.png" />
+    <Content Include="Content\index2\images\icon-s-pc2.png" />
+    <Content Include="Content\index2\images\icon-s-pc3.png" />
+    <Content Include="Content\index2\images\icon-s-pc4.png" />
+    <Content Include="Content\index2\images\icon-s-pc5.png" />
+    <Content Include="Content\index2\images\icon-s-pc6.png" />
+    <Content Include="Content\index2\images\icon-station.png" />
+    <Content Include="Content\index2\images\icon-tab-hov.png" />
+    <Content Include="Content\index2\images\icon-tab-hov1.png" />
+    <Content Include="Content\index2\images\icon-tab.png" />
+    <Content Include="Content\index2\images\icon-total-hov.png" />
+    <Content Include="Content\index2\images\icon-total.png" />
+    <Content Include="Content\index2\images\icon-warming.png" />
+    <Content Include="Content\index2\images\icon-yishen-w.png" />
+    <Content Include="Content\index2\images\icon-yishen.png" />
+    <Content Include="Content\index2\images\icon-zhishen-w.png" />
+    <Content Include="Content\index2\images\icon-zhishen.png" />
+    <Content Include="Content\index2\images\icon1.png" />
+    <Content Include="Content\index2\images\icon2.png" />
+    <Content Include="Content\index2\images\leveTip.jpg" />
+    <Content Include="Content\index2\images\login-bg.jpg" />
+    <Content Include="Content\index2\images\login-box-bg.png" />
+    <Content Include="Content\index2\images\login-title.png" />
+    <Content Include="Content\index2\images\m1.jpg" />
+    <Content Include="Content\index2\images\m2.jpg" />
+    <Content Include="Content\index2\images\m3.jpg" />
+    <Content Include="Content\index2\images\m4.jpg" />
+    <Content Include="Content\index2\images\m5.jpg" />
+    <Content Include="Content\index2\images\map-list-bg.png" />
+    <Content Include="Content\index2\images\monitoring-data-bg.jpg" />
+    <Content Include="Content\index2\images\monitoring-data-bg2.jpg" />
+    <Content Include="Content\index2\images\no2.png" />
+    <Content Include="Content\index2\images\o3.png" />
+    <Content Include="Content\index2\images\open.png" />
+    <Content Include="Content\index2\images\pic1.jpg" />
+    <Content Include="Content\index2\images\pic2.jpg" />
+    <Content Include="Content\index2\images\pic3.jpg" />
+    <Content Include="Content\index2\images\pic4.jpg" />
+    <Content Include="Content\index2\images\planet.png" />
+    <Content Include="Content\index2\images\Site\no.png" />
+    <Content Include="Content\index2\images\sky-background.png" />
+    <Content Include="Content\index2\images\sky-shine.jpg" />
+    <Content Include="Content\index2\images\so2.png" />
+    <Content Include="Content\index2\images\sort_asc.png" />
+    <Content Include="Content\index2\images\sort_asc_disabled.png" />
+    <Content Include="Content\index2\images\sort_both.png" />
+    <Content Include="Content\index2\images\sort_desc.png" />
+    <Content Include="Content\index2\images\sort_desc_disabled.png" />
+    <Content Include="Content\index2\images\SuperStationPic\CO2-NOy-甲烷非甲烷.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\ECOC分析仪.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\VOC.jpg" />
+    <Content Include="Content\index2\images\SuperStationPic\光解速率分析仪.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\单颗粒气溶胶飞行时间质谱仪SPAMS2.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\在线大气测汞仪器.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\在线挥发性有机物分析仪.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\常规子站仪器PM1分析仪.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\气体气溶胶连续在线分析系统GAC.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\激光雷达.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\离子色谱.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\离线采样器MOUDI四通道降水.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\过氧酰基硝酸酯PAN分析仪.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\颗粒物粒径谱分析仪-SMPS-APS.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\风廓线能见度仪.JPG" />
+    <Content Include="Content\index2\images\SuperStationPic\黑碳监测仪气溶胶浊度计.JPG" />
+    <Content Include="Content\index2\images\t1.jpg" />
+    <Content Include="Content\index2\images\t2.jpg" />
+    <Content Include="Content\index2\images\t3.jpg" />
+    <Content Include="Content\index2\images\top-bottom-bg.png" />
+    <Content Include="Content\index2\images\video-control-bg.png" />
+    <Content Include="Content\index2\images\wave.gif" />
+    <Content Include="Content\index2\images\weather-qing.jpg" />
+    <Content Include="Content\index2\images\weather-top.png" />
+    <Content Include="Content\index2\images\广东省素材（暂放）\24_Line.png" />
+    <Content Include="Content\index2\images\广东省素材（暂放）\demo-graph-left2.jpg" />
+    <Content Include="Content\index2\images\广东省素材（暂放）\demo-graph-right.jpg" />
+    <Content Include="Content\index2\images\广东省素材（暂放）\源解析图.png" />
+    <Content Include="Content\index2\images\广东省素材（暂放）\相关性分析.png" />
+    <Content Include="Content\index2\js\dropdown.js" />
+    <Content Include="Content\index2\js\jquery-1.9.1.min.js" />
+    <Content Include="Content\index2\themes\default\default.css" />
+    <Content Include="Content\index2\themes\default\images\btn-add-d.png" />
+    <Content Include="Content\index2\themes\default\images\btn-add.png" />
+    <Content Include="Content\index2\themes\default\images\btn-copy-d.png" />
+    <Content Include="Content\index2\themes\default\images\btn-copy.png" />
+    <Content Include="Content\index2\themes\default\images\btn-del-b.png" />
+    <Content Include="Content\index2\themes\default\images\btn-del-d.png" />
+    <Content Include="Content\index2\themes\default\images\btn-del.png" />
+    <Content Include="Content\index2\themes\default\images\btn-download-d.png" />
+    <Content Include="Content\index2\themes\default\images\btn-download.png" />
+    <Content Include="Content\index2\themes\default\images\btn-editor-d.png" />
+    <Content Include="Content\index2\themes\default\images\btn-editor.png" />
+    <Content Include="Content\index2\themes\default\images\btn-next.png" />
+    <Content Include="Content\index2\themes\default\images\btn-pdf-d.png" />
+    <Content Include="Content\index2\themes\default\images\btn-pdf.png" />
+    <Content Include="Content\index2\themes\default\images\btn-pre.png" />
+    <Content Include="Content\index2\themes\default\images\btn-print-d.png" />
+    <Content Include="Content\index2\themes\default\images\btn-print.png" />
+    <Content Include="Content\index2\themes\default\images\btn-search-d.png" />
+    <Content Include="Content\index2\themes\default\images\btn-search.png" />
+    <Content Include="Content\index2\themes\default\images\btn-value.png" />
+    <Content Include="Content\index2\themes\default\images\down-arrow.png" />
+    <Content Include="Content\index2\themes\default\images\error.png" />
+    <Content Include="Content\index2\themes\default\images\forbid.png" />
+    <Content Include="Content\index2\themes\default\images\icon-baosong-w.png" />
+    <Content Include="Content\index2\themes\default\images\icon-baosong.png" />
+    <Content Include="Content\index2\themes\default\images\icon-bg-hov.png" />
+    <Content Include="Content\index2\themes\default\images\icon-bg.png" />
+    <Content Include="Content\index2\themes\default\images\icon-bq1.png" />
+    <Content Include="Content\index2\themes\default\images\icon-bq2.png" />
+    <Content Include="Content\index2\themes\default\images\icon-bq3.png" />
+    <Content Include="Content\index2\themes\default\images\icon-chaxun.png" />
+    <Content Include="Content\index2\themes\default\images\icon-close.png" />
+    <Content Include="Content\index2\themes\default\images\icon-comp-hov.png" />
+    <Content Include="Content\index2\themes\default\images\icon-comp.png" />
+    <Content Include="Content\index2\themes\default\images\icon-date.png" />
+    <Content Include="Content\index2\themes\default\images\icon-down.png" />
+    <Content Include="Content\index2\themes\default\images\icon-dw-hov.png" />
+    <Content Include="Content\index2\themes\default\images\icon-dw.png" />
+    <Content Include="Content\index2\themes\default\images\icon-email.png" />
+    <Content Include="Content\index2\themes\default\images\icon-fd.png" />
+    <Content Include="Content\index2\themes\default\images\icon-fenxi.png" />
+    <Content Include="Content\index2\themes\default\images\icon-fold-hov.png" />
+    <Content Include="Content\index2\themes\default\images\icon-fold.png" />
+    <Content Include="Content\index2\themes\default\images\icon-gg.png" />
+    <Content Include="Content\index2\themes\default\images\icon-gt-w.png" />
+    <Content Include="Content\index2\themes\default\images\icon-gt.png" />
+    <Content Include="Content\index2\themes\default\images\icon-guanli.png" />
+    <Content Include="Content\index2\themes\default\images\icon-help.png" />
+    <Content Include="Content\index2\themes\default\images\icon-hg.png" />
+    <Content Include="Content\index2\themes\default\images\icon-home-w.png" />
+    <Content Include="Content\index2\themes\default\images\icon-home.png" />
+    <Content Include="Content\index2\themes\default\images\icon-info.png" />
+    <Content Include="Content\index2\themes\default\images\icon-lianwang.png" />
+    <Content Include="Content\index2\themes\default\images\icon-login.png" />
+    <Content Include="Content\index2\themes\default\images\icon-lv.png" />
+    <Content Include="Content\index2\themes\default\images\icon-mei.png" />
+    <Content Include="Content\index2\themes\default\images\icon-menu.png" />
+    <Content Include="Content\index2\themes\default\images\icon-mh.png" />
+    <Content Include="Content\index2\themes\default\images\icon-notice.png" />
+    <Content Include="Content\index2\themes\default\images\icon-out.png" />
+    <Content Include="Content\index2\themes\default\images\icon-pb.png" />
+    <Content Include="Content\index2\themes\default\images\icon-peizhi.png" />
+    <Content Include="Content\index2\themes\default\images\icon-point.png" />
+    <Content Include="Content\index2\themes\default\images\icon-point1.png" />
+    <Content Include="Content\index2\themes\default\images\icon-pro1-big.png" />
+    <Content Include="Content\index2\themes\default\images\icon-pro1.png" />
+    <Content Include="Content\index2\themes\default\images\icon-pro2-big.png" />
+    <Content Include="Content\index2\themes\default\images\icon-pro2.png" />
+    <Content Include="Content\index2\themes\default\images\icon-pro3-big.png" />
+    <Content Include="Content\index2\themes\default\images\icon-pro3.png" />
+    <Content Include="Content\index2\themes\default\images\icon-pro4-big.png" />
+    <Content Include="Content\index2\themes\default\images\icon-pro4.png" />
+    <Content Include="Content\index2\themes\default\images\icon-question.png" />
+    <Content Include="Content\index2\themes\default\images\icon-qy-hov.png" />
+    <Content Include="Content\index2\themes\default\images\icon-qy.png" />
+    <Content Include="Content\index2\themes\default\images\icon-shouye.png" />
+    <Content Include="Content\index2\themes\default\images\icon-shuju.png" />
+    <Content Include="Content\index2\themes\default\images\icon-sn.png" />
+    <Content Include="Content\index2\themes\default\images\icon-sr-hov.png" />
+    <Content Include="Content\index2\themes\default\images\icon-sr.png" />
+    <Content Include="Content\index2\themes\default\images\icon-step1.png" />
+    <Content Include="Content\index2\themes\default\images\icon-step2.png" />
+    <Content Include="Content\index2\themes\default\images\icon-step3.png" />
+    <Content Include="Content\index2\themes\default\images\icon-step4.png" />
+    <Content Include="Content\index2\themes\default\images\icon-success.png" />
+    <Content Include="Content\index2\themes\default\images\icon-tb-hov.png" />
+    <Content Include="Content\index2\themes\default\images\icon-tb.png" />
+    <Content Include="Content\index2\themes\default\images\icon-tc.png" />
+    <Content Include="Content\index2\themes\default\images\icon-time.png" />
+    <Content Include="Content\index2\themes\default\images\icon-tip.png" />
+    <Content Include="Content\index2\themes\default\images\icon-title.png" />
+    <Content Include="Content\index2\themes\default\images\icon-tubiao.png" />
+    <Content Include="Content\index2\themes\default\images\icon-unfold-2.png" />
+    <Content Include="Content\index2\themes\default\images\icon-unfold-hov.png" />
+    <Content Include="Content\index2\themes\default\images\icon-unfold.png" />
+    <Content Include="Content\index2\themes\default\images\icon-user.png" />
+    <Content Include="Content\index2\themes\default\images\icon-wx.png" />
+    <Content Include="Content\index2\themes\default\images\icon-yingyong.png" />
+    <Content Include="Content\index2\themes\default\images\icon-yunwei.png" />
+    <Content Include="Content\index2\themes\default\images\icon-zaixian.png" />
+    <Content Include="Content\index2\themes\default\images\icon1.png" />
+    <Content Include="Content\index2\themes\default\images\icon2.png" />
+    <Content Include="Content\index2\themes\default\images\info.png" />
+    <Content Include="Content\index2\themes\default\images\input-icon-error.png" />
+    <Content Include="Content\index2\themes\default\images\input-icon-success.png" />
+    <Content Include="Content\index2\themes\default\images\input-icon-tip.png" />
+    <Content Include="Content\index2\themes\default\images\input-icon-worn.png" />
+    <Content Include="Content\index2\themes\default\images\input-point-error.png" />
+    <Content Include="Content\index2\themes\default\images\input-point-success.png" />
+    <Content Include="Content\index2\themes\default\images\input-point-tip.png" />
+    <Content Include="Content\index2\themes\default\images\input-point-worn.png" />
+    <Content Include="Content\index2\themes\default\images\logo.png" />
+    <Content Include="Content\index2\themes\default\images\more-bg.png" />
+    <Content Include="Content\index2\themes\default\images\nav-close.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-chaxun-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-chaxun.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-fenxi-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-fenxi.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-guanli-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-guanli.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-lianwang-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-lianwang.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-peizhi-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-peizhi.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-shouye-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-shouye.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-shuju-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-shuju.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-tubiao-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-tubiao.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-yingyong-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-yingyong.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-yunwei-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-yunwei.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-zaixian-w.png" />
+    <Content Include="Content\index2\themes\default\images\nav-icon\icon-zaixian.png" />
+    <Content Include="Content\index2\themes\default\images\navigation-bg.jpg" />
+    <Content Include="Content\index2\themes\default\images\navigation-st.png" />
+    <Content Include="Content\index2\themes\default\images\process-bg.jpg" />
+    <Content Include="Content\index2\themes\default\images\success.png" />
+    <Content Include="Content\index2\themes\default\images\toggle-lt.gif" />
+    <Content Include="Content\index2\themes\default\images\toggle-rt.gif" />
+    <Content Include="Content\index2\themes\default\images\top-bg.jpg" />
+    <Content Include="Content\index2\themes\default\images\warn.png" />
+    <Content Include="Content\index2\themes\green\default.css" />
+    <Content Include="Content\index2\themes\green\images\btn-add-d.png" />
+    <Content Include="Content\index2\themes\green\images\btn-add.png" />
+    <Content Include="Content\index2\themes\green\images\btn-copy-d.png" />
+    <Content Include="Content\index2\themes\green\images\btn-copy.png" />
+    <Content Include="Content\index2\themes\green\images\btn-del-b.png" />
+    <Content Include="Content\index2\themes\green\images\btn-del-d.png" />
+    <Content Include="Content\index2\themes\green\images\btn-del.png" />
+    <Content Include="Content\index2\themes\green\images\btn-download-d.png" />
+    <Content Include="Content\index2\themes\green\images\btn-download.png" />
+    <Content Include="Content\index2\themes\green\images\btn-editor-d.png" />
+    <Content Include="Content\index2\themes\green\images\btn-editor.png" />
+    <Content Include="Content\index2\themes\green\images\btn-next.png" />
+    <Content Include="Content\index2\themes\green\images\btn-pdf-d.png" />
+    <Content Include="Content\index2\themes\green\images\btn-pdf.png" />
+    <Content Include="Content\index2\themes\green\images\btn-pre.png" />
+    <Content Include="Content\index2\themes\green\images\btn-print-d.png" />
+    <Content Include="Content\index2\themes\green\images\btn-print.png" />
+    <Content Include="Content\index2\themes\green\images\btn-search-d.png" />
+    <Content Include="Content\index2\themes\green\images\btn-search.png" />
+    <Content Include="Content\index2\themes\green\images\btn-value.png" />
+    <Content Include="Content\index2\themes\green\images\down-arrow.png" />
+    <Content Include="Content\index2\themes\green\images\error.png" />
+    <Content Include="Content\index2\themes\green\images\forbid.png" />
+    <Content Include="Content\index2\themes\green\images\icon-baosong-w.png" />
+    <Content Include="Content\index2\themes\green\images\icon-baosong.png" />
+    <Content Include="Content\index2\themes\green\images\icon-bg-hov.png" />
+    <Content Include="Content\index2\themes\green\images\icon-bg.png" />
+    <Content Include="Content\index2\themes\green\images\icon-bq1.png" />
+    <Content Include="Content\index2\themes\green\images\icon-bq2.png" />
+    <Content Include="Content\index2\themes\green\images\icon-bq3.png" />
+    <Content Include="Content\index2\themes\green\images\icon-close.png" />
+    <Content Include="Content\index2\themes\green\images\icon-comp-hov.png" />
+    <Content Include="Content\index2\themes\green\images\icon-comp.png" />
+    <Content Include="Content\index2\themes\green\images\icon-date.png" />
+    <Content Include="Content\index2\themes\green\images\icon-down.png" />
+    <Content Include="Content\index2\themes\green\images\icon-dw-hov.png" />
+    <Content Include="Content\index2\themes\green\images\icon-dw.png" />
+    <Content Include="Content\index2\themes\green\images\icon-email.png" />
+    <Content Include="Content\index2\themes\green\images\icon-fd.png" />
+    <Content Include="Content\index2\themes\green\images\icon-fold-hov.png" />
+    <Content Include="Content\index2\themes\green\images\icon-fold.png" />
+    <Content Include="Content\index2\themes\green\images\icon-gg.png" />
+    <Content Include="Content\index2\themes\green\images\icon-gt-w.png" />
+    <Content Include="Content\index2\themes\green\images\icon-gt.png" />
+    <Content Include="Content\index2\themes\green\images\icon-help.png" />
+    <Content Include="Content\index2\themes\green\images\icon-hg.png" />
+    <Content Include="Content\index2\themes\green\images\icon-home-w.png" />
+    <Content Include="Content\index2\themes\green\images\icon-home.png" />
+    <Content Include="Content\index2\themes\green\images\icon-info.png" />
+    <Content Include="Content\index2\themes\green\images\icon-login.png" />
+    <Content Include="Content\index2\themes\green\images\icon-lv.png" />
+    <Content Include="Content\index2\themes\green\images\icon-mei.png" />
+    <Content Include="Content\index2\themes\green\images\icon-menu.png" />
+    <Content Include="Content\index2\themes\green\images\icon-mh.png" />
+    <Content Include="Content\index2\themes\green\images\icon-notice.png" />
+    <Content Include="Content\index2\themes\green\images\icon-out.png" />
+    <Content Include="Content\index2\themes\green\images\icon-pb.png" />
+    <Content Include="Content\index2\themes\green\images\icon-point.png" />
+    <Content Include="Content\index2\themes\green\images\icon-point1.png" />
+    <Content Include="Content\index2\themes\green\images\icon-pro1-big.png" />
+    <Content Include="Content\index2\themes\green\images\icon-pro1.png" />
+    <Content Include="Content\index2\themes\green\images\icon-pro2-big.png" />
+    <Content Include="Content\index2\themes\green\images\icon-pro2.png" />
+    <Content Include="Content\index2\themes\green\images\icon-pro3-big.png" />
+    <Content Include="Content\index2\themes\green\images\icon-pro3.png" />
+    <Content Include="Content\index2\themes\green\images\icon-pro4-big.png" />
+    <Content Include="Content\index2\themes\green\images\icon-pro4.png" />
+    <Content Include="Content\index2\themes\green\images\icon-question.png" />
+    <Content Include="Content\index2\themes\green\images\icon-qy-hov.png" />
+    <Content Include="Content\index2\themes\green\images\icon-qy.png" />
+    <Content Include="Content\index2\themes\green\images\icon-sn.png" />
+    <Content Include="Content\index2\themes\green\images\icon-sr-hov.png" />
+    <Content Include="Content\index2\themes\green\images\icon-sr.png" />
+    <Content Include="Content\index2\themes\green\images\icon-step1.png" />
+    <Content Include="Content\index2\themes\green\images\icon-step2.png" />
+    <Content Include="Content\index2\themes\green\images\icon-step3.png" />
+    <Content Include="Content\index2\themes\green\images\icon-step4.png" />
+    <Content Include="Content\index2\themes\green\images\icon-success.png" />
+    <Content Include="Content\index2\themes\green\images\icon-tb-hov.png" />
+    <Content Include="Content\index2\themes\green\images\icon-tb.png" />
+    <Content Include="Content\index2\themes\green\images\icon-tc.png" />
+    <Content Include="Content\index2\themes\green\images\icon-time.png" />
+    <Content Include="Content\index2\themes\green\images\icon-tip.png" />
+    <Content Include="Content\index2\themes\green\images\icon-title.png" />
+    <Content Include="Content\index2\themes\green\images\icon-unfold-2.png" />
+    <Content Include="Content\index2\themes\green\images\icon-unfold-hov.png" />
+    <Content Include="Content\index2\themes\green\images\icon-unfold.png" />
+    <Content Include="Content\index2\themes\green\images\icon-user.png" />
+    <Content Include="Content\index2\themes\green\images\icon-wx.png" />
+    <Content Include="Content\index2\themes\green\images\icon1.png" />
+    <Content Include="Content\index2\themes\green\images\icon2.png" />
+    <Content Include="Content\index2\themes\green\images\info.png" />
+    <Content Include="Content\index2\themes\green\images\input-icon-error.png" />
+    <Content Include="Content\index2\themes\green\images\input-icon-success.png" />
+    <Content Include="Content\index2\themes\green\images\input-icon-tip.png" />
+    <Content Include="Content\index2\themes\green\images\input-icon-worn.png" />
+    <Content Include="Content\index2\themes\green\images\input-point-error.png" />
+    <Content Include="Content\index2\themes\green\images\input-point-success.png" />
+    <Content Include="Content\index2\themes\green\images\input-point-tip.png" />
+    <Content Include="Content\index2\themes\green\images\input-point-worn.png" />
+    <Content Include="Content\index2\themes\green\images\logo.png" />
+    <Content Include="Content\index2\themes\green\images\more-bg.png" />
+    <Content Include="Content\index2\themes\green\images\nav-close.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-chaxun-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-chaxun.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-fenxi-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-fenxi.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-guanli-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-guanli.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-lianwang-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-lianwang.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-peizhi-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-peizhi.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-shouye-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-shouye.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-shuju-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-shuju.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-tubiao-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-tubiao.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-yingyong-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-yingyong.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-yunwei-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-yunwei.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-zaixian-w.png" />
+    <Content Include="Content\index2\themes\green\images\nav-icon\icon-zaixian.png" />
+    <Content Include="Content\index2\themes\green\images\navigation-bg.jpg" />
+    <Content Include="Content\index2\themes\green\images\navigation-st.png" />
+    <Content Include="Content\index2\themes\green\images\process-bg.jpg" />
+    <Content Include="Content\index2\themes\green\images\success.png" />
+    <Content Include="Content\index2\themes\green\images\toggle-lt.gif" />
+    <Content Include="Content\index2\themes\green\images\toggle-rt.gif" />
+    <Content Include="Content\index2\themes\green\images\top-bg.jpg" />
+    <Content Include="Content\index2\themes\green\images\warn.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\horizontal-nav.css" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-add-d.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-add.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-copy-d.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-copy.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-del-b.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-del-d.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-del.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-download-d.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-download.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-editor-d.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-editor.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-next.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-pdf-d.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-pdf.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-pre.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-print-d.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-print.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-search-d.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-search.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\btn-value.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\down-arrow.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\error.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\forbid.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-baosong-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-baosong.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-chaxun.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-close.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-comp.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-date.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-down.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-email.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-fenxi.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-fold-hov.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-fold.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-gt-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-gt.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-guanli.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-help.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-home-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-home.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-info.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-lianwang.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-login.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-menu.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-nav-baobiao.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-nav-home.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-nav-lianwang.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-nav-shenhe.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-nav-user.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-nav-zhikong.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-notice.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-out.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-peizhi.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-point.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-point1.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-question.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-qy-hov.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-qy.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-shouye.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-shuju.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-sr-hov.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-sr.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-step4.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-success.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-tb-hov.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-tb.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-time.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-tip.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-title.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-tubiao.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-unfold-2.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-unfold-hov.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-unfold.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-user.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-wx.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-yingyong.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-yunwei.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon-zaixian.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon1.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\icon2.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\info.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\input-icon-error.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\input-icon-success.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\input-icon-tip.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\input-icon-worn.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\input-point-error.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\input-point-success.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\input-point-tip.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\input-point-worn.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\logo.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\more-bg.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-close.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-chaxun-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-chaxun.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-fenxi-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-fenxi.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-guanli-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-guanli.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-lianwang-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-lianwang.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-peizhi-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-peizhi.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-shouye-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-shouye.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-shuju-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-shuju.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-tubiao-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-tubiao.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-yingyong-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-yingyong.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-yunwei-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-yunwei.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-zaixian-w.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\nav-icon\icon-zaixian.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\navigation-bg.jpg" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\navigation-st.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\process-bg.jpg" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\success.png" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\toggle-lt.gif" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\toggle-rt.gif" />
+    <Content Include="Content\index2\themes\horizontal-nav\images\warn.png" />
+    <Content Include="Content\js\404page.js" />
+    <Content Include="Content\js\angular.min.js" />
+    <Content Include="Content\js\chartOptions.js" />
+    <Content Include="Content\js\codemirror\addon\comment\comment.js" />
+    <Content Include="Content\js\codemirror\addon\comment\continuecomment.js" />
+    <Content Include="Content\js\codemirror\addon\dialog\dialog.css" />
+    <Content Include="Content\js\codemirror\addon\dialog\dialog.js" />
+    <Content Include="Content\js\codemirror\addon\display\autorefresh.js" />
+    <Content Include="Content\js\codemirror\addon\display\fullscreen.css" />
+    <Content Include="Content\js\codemirror\addon\display\fullscreen.js" />
+    <Content Include="Content\js\codemirror\addon\display\panel.js" />
+    <Content Include="Content\js\codemirror\addon\display\placeholder.js" />
+    <Content Include="Content\js\codemirror\addon\display\rulers.js" />
+    <Content Include="Content\js\codemirror\addon\edit\closebrackets.js" />
+    <Content Include="Content\js\codemirror\addon\edit\closetag.js" />
+    <Content Include="Content\js\codemirror\addon\edit\continuelist.js" />
+    <Content Include="Content\js\codemirror\addon\edit\matchbrackets.js" />
+    <Content Include="Content\js\codemirror\addon\edit\matchtags.js" />
+    <Content Include="Content\js\codemirror\addon\edit\trailingspace.js" />
+    <Content Include="Content\js\codemirror\addon\fold\brace-fold.js" />
+    <Content Include="Content\js\codemirror\addon\fold\comment-fold.js" />
+    <Content Include="Content\js\codemirror\addon\fold\foldcode.js" />
+    <Content Include="Content\js\codemirror\addon\fold\foldgutter.css" />
+    <Content Include="Content\js\codemirror\addon\fold\foldgutter.js" />
+    <Content Include="Content\js\codemirror\addon\fold\indent-fold.js" />
+    <Content Include="Content\js\codemirror\addon\fold\markdown-fold.js" />
+    <Content Include="Content\js\codemirror\addon\fold\xml-fold.js" />
+    <Content Include="Content\js\codemirror\addon\hint\anyword-hint.js" />
+    <Content Include="Content\js\codemirror\addon\hint\css-hint.js" />
+    <Content Include="Content\js\codemirror\addon\hint\html-hint.js" />
+    <Content Include="Content\js\codemirror\addon\hint\javascript-hint.js" />
+    <Content Include="Content\js\codemirror\addon\hint\show-hint.css" />
+    <Content Include="Content\js\codemirror\addon\hint\show-hint.js" />
+    <Content Include="Content\js\codemirror\addon\hint\sql-hint.js" />
+    <Content Include="Content\js\codemirror\addon\hint\xml-hint.js" />
+    <Content Include="Content\js\codemirror\addon\lint\coffeescript-lint.js" />
+    <Content Include="Content\js\codemirror\addon\lint\css-lint.js" />
+    <Content Include="Content\js\codemirror\addon\lint\html-lint.js" />
+    <Content Include="Content\js\codemirror\addon\lint\javascript-lint.js" />
+    <Content Include="Content\js\codemirror\addon\lint\json-lint.js" />
+    <Content Include="Content\js\codemirror\addon\lint\lint.css" />
+    <Content Include="Content\js\codemirror\addon\lint\lint.js" />
+    <Content Include="Content\js\codemirror\addon\lint\yaml-lint.js" />
+    <Content Include="Content\js\codemirror\addon\merge\merge.css" />
+    <Content Include="Content\js\codemirror\addon\merge\merge.js" />
+    <Content Include="Content\js\codemirror\addon\mode\loadmode.js" />
+    <Content Include="Content\js\codemirror\addon\mode\multiplex.js" />
+    <Content Include="Content\js\codemirror\addon\mode\multiplex_test.js" />
+    <Content Include="Content\js\codemirror\addon\mode\overlay.js" />
+    <Content Include="Content\js\codemirror\addon\mode\simple.js" />
+    <Content Include="Content\js\codemirror\addon\runmode\colorize.js" />
+    <Content Include="Content\js\codemirror\addon\runmode\runmode-standalone.js" />
+    <Content Include="Content\js\codemirror\addon\runmode\runmode.js" />
+    <Content Include="Content\js\codemirror\addon\runmode\runmode.node.js" />
+    <Content Include="Content\js\codemirror\addon\scroll\annotatescrollbar.js" />
+    <Content Include="Content\js\codemirror\addon\scroll\scrollpastend.js" />
+    <Content Include="Content\js\codemirror\addon\scroll\simplescrollbars.css" />
+    <Content Include="Content\js\codemirror\addon\scroll\simplescrollbars.js" />
+    <Content Include="Content\js\codemirror\addon\search\jump-to-line.js" />
+    <Content Include="Content\js\codemirror\addon\search\match-highlighter.js" />
+    <Content Include="Content\js\codemirror\addon\search\matchesonscrollbar.css" />
+    <Content Include="Content\js\codemirror\addon\search\matchesonscrollbar.js" />
+    <Content Include="Content\js\codemirror\addon\search\search.js" />
+    <Content Include="Content\js\codemirror\addon\search\searchcursor.js" />
+    <Content Include="Content\js\codemirror\addon\selection\active-line.js" />
+    <Content Include="Content\js\codemirror\addon\selection\mark-selection.js" />
+    <Content Include="Content\js\codemirror\addon\selection\selection-pointer.js" />
+    <Content Include="Content\js\codemirror\addon\tern\tern.css" />
+    <Content Include="Content\js\codemirror\addon\tern\tern.js" />
+    <Content Include="Content\js\codemirror\addon\tern\worker.js" />
+    <Content Include="Content\js\codemirror\addon\wrap\hardwrap.js" />
+    <Content Include="Content\js\codemirror\lib\codemirror.css" />
+    <Content Include="Content\js\codemirror\lib\codemirror.js" />
+    <Content Include="Content\js\codemirror\mode\javascript\index.html" />
+    <Content Include="Content\js\codemirror\mode\javascript\javascript.js" />
+    <Content Include="Content\js\codemirror\mode\javascript\json-ld.html" />
+    <Content Include="Content\js\codemirror\mode\javascript\test.js" />
+    <Content Include="Content\js\codemirror\mode\javascript\typescript.html" />
+    <Content Include="Content\js\codemirror\theme\night.css" />
+    <Content Include="Content\js\collapse.js" />
+    <Content Include="Content\js\common.js" />
+    <Content Include="Content\js\datepicker\calendar.js" />
+    <Content Include="Content\js\datepicker\config.js" />
+    <Content Include="Content\js\datepicker\lang\en.js" />
+    <Content Include="Content\js\datepicker\lang\zh-cn.js" />
+    <Content Include="Content\js\datepicker\lang\zh-tw.js" />
+    <Content Include="Content\js\datepicker\My97DatePicker.htm" />
+    <Content Include="Content\js\datepicker\skin\datePicker.gif" />
+    <Content Include="Content\js\datepicker\skin\default\datepicker.css" />
+    <Content Include="Content\js\datepicker\skin\default\img.gif" />
+    <Content Include="Content\js\datepicker\skin\WdatePicker.css" />
+    <Content Include="Content\js\datepicker\skin\WhyGreen\bg.jpg" />
+    <Content Include="Content\js\datepicker\skin\WhyGreen\datepicker.css" />
+    <Content Include="Content\js\datepicker\skin\WhyGreen\img.gif" />
+    <Content Include="Content\js\datepicker\WdatePicker.js" />
+    <Content Include="Content\js\dropdown.js" />
+    <Content Include="Content\js\echarts\echarts-all-3.js" />
+    <Content Include="Content\js\echarts\extension\bmap.js" />
+    <Content Include="Content\js\echarts\extension\dataTool.js" />
+    <Content Include="Content\js\echarts\map\china.js" />
+    <Content Include="Content\js\geo.js" />
+    <Content Include="Content\js\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Content\js\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Content\js\highcharts\highcharts-3d.js" />
+    <Content Include="Content\js\highcharts\highcharts-3d.src.js" />
+    <Content Include="Content\js\highcharts\highcharts-more.js" />
+    <Content Include="Content\js\highcharts\highcharts-more.src.js" />
+    <Content Include="Content\js\highcharts\highcharts.js" />
+    <Content Include="Content\js\highcharts\highstock-all.js" />
+    <Content Include="Content\js\highcharts\highstock.js" />
+    <Content Include="Content\js\highcharts\highstock.src.js" />
+    <Content Include="Content\js\highcharts\modules\canvas-tools.js" />
+    <Content Include="Content\js\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Content\js\highcharts\modules\data.js" />
+    <Content Include="Content\js\highcharts\modules\data.src.js" />
+    <Content Include="Content\js\highcharts\modules\drilldown.js" />
+    <Content Include="Content\js\highcharts\modules\drilldown.src.js" />
+    <Content Include="Content\js\highcharts\modules\exporting.js" />
+    <Content Include="Content\js\highcharts\modules\exporting.src.js" />
+    <Content Include="Content\js\highcharts\modules\funnel.js" />
+    <Content Include="Content\js\highcharts\modules\funnel.src.js" />
+    <Content Include="Content\js\highcharts\modules\heatmap.js" />
+    <Content Include="Content\js\highcharts\modules\heatmap.src.js" />
+    <Content Include="Content\js\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Content\js\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Content\js\highcharts\modules\solid-gauge.js" />
+    <Content Include="Content\js\highcharts\modules\solid-gauge.src.js" />
+    <Content Include="Content\js\highcharts\modules\treemap.js" />
+    <Content Include="Content\js\highcharts\modules\treemap.src.js" />
+    <Content Include="Content\js\highcharts\themes\dark-blue.js" />
+    <Content Include="Content\js\highcharts\themes\dark-green.js" />
+    <Content Include="Content\js\highcharts\themes\dark-unica.js" />
+    <Content Include="Content\js\highcharts\themes\gray.js" />
+    <Content Include="Content\js\highcharts\themes\grid-light.js" />
+    <Content Include="Content\js\highcharts\themes\grid.js" />
+    <Content Include="Content\js\highcharts\themes\sand-signika.js" />
+    <Content Include="Content\js\highcharts\themes\skies.js" />
+    <Content Include="Content\js\jquery-1.10.1.min.js" />
+    <None Include="Content\js\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Content\js\jquery-1.9.1.min.js" />
+    <Content Include="Content\js\jquery-drag.js" />
+    <Content Include="Content\js\jquery.blockui.min.js" />
+    <Content Include="Content\js\jquery.contextmenu.r2.js" />
+    <Content Include="Content\js\jquery.dataTables.min.js" />
+    <Content Include="Content\js\jquery.form.js" />
+    <Content Include="Content\js\jquery.layout.min.js" />
+    <Content Include="Content\js\jquery.nicescroll.min.js" />
+    <Content Include="Content\js\jquery.nicescroll.min1.js" />
+    <Content Include="Content\js\jquery.validation.js" />
+    <Content Include="Content\js\jquery.validationConfig.js" />
+    <Content Include="Content\js\layout\css\easyui.css" />
+    <Content Include="Content\js\layout\css\images\accordion_arrows.png" />
+    <Content Include="Content\js\layout\css\images\blank.gif" />
+    <Content Include="Content\js\layout\css\images\calendar_arrows.png" />
+    <Content Include="Content\js\layout\css\images\combo_arrow.png" />
+    <Content Include="Content\js\layout\css\images\datagrid_icons.png" />
+    <Content Include="Content\js\layout\css\images\datebox_arrow.png" />
+    <Content Include="Content\js\layout\css\images\layout_arrows.png" />
+    <Content Include="Content\js\layout\css\images\linkbutton_bg.png" />
+    <Content Include="Content\js\layout\css\images\loading.gif" />
+    <Content Include="Content\js\layout\css\images\menu_arrows.png" />
+    <Content Include="Content\js\layout\css\images\messager_icons.png" />
+    <Content Include="Content\js\layout\css\images\pagination_icons.png" />
+    <Content Include="Content\js\layout\css\images\panel_tools.png" />
+    <Content Include="Content\js\layout\css\images\searchbox_button.png" />
+    <Content Include="Content\js\layout\css\images\slider_handle.png" />
+    <Content Include="Content\js\layout\css\images\spinner_arrows.png" />
+    <Content Include="Content\js\layout\css\images\tabs_icons.png" />
+    <Content Include="Content\js\layout\css\images\tree_icons.png" />
+    <Content Include="Content\js\layout\css\images\validatebox_arrows.png" />
+    <Content Include="Content\js\layout\css\images\validatebox_warning.png" />
+    <Content Include="Content\js\layout\jquery.easyui.min.js" />
+    <Content Include="Content\js\modal.js" />
+    <Content Include="Content\js\selector.js" />
+    <Content Include="Content\js\showModalDialog.js" />
+    <Content Include="Content\js\tab.js" />
+    <Content Include="Content\js\tableautocompute.js" />
+    <Content Include="Content\js\uploadify\cancel.png" />
+    <Content Include="Content\js\uploadify\jquery.uploadify.js" />
+    <Content Include="Content\js\uploadify\jquery.uploadify.min.js" />
+    <Content Include="Content\js\uploadify\uploadify-cancel.png" />
+    <Content Include="Content\js\uploadify\uploadify.css" />
+    <Content Include="Content\js\uploadify\uploadify.swf" />
+    <Content Include="Content\js\Validator\jquery.validation.js" />
+    <Content Include="Content\js\widget\Table.js" />
+    <Content Include="Content\js\xheditor-1.1.14-zh-cn.min.js" />
+    <Content Include="Content\js\xheditor-1.2.2.min.js" />
+    <Content Include="Content\js\xheditor_emot\default\angry.gif" />
+    <Content Include="Content\js\xheditor_emot\default\awkward.gif" />
+    <Content Include="Content\js\xheditor_emot\default\bye.gif" />
+    <Content Include="Content\js\xheditor_emot\default\config.txt" />
+    <Content Include="Content\js\xheditor_emot\default\crazy.gif" />
+    <Content Include="Content\js\xheditor_emot\default\cry.gif" />
+    <Content Include="Content\js\xheditor_emot\default\curse.gif" />
+    <Content Include="Content\js\xheditor_emot\default\cute.gif" />
+    <Content Include="Content\js\xheditor_emot\default\despise.gif" />
+    <Content Include="Content\js\xheditor_emot\default\doubt.gif" />
+    <Content Include="Content\js\xheditor_emot\default\envy.gif" />
+    <Content Include="Content\js\xheditor_emot\default\fastcry.gif" />
+    <Content Include="Content\js\xheditor_emot\default\knock.gif" />
+    <Content Include="Content\js\xheditor_emot\default\laugh.gif" />
+    <Content Include="Content\js\xheditor_emot\default\mad.gif" />
+    <Content Include="Content\js\xheditor_emot\default\ohmy.gif" />
+    <Content Include="Content\js\xheditor_emot\default\panic.gif" />
+    <Content Include="Content\js\xheditor_emot\default\proud.gif" />
+    <Content Include="Content\js\xheditor_emot\default\quiet.gif" />
+    <Content Include="Content\js\xheditor_emot\default\sad.gif" />
+    <Content Include="Content\js\xheditor_emot\default\shutup.gif" />
+    <Content Include="Content\js\xheditor_emot\default\shy.gif" />
+    <Content Include="Content\js\xheditor_emot\default\sleep.gif" />
+    <Content Include="Content\js\xheditor_emot\default\smile.gif" />
+    <Content Include="Content\js\xheditor_emot\default\struggle.gif" />
+    <Content Include="Content\js\xheditor_emot\default\titter.gif" />
+    <Content Include="Content\js\xheditor_emot\default\tongue.gif" />
+    <Content Include="Content\js\xheditor_emot\default\wail.gif" />
+    <Content Include="Content\js\xheditor_emot\default\wronged.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\alien.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\angel.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\angry.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\bandit.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\biglaugh.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\blink.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\blush.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\config.txt" />
+    <Content Include="Content\js\xheditor_emot\ipb\cool.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\cry.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\depres.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\devil.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\glare.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\heart.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\joyful.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\kiss.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\laugh.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\magician.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\ninja.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\pinch.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\police.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\sad.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\sick.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\sideways.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\sleep.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\smile.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\surprised.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\tongue.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\unsure.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\w00t.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\whistling.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\wondering.gif" />
+    <Content Include="Content\js\xheditor_emot\ipb\wub.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\1.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\10.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\11.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\12.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\13.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\14.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\15.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\16.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\17.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\18.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\19.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\2.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\20.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\21.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\22.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\23.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\24.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\25.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\26.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\27.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\28.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\29.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\3.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\30.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\31.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\32.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\33.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\34.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\35.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\36.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\37.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\38.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\39.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\4.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\40.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\5.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\6.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\7.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\8.gif" />
+    <Content Include="Content\js\xheditor_emot\msn\9.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\angry.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\bad.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\blush.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\brokenheart.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\bye.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\coffee.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\config.txt" />
+    <Content Include="Content\js\xheditor_emot\pidgin\cool.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\cry.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\curse.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\cute.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\devil.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\envy.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\gift.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\good.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\kiss.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\laugh.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\love.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\music.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\question.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\rose.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\sad.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\shocked.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\shout.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\sick.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\sleepy.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\smile.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\soccer.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\sweat.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\tired.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\tongue.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\victory.gif" />
+    <Content Include="Content\js\xheditor_emot\pidgin\wink.gif" />
+    <Content Include="Content\js\xheditor_lang\en.js" />
+    <Content Include="Content\js\xheditor_lang\zh-cn.js" />
+    <Content Include="Content\js\xheditor_lang\zh-tw.js" />
+    <Content Include="Content\js\xheditor_plugins\html2markdown.js" />
+    <Content Include="Content\js\xheditor_plugins\htmldomparser.js" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\img\add.gif" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\img\bg1.gif" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\img\bg2.gif" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\img\btnbg.gif" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\img\btnbgr.gif" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\img\clear.gif" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\img\progressbg.gif" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\img\start.gif" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\multiupload.css" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\multiupload.html" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\multiupload.js" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\swfupload\swfupload.js" />
+    <Content Include="Content\js\xheditor_plugins\multiupload\swfupload\swfupload.swf" />
+    <Content Include="Content\js\xheditor_plugins\showdown.js" />
+    <Content Include="Content\js\xheditor_plugins\ubb.js" />
+    <Content Include="Content\js\xheditor_plugins\ubb.min.js" />
+    <Content Include="Content\js\xheditor_skin\blank.gif" />
+    <Content Include="Content\js\xheditor_skin\default\iframe.css" />
+    <Content Include="Content\js\xheditor_skin\default\img\anchor.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\close.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\flash.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\icons.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\loading.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\progress.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\progressbg.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\tag-address.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\tag-div.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\tag-h1.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\tag-h2.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\tag-h3.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\tag-h4.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\tag-h5.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\tag-h6.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\tag-p.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\tag-pre.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\waiting.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\wmp.gif" />
+    <Content Include="Content\js\xheditor_skin\default\img\wordimg.gif" />
+    <Content Include="Content\js\xheditor_skin\default\ui.css" />
+    <Content Include="Content\js\xheditor_skin\nostyle\iframe.css" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\anchor.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\close.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\flash.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\icons.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\loading.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\progress.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\progressbg.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\tag-address.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\tag-div.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\tag-h1.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\tag-h2.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\tag-h3.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\tag-h4.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\tag-h5.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\tag-h6.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\tag-p.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\tag-pre.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\waiting.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\wmp.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\img\wordimg.gif" />
+    <Content Include="Content\js\xheditor_skin\nostyle\ui.css" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\iframe.css" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\anchor.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\buttonbg.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\close.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\flash.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\icons.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\loading.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\progress.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\progressbg.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\tag-address.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\tag-div.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\tag-h1.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\tag-h2.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\tag-h3.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\tag-h4.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\tag-h5.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\tag-h6.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\tag-p.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\tag-pre.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\waiting.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\wmp.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\img\wordimg.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007blue\ui.css" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\iframe.css" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\anchor.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\buttonbg.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\close.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\flash.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\icons.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\loading.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\progress.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\progressbg.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\tag-address.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\tag-div.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\tag-h1.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\tag-h2.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\tag-h3.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\tag-h4.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\tag-h5.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\tag-h6.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\tag-p.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\tag-pre.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\waiting.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\wmp.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\img\wordimg.gif" />
+    <Content Include="Content\js\xheditor_skin\o2007silver\ui.css" />
+    <Content Include="Content\js\xheditor_skin\vista\iframe.css" />
+    <Content Include="Content\js\xheditor_skin\vista\img\anchor.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\buttonbg.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\close.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\flash.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\icons.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\loading.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\progress.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\progressbg.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\tag-address.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\tag-div.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\tag-h1.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\tag-h2.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\tag-h3.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\tag-h4.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\tag-h5.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\tag-h6.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\tag-p.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\tag-pre.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\titlebg.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\waiting.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\wmp.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\img\wordimg.gif" />
+    <Content Include="Content\js\xheditor_skin\vista\ui.css" />
+    <Content Include="Content\js\zTree_v3\css\zTreeStyle\img\line_conn.gif" />
+    <Content Include="Content\js\zTree_v3\css\zTreeStyle\img\loading.gif" />
+    <Content Include="Content\js\zTree_v3\css\zTreeStyle\img\zTreeStandard.gif" />
+    <Content Include="Content\js\zTree_v3\css\zTreeStyle\img\zTreeStandard.png" />
+    <Content Include="Content\js\zTree_v3\css\zTreeStyle\zTreeStyle.css" />
+    <Content Include="Content\js\zTree_v3\js\jquery.ztree.all-3.5.min.js" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\default\default.css" />
+    <Content Include="Content\themes\default\images\btn-add-d.png" />
+    <Content Include="Content\themes\default\images\btn-add.png" />
+    <Content Include="Content\themes\default\images\btn-copy-d.png" />
+    <Content Include="Content\themes\default\images\btn-copy.png" />
+    <Content Include="Content\themes\default\images\btn-del-b.png" />
+    <Content Include="Content\themes\default\images\btn-del-d.png" />
+    <Content Include="Content\themes\default\images\btn-del.png" />
+    <Content Include="Content\themes\default\images\btn-download-d.png" />
+    <Content Include="Content\themes\default\images\btn-download.png" />
+    <Content Include="Content\themes\default\images\btn-editor-d.png" />
+    <Content Include="Content\themes\default\images\btn-editor.png" />
+    <Content Include="Content\themes\default\images\btn-next.png" />
+    <Content Include="Content\themes\default\images\btn-pdf-d.png" />
+    <Content Include="Content\themes\default\images\btn-pdf.png" />
+    <Content Include="Content\themes\default\images\btn-pre.png" />
+    <Content Include="Content\themes\default\images\btn-print-d.png" />
+    <Content Include="Content\themes\default\images\btn-print.png" />
+    <Content Include="Content\themes\default\images\btn-search-d.png" />
+    <Content Include="Content\themes\default\images\btn-search.png" />
+    <Content Include="Content\themes\default\images\btn-value.png" />
+    <Content Include="Content\themes\default\images\down-arrow.png" />
+    <Content Include="Content\themes\default\images\error.png" />
+    <Content Include="Content\themes\default\images\forbid.png" />
+    <Content Include="Content\themes\default\images\icon-bg-hov.png" />
+    <Content Include="Content\themes\default\images\icon-bg.png" />
+    <Content Include="Content\themes\default\images\icon-bq1.png" />
+    <Content Include="Content\themes\default\images\icon-bq2.png" />
+    <Content Include="Content\themes\default\images\icon-bq3.png" />
+    <Content Include="Content\themes\default\images\icon-close.png" />
+    <Content Include="Content\themes\default\images\icon-comp-hov.png" />
+    <Content Include="Content\themes\default\images\icon-comp.png" />
+    <Content Include="Content\themes\default\images\icon-date.png" />
+    <Content Include="Content\themes\default\images\icon-down.png" />
+    <Content Include="Content\themes\default\images\icon-dw-hov.png" />
+    <Content Include="Content\themes\default\images\icon-dw.png" />
+    <Content Include="Content\themes\default\images\icon-email.png" />
+    <Content Include="Content\themes\default\images\icon-fd.png" />
+    <Content Include="Content\themes\default\images\icon-fold-hov.png" />
+    <Content Include="Content\themes\default\images\icon-fold.png" />
+    <Content Include="Content\themes\default\images\icon-gg.png" />
+    <Content Include="Content\themes\default\images\icon-gt.png" />
+    <Content Include="Content\themes\default\images\icon-help.png" />
+    <Content Include="Content\themes\default\images\icon-hg.png" />
+    <Content Include="Content\themes\default\images\icon-home.png" />
+    <Content Include="Content\themes\default\images\icon-info.png" />
+    <Content Include="Content\themes\default\images\icon-login.png" />
+    <Content Include="Content\themes\default\images\icon-lv.png" />
+    <Content Include="Content\themes\default\images\icon-mei.png" />
+    <Content Include="Content\themes\default\images\icon-menu.png" />
+    <Content Include="Content\themes\default\images\icon-mh.png" />
+    <Content Include="Content\themes\default\images\icon-notice.png" />
+    <Content Include="Content\themes\default\images\icon-out.png" />
+    <Content Include="Content\themes\default\images\icon-pb.png" />
+    <Content Include="Content\themes\default\images\icon-point.png" />
+    <Content Include="Content\themes\default\images\icon-point1.png" />
+    <Content Include="Content\themes\default\images\icon-pro1-big.png" />
+    <Content Include="Content\themes\default\images\icon-pro1.png" />
+    <Content Include="Content\themes\default\images\icon-pro2-big.png" />
+    <Content Include="Content\themes\default\images\icon-pro2.png" />
+    <Content Include="Content\themes\default\images\icon-pro3-big.png" />
+    <Content Include="Content\themes\default\images\icon-pro3.png" />
+    <Content Include="Content\themes\default\images\icon-pro4-big.png" />
+    <Content Include="Content\themes\default\images\icon-pro4.png" />
+    <Content Include="Content\themes\default\images\icon-question.png" />
+    <Content Include="Content\themes\default\images\icon-qy-hov.png" />
+    <Content Include="Content\themes\default\images\icon-qy.png" />
+    <Content Include="Content\themes\default\images\icon-sn.png" />
+    <Content Include="Content\themes\default\images\icon-sr-hov.png" />
+    <Content Include="Content\themes\default\images\icon-sr.png" />
+    <Content Include="Content\themes\default\images\icon-step1.png" />
+    <Content Include="Content\themes\default\images\icon-step2.png" />
+    <Content Include="Content\themes\default\images\icon-step3.png" />
+    <Content Include="Content\themes\default\images\icon-step4.png" />
+    <Content Include="Content\themes\default\images\icon-success.png" />
+    <Content Include="Content\themes\default\images\icon-tb-hov.png" />
+    <Content Include="Content\themes\default\images\icon-tb.png" />
+    <Content Include="Content\themes\default\images\icon-tc.png" />
+    <Content Include="Content\themes\default\images\icon-time.png" />
+    <Content Include="Content\themes\default\images\icon-tip.png" />
+    <Content Include="Content\themes\default\images\icon-title.png" />
+    <Content Include="Content\themes\default\images\icon-unfold-hov.png" />
+    <Content Include="Content\themes\default\images\icon-unfold.png" />
+    <Content Include="Content\themes\default\images\icon-user.png" />
+    <Content Include="Content\themes\default\images\icon-wx.png" />
+    <Content Include="Content\themes\default\images\icon1.png" />
+    <Content Include="Content\themes\default\images\icon2.png" />
+    <Content Include="Content\themes\default\images\info.png" />
+    <Content Include="Content\themes\default\images\input-icon-error.png" />
+    <Content Include="Content\themes\default\images\input-icon-success.png" />
+    <Content Include="Content\themes\default\images\input-icon-tip.png" />
+    <Content Include="Content\themes\default\images\input-icon-worn.png" />
+    <Content Include="Content\themes\default\images\input-point-error.png" />
+    <Content Include="Content\themes\default\images\input-point-success.png" />
+    <Content Include="Content\themes\default\images\input-point-tip.png" />
+    <Content Include="Content\themes\default\images\input-point-worn.png" />
+    <Content Include="Content\themes\default\images\login-bg.png" />
+    <Content Include="Content\themes\default\images\login-bg1.png" />
+    <Content Include="Content\themes\default\images\login-k-bg.png" />
+    <Content Include="Content\themes\default\images\logo-login.png" />
+    <Content Include="Content\themes\default\images\logo.png" />
+    <Content Include="Content\themes\default\images\more-bg.png" />
+    <Content Include="Content\themes\default\images\nav-close.png" />
+    <Content Include="Content\themes\default\images\pic1.jpg" />
+    <Content Include="Content\themes\default\images\pic2.jpg" />
+    <Content Include="Content\themes\default\images\pic2.png" />
+    <Content Include="Content\themes\default\images\pic3.jpg" />
+    <Content Include="Content\themes\default\images\process-bg.jpg" />
+    <Content Include="Content\themes\default\images\success.png" />
+    <Content Include="Content\themes\default\images\toggle-lt.gif" />
+    <Content Include="Content\themes\default\images\toggle-rt.gif" />
+    <Content Include="Content\themes\default\images\warn.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="App_Browsers\IE10Fix.browser" />
+    <Content Include="App_Browsers\IE11fix.browser" />
+    <Content Include="App_Config\1.xls" />
+    <Content Include="App_Config\Environment.config" />
+    <Content Include="App_Config\log4net.config" />
+    <Content Include="App_Config\SqlCommands\Business.config" />
+    <Content Include="App_Config\SqlCommands\PageDesign.config" />
+    <Content Include="App_Config\SqlCommands\Security.config" />
+    <Content Include="App_Config\SqlCommands\System.config" />
+    <Content Include="App_Config\Unity\Security.config" />
+    <Content Include="App_Config\Web.config" />
+    <Content Include="Content\icons\iconfont.eot" />
+    <Content Include="Content\icons\iconfont.ttf" />
+    <Content Include="Content\icons\iconfont.woff" />
+    <Content Include="Content\index2\icons\iconfont.eot" />
+    <Content Include="Content\index2\icons\iconfont.ttf" />
+    <Content Include="Content\index2\icons\iconfont.woff" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Default.cshtml" />
+    <Content Include="Views\Entity\AutoList.cshtml" />
+    <Content Include="Views\Entity\Edit.cshtml" />
+    <Content Include="Views\Entity\List.cshtml" />
+    <Content Include="Views\Entity\TreeList.cshtml" />
+    <Content Include="Views\Permission\List.cshtml" />
+    <Content Include="Views\Permission\NgList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Config\Env\" />
+    <Folder Include="App_Config\ExcelTemplate\" />
+    <Folder Include="Content\themes\blue\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SummerFresh.Basic\SummerFresh.Basic.csproj">
+      <Project>{2d3e8be2-c86d-4dd1-a00b-10ac11639c83}</Project>
+      <Name>SummerFresh.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Business\SummerFresh.Business.csproj">
+      <Project>{036c62a7-8562-4dd9-8fb0-ab208e457b8a}</Project>
+      <Name>SummerFresh.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Controls\SummerFresh.Controls.csproj">
+      <Project>{07b7b38d-95b9-4526-bb03-a0dde43299d7}</Project>
+      <Name>SummerFresh.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Data\SummerFresh.Data.csproj">
+      <Project>{50a54473-c485-4cb0-9869-651e5ab2c43b}</Project>
+      <Name>SummerFresh.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Environment\SummerFresh.Environment.csproj">
+      <Project>{e2405e71-a00b-44c8-9278-70c23e45b719}</Project>
+      <Name>SummerFresh.Environment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Security\SummerFresh.Security.csproj">
+      <Project>{e68b8bc3-37e0-444a-bf10-7c832cd40862}</Project>
+      <Name>SummerFresh.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.SSOKit\SummerFresh.SSOKit.csproj">
+      <Project>{6158d50c-5d92-44da-b35b-6bfc5100c97f}</Project>
+      <Name>SummerFresh.SSOKit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Util\SummerFresh.Util.csproj">
+      <Project>{a83775dc-c5ad-45e7-9c28-a721338668a3}</Project>
+      <Name>SummerFresh.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>12942</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:12942/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

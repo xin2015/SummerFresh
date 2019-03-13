@@ -1,0 +1,125 @@
+﻿@model SummerFresh.SSO.Controllers.ListModel
+@{Layout = null;}
+@using SummerFresh.Business
+@using SummerFresh.Controls
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="~/content/css/reset.css" rel="stylesheet" />
+    <link href="~/content/css/common.css" rel="stylesheet" />
+    <link href="~/content/js/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+    <link href="~/content/themes/default/default.css" rel="stylesheet" />
+    <style>
+        html, body {
+            overflow: hidden;
+        }
+    </style>
+    <script src="~/content/js/jquery-1.9.1.min.js"></script>
+    <script src="~/content/js/showModalDialog.js"></script>
+    <script src="~/content/js/jquery.blockui.min.js"></script>
+    <script src="~/content/js/datepicker/WdatePicker.js"></script>
+    <script src="~/content/js/common.js"></script>
+    <script>
+        var tableId = '@Model.Table.ID';
+        $(function () {
+            summerFresh.widget.init();
+            var listHeight = $(window).height();
+            $("[autoHeight]").siblings().each(function () {
+                listHeight -= ($(this).outerHeight() + 10);
+            });
+            $("[autoHeight]").css("height", listHeight).css("overflow-y", "scroll");
+        });
+
+        function exportToExcel() {
+            var setting = summerFresh.widget.setting(tableId);
+            setting.id = tableId;
+
+            var urlParameter = summerFresh.getQueryString();
+            var ifExistInSetting = false;
+            for (var key in urlParameter) {
+                if (key == "") continue;
+                ifExistInSetting = false;
+                for (var sKey in setting) {
+                    if (sKey.toUpperCase() == key.toUpperCase()) {
+                        ifExistInSetting = true;
+                        break;
+                    }
+                }
+                if (!ifExistInSetting) {
+                    setting[key] = urlParameter[key];
+                }
+            }
+
+            var url = summerFresh.buildUrl("/Entity/ExportToExcel", setting);
+            window.open(url);
+        }
+
+        function showAddComponent() {
+            var param = summerFresh.getQueryString();
+            if (param && !param.baseType) {
+                param.baseType = "SummerFresh.Controls.PageControlBase";
+            }
+            param.FormViewMode = "Insert";
+            var url = summerFresh.buildUrl('/PageDesigner/ComponentList', param, false);
+            $.showModalDialog({
+                url: url,
+                title: '组件编辑器',
+                overlayClose: true,
+                onClose: function (res) {
+                    summerFresh.widget.refresh(tableId);
+                },
+                width: 1100,
+                height: 650
+            });
+        }
+
+        function getFromDs() {
+            var url = summerFresh.getQueryString();
+            var tableId = $("[widget='Table']").attr("id");
+            summerFresh.dataService("/PageDesigner/GetTableColumn/" + url.parentId, { pageId: url.pageId }, function (res) {
+                if (res) {
+                    summerFresh.widget.refresh(tableId);
+                }
+            });
+
+        }
+
+        function mergeColumn() {
+            var tableId = $("[widget='Table']").attr("id");
+            var ids = [];
+            var key = "";
+            $("#" + tableId).find(":checked").not("[checkAll]").each(function () {
+                var tr = $(this).closest("tr");
+                if (key == "") {
+                    key = tr.attr("data-key");
+                }
+                eval("var data = " + tr.attr("data"));
+                var id = data[key];
+                if (id && id != '') {
+                    ids.push(id);
+                }
+            });
+            if (ids.length <= 1) {
+                alert("请至少选择两列");
+                return;
+            }
+            summerFresh.dataService("/PageDesigner/MergeTableColumn", { ids: ids.join(',') }, function (res) {
+                if (res) {
+                    summerFresh.widget.refresh(tableId);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="main-container">
+        @Html.CustomControl(Model.SearchConfig)
+        @Html.CustomControl(Model.ToolbarConfig)
+        @Html.CustomControl(Model.Table)
+    </div>
+</body>
+</html>

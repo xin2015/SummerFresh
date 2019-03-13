@@ -1,0 +1,379 @@
+﻿/*--------------- 7天天气控件 ----------------*/
+.weather-7d {
+    width: 100%;
+}
+
+.forweather-box {
+    border: 1px solid #d3d3d3;
+    border-radius: 3px;
+}
+
+.w-title {
+    margin: 0;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 14px;
+    background: #e3e3e3;
+}
+
+.w-table {
+    width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 14px;
+}
+
+.w-info {
+    border-left: 1px dashed #d3d3d3;
+    margin: 10px 0;
+}
+
+.first-d {
+    border: none;
+}
+
+.box-border {
+    border: 4px solid #fff;
+}
+
+.p-noborder {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.box-border:hover {
+    /*border-color: #70b0d6;*/
+}
+
+.w-table td {
+    padding: 0;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: top;
+    width: 13%;
+    background: #fff;
+}
+
+    .w-table td p {
+        margin: 15px 0;
+    }
+
+[class^="wicon-"],
+[class*=" wicon-"] {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-top: 1px;
+    *margin-right: .3em;
+    line-height: 40px;
+    vertical-align: text-top;
+    background-image: url("../images/weather.jpg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+.tem {
+    color: #076eab;
+    font-size: 16px;
+}
+/* 白天39个天气图标 */
+/* 白天 */
+.wicon-1d {
+    background-position: 0 0;
+}
+
+.wicon-2d {
+    background-position: -80px 0;
+}
+
+.wicon-3d {
+    background-position: -160px 0;
+}
+
+.wicon-4d {
+    background-position: -240px 0;
+}
+
+.wicon-5d {
+    background-position: -320px 0;
+}
+
+.wicon-6d {
+    background-position: -400px 0;
+}
+
+.wicon-7d {
+    background-position: -480px 0;
+}
+
+.wicon-8d {
+    background-position: -560px 0;
+}
+
+.wicon-9d {
+    background-position: -640px 0;
+}
+/* 第一行结束 */
+
+.wicon-10d {
+    background-position: 0 -80px;
+}
+
+.wicon-11d {
+    background-position: -80px -80px;
+}
+
+.wicon-12d {
+    background-position: -160px -80px;
+}
+
+.wicon-13d {
+    background-position: -240px -80px;
+}
+
+.wicon-14d {
+    background-position: -320px -80px;
+}
+
+.wicon-15d {
+    background-position: -400px -80px;
+}
+
+.wicon-16d {
+    background-position: -480px -80px;
+}
+
+.wicon-17d {
+    background-position: -560px -80px;
+}
+
+.wicon-18d {
+    background-position: -640px -80px;
+}
+/* 第二行结束 */
+
+.wicon-19d {
+    background-position: 0 -160px;
+}
+
+.wicon-20d {
+    background-position: -80px -160px;
+}
+
+.wicon-21d {
+    background-position: -160px -160px;
+}
+
+.wicon-22d {
+    background-position: -240px -160px;
+}
+
+.wicon-23d {
+    background-position: -320px -160px;
+}
+
+.wicon-24d {
+    background-position: -400px -160px;
+}
+
+.wicon-25d {
+    background-position: -480px -160px;
+}
+
+.wicon-26d {
+    background-position: -560px -160px;
+}
+
+.wicon-27d {
+    background-position: -640px -160px;
+}
+/* 第三行结束 */
+
+.wicon-28d {
+    background-position: 0 -240px;
+}
+
+.wicon-29d {
+    background-position: -80px -240px;
+}
+
+.wicon-30d {
+    background-position: -160px -240px;
+}
+
+.wicon-31d {
+    background-position: -240px -240px;
+}
+
+.wicon-32d {
+    background-position: -320px -240px;
+}
+
+.wicon-33d {
+    background-position: -400px -240px;
+}
+
+.wicon-34d {
+    background-position: -480px -240px;
+}
+
+.wicon-35d {
+    background-position: -560px -240px;
+}
+
+.wicon-nod {
+    background-position: -640px -240px;
+}
+
+/* 第四行结束 */
+
+/* 夜晚 */
+.wicon-1n {
+    background-position: 0 -320px;
+}
+
+.wicon-2n {
+    background-position: -80px -320px;
+}
+
+.wicon-3n {
+    background-position: -160px -320px;
+}
+
+.wicon-4n {
+    background-position: -240px -320px;
+}
+
+.wicon-5n {
+    background-position: -320px -320px;
+}
+
+.wicon-6n {
+    background-position: -400px -320px;
+}
+
+.wicon-7n {
+    background-position: -480px -320px;
+}
+
+.wicon-8n {
+    background-position: -560px -320px;
+}
+
+.wicon-9n {
+    background-position: -640px -320px;
+}
+/* 第一行结束 */
+
+.wicon-10n {
+    background-position: 0 -400px;
+}
+
+.wicon-11n {
+    background-position: -80px -400px;
+}
+
+.wicon-12n {
+    background-position: -160px -400px;
+}
+
+.wicon-13n {
+    background-position: -240px -400px;
+}
+
+.wicon-14n {
+    background-position: -320px -400px;
+}
+
+.wicon-15n {
+    background-position: -400px -400px;
+}
+
+.wicon-16n {
+    background-position: -480px -400px;
+}
+
+.wicon-17n {
+    background-position: -560px -400px;
+}
+
+.wicon-18n {
+    background-position: -640px -400px;
+}
+/* 第二行结束 */
+
+.wicon-19n {
+    background-position: 0 -480px;
+}
+
+.wicon-20n {
+    background-position: -80px -480px;
+}
+
+.wicon-21n {
+    background-position: -160px -480px;
+}
+
+.wicon-22n {
+    background-position: -240px -480px;
+}
+
+.wicon-23n {
+    background-position: -320px -480px;
+}
+
+.wicon-24n {
+    background-position: -400px -480px;
+}
+
+.wicon-25n {
+    background-position: -480px -480px;
+}
+
+.wicon-26n {
+    background-position: -560px -480px;
+}
+
+.wicon-27n {
+    background-position: -640px -480px;
+}
+/* 第三行结束 */
+
+.wicon-28n {
+    background-position: 0 -560px;
+}
+
+.wicon-29n {
+    background-position: -80px -560px;
+}
+
+.wicon-30n {
+    background-position: -160px -560px;
+}
+
+.wicon-31n {
+    background-position: -240px -560px;
+}
+
+.wicon-32n {
+    background-position: -320px -560px;
+}
+
+.wicon-33n {
+    background-position: -400px -560px;
+}
+
+.wicon-34n {
+    background-position: -480px -560px;
+}
+
+.wicon-35n {
+    background-position: -560px -560px;
+}
+
+.wicon-non {
+    background-position: -640px -560px;
+}
+/* 第四行结束 */

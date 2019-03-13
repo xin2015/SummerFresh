@@ -1,0 +1,35 @@
+﻿@model SummerFresh.SSO.Controllers.ListModel
+@{
+    Layout = null;
+}
+@using SummerFresh.Business
+@using SummerFresh.Controls
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="~/content/css/reset.css" rel="stylesheet" />
+    <link href="~/content/css/common.css" rel="stylesheet" />
+    @*ztree*@
+    <link href="~/content/js/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+    <link href="~/content/themes/default/default.css" rel="stylesheet" />
+    <style>
+        html, body {
+            overflow: hidden;
+        }
+    </style>
+    <script src="~/content/js/jquery-1.9.1.min.js"></script>
+    @*滚动条*@
+</head>
+<body>
+    <div class="main-container">
+        <div class="data-list">
+            @Html.CustomControl(Model.Table)
+        </div>
+        
+    </div>
+</body>
+</html>

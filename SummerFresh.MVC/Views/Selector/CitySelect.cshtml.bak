@@ -1,0 +1,176 @@
+﻿@model SummerFresh.Controls.SelectorConfig
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="ie-stand" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    @*初始css*@
+    <link href="~/content/css/reset.css" rel="stylesheet" />
+    <link href="~/content/css/common.css" rel="stylesheet" />
+    @*icon.css*@
+    <link href="~/content/css/icon.css" rel="stylesheet" />
+    @*默认皮肤css*@
+    <link href="~/content/themes/default/default.css" rel="stylesheet" />
+
+    <script src="~/content/js/jquery-1.9.1.min.js"></script>
+    @*tab面板*@
+    <script src="~/content/js/tab.js"></script>
+
+</head>
+<body>
+    <div class="main-container">
+        <div class="city-panel">
+            <div class="c-panel-heading">
+                <h3>城市列表</h3>
+                <button type="button" class="close" data-dismiss="alert" title="关闭">×</button>
+                <div class="clear"></div>
+            </div>
+
+            <div class="c-panel-body">
+                <p class="q-select">
+                    <strong class="margin5-r">全国</strong>
+                    <a href="###">北京</a>
+                    <a href="###">上海</a>
+                    <a href="###">广州</a>
+                    <a href="###">深圳</a>
+                    <a href="###">成都</a>
+                    <a href="###">天津</a>
+                    <a href="###">南京</a>
+                    <a href="###">杭州</a>
+                    <a href="###">武汉</a>
+                    <a href="###">重庆</a>
+                </p>
+                <div class="margin10-t">
+                    <input type="text" class="city-search-input margin0" placeholder="输入城市名" />
+                    <input type="button" value="搜索" class="btn btn-small">
+                </div>
+                <p class="pin-select margin10-t">
+                    <a>A</a>
+                    <a>F</a>
+                    <a>G</a>
+                    <a>H</a>
+                    <a>J</a>
+                    <a>L</a>
+                    <a>N</a>
+                    <a>Q</a>
+                    <a>S</a>
+                    <a>X</a>
+                    <a>Y</a>
+                    <a>Z</a>
+                    <a>其他</a>
+                </p>
+
+                <div class="city-box">
+                    <div class="margin5-b pad10-t">
+                        <p class="pinyin">A</p>
+                        <p class="province">安徽:</p>
+                        <p class="city">
+                            <a>合肥</a>
+                            <a>安庆</a>
+                            <a>蚌埠</a>
+                            <a>亳州</a>
+                            <a>巢湖</a>
+                            <a>池州</a>
+                            <a>滁州</a>
+                            <a>阜阳</a>
+                            <a>淮北</a>
+                            <a>淮南</a>
+                            <a>黄山</a>
+                            <a>六安</a>
+                            <a>马鞍山</a>
+                            <a>宿州</a>
+                            <a>铜陵</a>
+                            <a>芜湖</a>
+                            <a>宣城</a>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="margin5-b">
+                        <p class="pinyin">F</p>
+                        <p class="province">福建:</p>
+                        <p class="city">
+                            <a>合肥</a>
+                            <a>安庆</a>
+                            <a>蚌埠</a>
+                            <a>亳州</a>
+                            <a>巢湖</a>
+                            <a>池州</a>
+                            <a>滁州</a>
+                            <a>阜阳</a>
+                            <a>淮北</a>
+                            <a>淮南</a>
+                            <a>黄山</a>
+                            <a>六安</a>
+                            <a>马鞍山</a>
+                            <a>宿州</a>
+                            <a>铜陵</a>
+                            <a>芜湖</a>
+                            <a>宣城</a>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="margin5-b">
+                        <p class="pinyin">G</p>
+                        <p class="province">甘肃:</p>
+                        <p class="city">
+                            <a>合肥</a>
+                            <a>安庆</a>
+                            <a>蚌埠</a>
+                            <a>亳州</a>
+                            <a>巢湖</a>
+                            <a>池州</a>
+                            <a>滁州</a>
+                            <a>阜阳</a>
+                            <a>淮北</a>
+                            <a>淮南</a>
+                            <a>黄山</a>
+                            <a>六安</a>
+                            <a>马鞍山</a>
+                            <a>宿州</a>
+                            <a>铜陵</a>
+                            <a>芜湖</a>
+                            <a>宣城</a>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="margin5-b">
+                        <p class="pinyin">&nbsp;</p>
+                        <p class="province">广东:</p>
+                        <p class="city">
+                            <a>合肥</a>
+                            <a>安庆</a>
+                            <a>蚌埠</a>
+                            <a>亳州</a>
+                            <a>巢湖</a>
+                            <a>池州</a>
+                            <a>滁州</a>
+                            <a>阜阳</a>
+                            <a>淮北</a>
+                            <a>淮南</a>
+                            <a>黄山</a>
+                            <a>六安</a>
+                            <a>马鞍山</a>
+                            <a>宿州</a>
+                            <a>铜陵</a>
+                            <a>芜湖</a>
+                            <a>宣城</a>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

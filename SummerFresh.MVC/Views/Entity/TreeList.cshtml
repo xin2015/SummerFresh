@@ -1,0 +1,146 @@
+﻿@model SummerFresh.MVC.Controllers.TreeListModel
+@{Layout = null;}
+@using SummerFresh.Business
+@using SummerFresh.Controls
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="~/content/css/reset.css" rel="stylesheet" />
+    <link href="~/content/css/common.css" rel="stylesheet" />
+    <link href="~/content/css/icon.css" rel="stylesheet" />
+    <link href="~/content/js/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+    <link href="~/Content/js/layout/css/easyui.css" rel="stylesheet" />
+    <link href="~/content/themes/default/default.css" rel="stylesheet" />
+    <style>
+        html, body {
+            overflow: hidden;
+        }
+    </style>
+
+    <script src="~/Content/js/jquery-1.9.1.min.js"></script>
+
+    <script src="~/content/js/showModalDialog.js"></script>
+    <script src="~/content/js/jquery.blockui.min.js"></script>
+    <script src="~/content/js/datepicker/WdatePicker.js"></script>
+    <script src="~/Content/js/layout/jquery.easyui.min.js"></script>
+    <script src="~/Content/js/zTree_v3/js/jquery.ztree.all-3.5.min.js"></script>
+    <script src="~/content/js/common.js"></script>
+    <script>
+        var treeDataSource = '@Model.TreeDataSource';
+        var idParameterName = '@Model.IdParameterName';
+        var tableId = '@Model.Table.ID';
+        var searchbarId = '@Model.SearchConfig.ID';
+        function exportToExcel() {
+            var setting = summerFresh.widget.setting(tableId);
+            setting.id = tableId;
+
+            var urlParameter = summerFresh.getQueryString();
+            var ifExistInSetting = false;
+            for (var key in urlParameter) {
+                if (key == "") continue;
+                ifExistInSetting = false;
+                for (var sKey in setting) {
+                    if (sKey.toUpperCase() == key.toUpperCase()) {
+                        ifExistInSetting = true;
+                        break;
+                    }
+                }
+                if (!ifExistInSetting) {
+                    setting[key] = urlParameter[key];
+                }
+            }
+
+            var url = summerFresh.buildUrl("/Entity/ExportToExcel", setting);
+            window.open(url);
+        }
+    </script>
+
+</head>
+<body class="easyui-layout">
+    <div class="treeform-left" data-options="region:'west',split:true" title="树型菜单" style="width: 230px;">
+        <div class="tree-list">
+            <ul id="tree" class="ztree"></ul>
+        </div>
+    </div>
+    <div data-options="region:'center'" style="overflow:hidden;" class="main-container">
+        @Html.CustomControl(Model.SearchConfig)
+        @Html.CustomControl(Model.ToolbarConfig)
+        @Html.CustomControl(Model.Table)
+    </div>
+    <script type="text/javascript">
+        var tableName = "";
+        var setting = {
+            view: {
+                showLine: true,
+                selectedMulti: false,
+                dblClickExpand: false
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            callback: {
+                onClick: function (e, treeId, node) {
+                    var s = summerFresh.widget.setting(tableId);
+                    s[idParameterName] = node.id;
+                    s["TreeNodeText"] = node.name;
+                    tableName = node.name;
+                    summerFresh.widget.refresh(tableId);
+                }
+            }
+        };
+        $(document).ready(function () {
+            summerFresh.dataService(treeDataSource, {}, function (res) {
+                var treeObj = $.fn.zTree.init($("#tree"), setting, res);
+                //treeObj.expandAll(true);
+            }, "post", true);
+            summerFresh.widget.init();
+        });
+
+        function onChangedTableData()
+        {
+            summerFresh.dataService(treeDataSource, {}, function (res) {
+                var treeObj = $.fn.zTree.init($("#tree"), setting, res);
+            }, "post", true);
+        }
+
+        function showAddComponent() {
+            var param = summerFresh.getQueryString();
+            if (param && !param.baseType) {
+                param.baseType = "SummerFresh.Controls.PageControlBase";
+            }
+            param.FormViewMode = "Insert";
+            var url = summerFresh.buildUrl('/PageDesigner/ComponentList', param, false);
+            $.showModalDialog({
+                url: url,
+                title: '组件编辑器',
+                overlayClose: true,
+                onClose: function (res) {
+                    if (res != 'false') {
+                        refreshTable(tableId);
+                    }
+                },
+                width: 980,
+                height: 600
+            });
+        }
+
+        function generaetCRUD() {
+            if (tableName == "") {
+                alert("请先点选表");
+                return;
+            }
+            summerFresh.dataService("/CRUD/Create/" + tableName, {}, function (res) {
+                if (res) {
+                    summerFresh.showSuccess("添加成功", "提示");
+                }
+            }, "post", true);
+        }
+    </script>
+</body>
+</html>

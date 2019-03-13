@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E2405E71-A00B-44C8-9278-70C23E45B719}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SummerFresh.Environment</RootNamespace>
+    <AssemblyName>SummerFresh.Environment</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppSettingsProvider.cs" />
+    <Compile Include="Config\EnvironmentSection.cs" />
+    <Compile Include="Config\ExtensibleElement.cs" />
+    <Compile Include="Config\FactoryElement.cs" />
+    <Compile Include="Config\FactoryElementCollection.cs" />
+    <Compile Include="Config\ProviderElement.cs" />
+    <Compile Include="Config\ProviderElementCollection.cs" />
+    <Compile Include="Config\VariableElement.cs" />
+    <Compile Include="Config\VariableElementCollection.cs" />
+    <Compile Include="Env.cs" />
+    <Compile Include="EnvironmentContainer.cs" />
+    <Compile Include="EnvironmentFactory.cs" />
+    <Compile Include="EnvironmentParameters.cs" />
+    <Compile Include="EnvironmentParser.cs" />
+    <Compile Include="EnvironmentProvider.cs" />
+    <Compile Include="IEnvironmentContainer.cs" />
+    <Compile Include="IEnvironmentParser.cs" />
+    <Compile Include="IEnvironmentProvider.cs" />
+    <Compile Include="IEnvironmentVariable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Session\ISessionProvider.cs" />
+    <Compile Include="Session\ISessionState.cs" />
+    <Compile Include="Session\SessionProvider.cs" />
+    <Compile Include="Session\SessionState.cs" />
+    <Compile Include="Variable\ApplicationPathVariable.cs" />
+    <Compile Include="Variable\BaseVariable.cs" />
+    <Compile Include="Variable\DynamicVariable.cs" />
+    <Compile Include="Variable\GuidStringVariable.cs" />
+    <Compile Include="Variable\GuidVariable.cs" />
+    <Compile Include="Variable\IVariableFactory.cs" />
+    <Compile Include="Variable\SimpleVariable.cs" />
+    <Compile Include="Variable\VariableFactory.cs" />
+    <Compile Include="Web\AbstractHttpContextParameters.cs" />
+    <Compile Include="Web\FormParameters.cs" />
+    <Compile Include="Web\HttpContextParameters.cs" />
+    <Compile Include="Web\QueryStringParameters.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\EnvironmentConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SummerFresh.Basic\SummerFresh.Basic.csproj">
+      <Project>{2d3e8be2-c86d-4dd1-a00b-10ac11639c83}</Project>
+      <Name>SummerFresh.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Data\SummerFresh.Data.csproj">
+      <Project>{50a54473-c485-4cb0-9869-651e5ab2c43b}</Project>
+      <Name>SummerFresh.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerFresh.Util\SummerFresh.Util.csproj">
+      <Project>{a83775dc-c5ad-45e7-9c28-a721338668a3}</Project>
+      <Name>SummerFresh.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IpeChart.html" />
+    <Content Include="IpeThree.html" />
+    <Content Include="IpeTwo.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

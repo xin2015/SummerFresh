@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LayoutManagement</title>
+</head>
+<body>
+    <div id="tree" sqlId="user.list" widget="Tree">
+        
+    </div>
+</body>
+<script>
+    function initTree() {
+        var settings = {};
+        $fn.zTree.init(summerFresh.DataService("sqlid:sdlflsd"), settings);
+    }
+</script>
+</html>

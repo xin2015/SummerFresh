@@ -1,0 +1,13 @@
+2019-03-12 22:13:37,897 [18824] DEBUG SummerFresh.Util.ObjectHelper - Load 1 Unity Configuration Files in dir 'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\Unity'
+2019-03-12 22:13:37,906 [18824] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Basic
+2019-03-12 22:13:37,908 [18824] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Business
+2019-03-12 22:13:37,909 [18824] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Controls
+2019-03-12 22:13:37,910 [18824] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Data
+2019-03-12 22:13:37,910 [18824] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Environment
+2019-03-12 22:13:37,911 [18824] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.MVC
+2019-03-12 22:13:37,912 [18824] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Security
+2019-03-12 22:13:37,913 [18824] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.SSOKit
+2019-03-12 22:13:37,914 [18824] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Util
+2019-03-12 22:13:37,952 [18824] DEBUG SummerFresh.Util.ObjectHelper - Config Unity File : Security.config
+2019-03-12 22:13:37,984 [18824] DEBUG SummerFresh.Util.ObjectHelper - Load 5 Registered Objects by Unity Container
+2019-03-12 22:13:40,062 [18884] INFO  PageAccessLogger - ÓÃ»§£º£¬Url:/Home/Logon£¬Form£º£¬ºÄÊ±£º20

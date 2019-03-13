@@ -1,0 +1,1033 @@
+2019-03-01 21:07:39,839 [23248] DEBUG SummerFresh.Util.ObjectHelper - Load 1 Unity Configuration Files in dir 'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\Unity'
+2019-03-01 21:07:39,849 [23248] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Basic
+2019-03-01 21:07:39,850 [23248] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Business
+2019-03-01 21:07:39,851 [23248] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Controls
+2019-03-01 21:07:39,852 [23248] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Data
+2019-03-01 21:07:39,853 [23248] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Environment
+2019-03-01 21:07:39,854 [23248] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.MVC
+2019-03-01 21:07:39,856 [23248] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Security
+2019-03-01 21:07:39,857 [23248] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.SSOKit
+2019-03-01 21:07:39,858 [23248] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Util
+2019-03-01 21:07:39,892 [23248] DEBUG SummerFresh.Util.ObjectHelper - Config Unity File : Security.config
+2019-03-01 21:07:39,923 [23248] DEBUG SummerFresh.Util.ObjectHelper - Load 5 Registered Objects by Unity Container
+2019-03-01 21:07:41,830 [23260] INFO  PageAccessLogger - 用户：，Url:/Home/Logon，Form：，耗时：855
+2019-03-01 21:07:50,077 [23260] DEBUG SummerFresh.Data.DaoFactory - Found 1 Action Executors
+2019-03-01 21:07:50,090 [23260] DEBUG SummerFresh.Data.DaoFactory - Found Parameter Type : SummerFresh.Environment.EnvironmentParameters
+2019-03-01 21:07:50,091 [23260] DEBUG SummerFresh.Data.DaoFactory - Found Parameter Type : SummerFresh.Environment.HttpContextParameters
+2019-03-01 21:07:50,098 [23260] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\Business.config'
+2019-03-01 21:07:50,117 [23260] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\PageDesign.config'
+2019-03-01 21:07:50,121 [23260] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\PageDesign.mysql.config'
+2019-03-01 21:07:50,136 [23260] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\Security.config'
+2019-03-01 21:07:50,140 [23260] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\Security.mysql.config'
+2019-03-01 21:07:50,144 [23260] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\System.config'
+2019-03-01 21:07:50,150 [23260] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\System.mysql.config'
+2019-03-01 21:07:50,241 [23260] DEBUG SummerFresh.Data.Sql.SqlSource - calling GetManifestResourceNames in assembly 'Anonymously Hosted DynamicMethods Assembly' error
+System.NotSupportedException: 动态程序集中不支持已调用的成员。
+   在 System.Reflection.Emit.InternalAssemblyBuilder.GetManifestResourceNames()
+   在 SummerFresh.Data.Sql.SqlSource.LoadSqlsFromAssembly(Assembly assembly) 位置 D:\Projects\SummerFresh\SummerFresh.Data\Sql\SqlSource.cs:行号 324
+2019-03-01 21:07:50,400 [23260] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:50,401 [23260] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetUserLoginInfo'
+2019-03-01 21:07:50,413 [23260] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT TOP 1 Password FROM SYS_User u LEFT JOIN SYS_Department d ON u.DepartmentId=d.DepartmentId
+        WHERE LoginId = @LoginId_  
+        AND u.Status='Enabled'
+        AND d.Status='Enabled'
+2019-03-01 21:07:50,415 [23260] DEBUG SummerFresh.Data.GenericDao -   #Parameter : 'LoginId_' = 'liuhf'
+2019-03-01 21:07:50,529 [23260] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetUserLoginInfo' Used 126ms
+2019-03-01 21:07:50,532 [23260] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:50,549 [23260] INFO  LogOnLogger - 用户：liuhf,IP：::1
+2019-03-01 21:07:50,563 [23260] INFO  PageAccessLogger - 用户：，Url:/Home/Logon，Form：userName=liuhf
+password=111
+，耗时：522
+2019-03-01 21:07:50,577 [23248] DEBUG SummerFresh.Environment.SessionProvider - Create Session State For User : liuhf
+2019-03-01 21:07:50,580 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:50,582 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetUserByLoginId'
+2019-03-01 21:07:50,583 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+      u.*,d.DepartmentCode,d.DepartmentName
+      FROM SYS_User u 
+      INNER JOIN SYS_Department d 
+      ON u.DepartmentId=d.DepartmentId 
+      WHERE u.LoginId = @LoginId_
+2019-03-01 21:07:50,584 [23248] DEBUG SummerFresh.Data.GenericDao -   #Parameter : 'LoginId_' = 'liuhf'
+2019-03-01 21:07:50,612 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetUserByLoginId' Used 29ms
+2019-03-01 21:07:50,614 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:50,619 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:50,621 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetAllUserRoles'
+2019-03-01 21:07:50,623 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT ur.RoleId AS Id, rt.RoleTypeName as Name
+        FROM   SYS_UserRole AS ur 
+        INNER JOIN SYS_Role r on r.RoleId=ur.RoleId
+	      INNER JOIN SYS_RoleType rt ON r.RoleTypeId = rt.RoleTypeId
+        WHERE ur.UserId = @UserId_
+2019-03-01 21:07:50,624 [23248] DEBUG SummerFresh.Data.GenericDao -   #Parameter : 'UserId_' = '4a786d06-0382-4c1a-85a0-165747283a66'
+2019-03-01 21:07:50,647 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetAllUserRoles' Used 24ms
+2019-03-01 21:07:50,649 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:50,653 [23248] DEBUG SummerFresh.Security.SecurityProvider - Store User In Session : Id = '4a786d06-0382-4c1a-85a0-165747283a66',Name = '刘海峰'
+2019-03-01 21:07:50,659 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:50,661 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetAllUrlPermissions'
+2019-03-01 21:07:50,663 [23248] DEBUG SummerFresh.Environment.EnvironmentParameters - Resolving Parmeter 'AppPath' As Variable
+2019-03-01 21:07:50,667 [23248] DEBUG SummerFresh.Environment.EnvironmentFactory - Using Environment Parser : SummerFresh.Environment.EnvironmentParser
+2019-03-01 21:07:50,681 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - Found 5 configured providers
+2019-03-01 21:07:50,683 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - provider prefix : '' , type : ''
+2019-03-01 21:07:50,690 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - config variable 'GUID',factory : '', type : 'SummerFresh.Environment.Variable.GuidVariable,SummerFresh.Environment', value : ''
+2019-03-01 21:07:50,691 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - Create Variable 'GUID' By Default Factory
+2019-03-01 21:07:50,696 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - Load Variable 'GUID',Type : 'SummerFresh.Environment.Variable.GuidVariable'
+2019-03-01 21:07:50,697 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - config variable 'Now',factory : '', type : 'SummerFresh.Environment.Variable.DateTimeVariable,SummerFresh.Environment', value : ''
+2019-03-01 21:07:50,698 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - Create Variable 'Now' By Default Factory
+2019-03-01 21:07:50,699 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - Load Variable 'Now',Type : 'SummerFresh.Environment.Variable.DateTimeVariable'
+2019-03-01 21:07:50,701 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - config variable 'AppPath',factory : '', type : 'SummerFresh.Environment.Variable.ApplicationPathVariable,SummerFresh.Environment', value : ''
+2019-03-01 21:07:50,702 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - Create Variable 'AppPath' By Default Factory
+2019-03-01 21:07:50,703 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - Load Variable 'AppPath',Type : 'SummerFresh.Environment.Variable.ApplicationPathVariable'
+2019-03-01 21:07:50,705 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - config variable 'SystemManager',factory : '', type : 'System.String', value : 'liuhf'
+2019-03-01 21:07:50,706 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - Create Variable 'SystemManager' By Default Factory
+2019-03-01 21:07:50,708 [23248] DEBUG SummerFresh.Environment.Variable.VariableFactory - Create Simple Variable 'SystemManager' = liuhf
+2019-03-01 21:07:50,710 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - Load Variable 'SystemManager',Type : 'SummerFresh.Environment.Variable.SimpleVariable'
+2019-03-01 21:07:50,711 [23248] DEBUG SummerFresh.Environment.EnvironmentProvider - found 4 configured variables
+2019-03-01 21:07:50,713 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - provider prefix : 'User' , type : 'User'
+2019-03-01 21:07:50,715 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - provider prefix : 'DateTime' , type : 'DateTime'
+2019-03-01 21:07:50,717 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - provider prefix : 'QueryString' , type : 'QueryString'
+2019-03-01 21:07:50,718 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - provider prefix : 'AppSetting' , type : 'AppSetting'
+2019-03-01 21:07:50,720 [23248] DEBUG SummerFresh.Environment.EnvironmentFactory - Using Environment Container : SummerFresh.Environment.EnvironmentContainer
+2019-03-01 21:07:50,722 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' not found in resolved cache
+2019-03-01 21:07:50,724 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - Resolving variable from providers...
+2019-03-01 21:07:50,727 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - Try to resolving variable from provider : SummerFresh.Environment.EnvironmentProvider
+2019-03-01 21:07:50,729 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable was resolved as 'SummerFresh.Environment.Variable.ApplicationPathVariable' by provider : SummerFresh.Environment.EnvironmentProvider
+2019-03-01 21:07:50,731 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved from providers
+2019-03-01 21:07:50,734 [23248] DEBUG SummerFresh.Environment.EnvironmentContainer - variable scope is none,evaluate it's value
+2019-03-01 21:07:50,735 [23248] INFO  SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' was resolved , value : 
+2019-03-01 21:07:50,737 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+        PermissionCode Operation,
+        PermissionName Name,
+        ''+Url as Url
+        FROM SYS_Permission 
+        WHERE Url LIKE '/%'
+		    AND PermissionType = 2
+2019-03-01 21:07:50,765 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetAllUrlPermissions' Used 103ms
+2019-03-01 21:07:50,766 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:50,779 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/，Form：，耗时：8
+2019-03-01 21:07:51,001 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:51,002 [23280] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.PermissionEntity.Tree'
+2019-03-01 21:07:51,004 [23280] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+select PermissionId id,
+      ParentId pId,
+      Url pUrl,
+      PermissionType typeId,
+      PermissionName name,
+      Icon icon ,
+      Rank 
+      from SYS_Permission 
+      where PermissionType IN (1,2) 
+      and Status='Enabled'
+      order by Rank
+2019-03-01 21:07:51,024 [23280] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.PermissionEntity.Tree' Used 20ms
+2019-03-01 21:07:51,028 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:51,036 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:51,037 [23280] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetAllUserPermissions'
+2019-03-01 21:07:51,039 [23280] DEBUG SummerFresh.Environment.EnvironmentParameters - Resolving Parmeter 'AppPath' As Variable
+2019-03-01 21:07:51,040 [23280] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved cache
+2019-03-01 21:07:51,042 [23280] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved from providers
+2019-03-01 21:07:51,043 [23280] DEBUG SummerFresh.Environment.EnvironmentContainer - variable scope is none,evaluate it's value
+2019-03-01 21:07:51,045 [23280] INFO  SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' was resolved , value : 
+2019-03-01 21:07:51,048 [23280] DEBUG SummerFresh.Environment.EnvironmentParameters - Resolving Parmeter 'AppPath' As Variable
+2019-03-01 21:07:51,049 [23280] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved cache
+2019-03-01 21:07:51,050 [23280] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved from providers
+2019-03-01 21:07:51,051 [23280] DEBUG SummerFresh.Environment.EnvironmentContainer - variable scope is none,evaluate it's value
+2019-03-01 21:07:51,052 [23280] INFO  SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' was resolved , value : 
+2019-03-01 21:07:51,053 [23280] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+        sp.PermissionCode Operation,
+        sp.PermissionName Name,
+        ''+(case when sp.Url is null then (select Url From SYS_Permission where PermissionId = sp.ParentId) else sp.Url end) as Url,
+        sr.RuleContent [Rule],
+        sr.Priority,
+        sp.ElementId,
+        '' Behaviour
+        FROM SYS_RolePermission AS rp 
+        INNER JOIN SYS_Permission  AS sp ON rp.PermissionId = sp.PermissionId 
+        LEFT  JOIN SYS_PermissionRule AS sr ON rp.PermissionRuleId = sr.PermissionRuleId
+        WHERE rp.RoleId in ('1ee75600-5109-4eab-bcba-f54c18b3acfb')      
+        union
+        SELECT 
+        sp.PermissionCode Operation,
+        sp.PermissionName Name,
+        ''+(case when sp.Url is null then (select Url From SYS_Permission where PermissionId = sp.ParentId) else sp.Url end) as Url,
+        sr.RuleContent [Rule],
+        sr.Priority,
+        sp.ElementId,
+        '' Behaviour
+        FROM SYS_RoleTypePermission AS rtp 
+        INNER JOIN SYS_Permission  AS sp ON rtp.PermissionId = sp.PermissionId 
+        LEFT  JOIN SYS_PermissionRule AS sr ON rtp.PermissionRuleId = sr.PermissionRuleId
+        WHERE rtp.RoleTypeId IN (SELECT RoleTypeId FROM SYS_Role WHERE RoleId in ('1ee75600-5109-4eab-bcba-f54c18b3acfb'))
+2019-03-01 21:07:51,099 [23280] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetAllUserPermissions' Used 62ms
+2019-03-01 21:07:51,100 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:51,121 [23280] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetMenu，Form：，耗时：122
+2019-03-01 21:07:51,953 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:51,955 [23280] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetAllUIPermissions'
+2019-03-01 21:07:51,956 [23280] DEBUG SummerFresh.Environment.EnvironmentParameters - Resolving Parmeter 'AppPath' As Variable
+2019-03-01 21:07:51,958 [23280] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved cache
+2019-03-01 21:07:51,960 [23280] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved from providers
+2019-03-01 21:07:51,961 [23280] DEBUG SummerFresh.Environment.EnvironmentContainer - variable scope is none,evaluate it's value
+2019-03-01 21:07:51,962 [23280] INFO  SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' was resolved , value : 
+2019-03-01 21:07:51,963 [23280] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+         p1.PermissionCode Operation,
+			   p1.PermissionName Name,
+			   p1.ParentId Parent,
+			   ''+(case when isnull(p1.url,'')='' then (select url from SYS_Permission where PermissionId = p1.ParentId) else p1.url end) as Url,
+			   p1.ElementId,
+			   '' ElementBehaviour 
+		 FROM SYS_Permission AS p1 
+        WHERE p1.PermissionType = 3 and p1.ElementId is not null and p1.ElementId<>''
+2019-03-01 21:07:51,994 [23280] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetAllUIPermissions' Used 37ms
+2019-03-01 21:07:51,995 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:52,014 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:52,015 [23280] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT TABLE_SCHEMA AS [Schema],TABLE_NAME AS [Name] 
+                     FROM INFORMATION_SCHEMA.TABLES 
+                     WHERE TABLE_TYPE='BASE TABLE' OR TABLE_TYPE='VIEW'
+2019-03-01 21:07:52,017 [23280] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT TABLE_SCHEMA AS [Schema],TABLE_NAME AS [Name] 
+                     FROM INFORMATION_SCHEMA.TABLES 
+                     WHERE TABLE_TYPE='BASE TABLE' OR TABLE_TYPE='VIEW'
+2019-03-01 21:07:52,122 [23280] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 105ms
+2019-03-01 21:07:52,123 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:52,127 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:52,129 [23280] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT C.TABLE_SCHEMA AS [Schema], 
+		                    C.TABLE_NAME AS [Table], 
+		                    C.COLUMN_NAME AS [Name],
+		                    ISNULL(P.value,C.COLUMN_NAME) [Comment],
+		                    CASE WHEN  C.IS_NULLABLE='NO' THEN 0 ELSE 1 END [IsNullable],
+		                    C.DATA_TYPE [Type],
+		                    C.CHARACTER_MAXIMUM_LENGTH [Length],
+		                    C.ORDINAL_POSITION [Rank],
+		                    COLUMNPROPERTY(object_id('[' + TABLE_SCHEMA + '].[' + TABLE_NAME + ']'), COLUMN_NAME, 'IsIdentity') AS [IsAutoIncrement]
+                    FROM INFORMATION_SCHEMA.COLUMNS C
+                    LEFT JOIN sys.extended_properties P
+                    ON  OBJECT_NAME(P.major_id) = C.TABLE_NAME AND P.minor_id = C.ORDINAL_POSITION  AND P.name = 'MS_Description'  
+                    ORDER BY TABLE_NAME ASC, ORDINAL_POSITION ASC
+2019-03-01 21:07:52,130 [23280] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT C.TABLE_SCHEMA AS [Schema], 
+		                    C.TABLE_NAME AS [Table], 
+		                    C.COLUMN_NAME AS [Name],
+		                    ISNULL(P.value,C.COLUMN_NAME) [Comment],
+		                    CASE WHEN  C.IS_NULLABLE='NO' THEN 0 ELSE 1 END [IsNullable],
+		                    C.DATA_TYPE [Type],
+		                    C.CHARACTER_MAXIMUM_LENGTH [Length],
+		                    C.ORDINAL_POSITION [Rank],
+		                    COLUMNPROPERTY(object_id('[' + TABLE_SCHEMA + '].[' + TABLE_NAME + ']'), COLUMN_NAME, 'IsIdentity') AS [IsAutoIncrement]
+                    FROM INFORMATION_SCHEMA.COLUMNS C
+                    LEFT JOIN sys.extended_properties P
+                    ON  OBJECT_NAME(P.major_id) = C.TABLE_NAME AND P.minor_id = C.ORDINAL_POSITION  AND P.name = 'MS_Description'  
+                    ORDER BY TABLE_NAME ASC, ORDINAL_POSITION ASC
+2019-03-01 21:07:52,179 [23280] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 49ms
+2019-03-01 21:07:52,180 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:52,187 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:52,189 [23280] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT KCU.TABLE_SCHEMA AS [Schema],
+	                        KCU.TABLE_NAME AS [Table],
+	                        KCU.COLUMN_NAME AS [Column]
+                     FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU
+                          JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS TC
+                          ON (KCU.CONSTRAINT_NAME = TC.CONSTRAINT_NAME AND KCU.TABLE_NAME = TC.TABLE_NAME AND KCU.CONSTRAINT_SCHEMA = TC.CONSTRAINT_SCHEMA)
+                     WHERE TC.CONSTRAINT_TYPE='PRIMARY KEY'
+                     ORDER BY ORDINAL_POSITION ASC
+2019-03-01 21:07:52,190 [23280] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT KCU.TABLE_SCHEMA AS [Schema],
+	                        KCU.TABLE_NAME AS [Table],
+	                        KCU.COLUMN_NAME AS [Column]
+                     FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU
+                          JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS TC
+                          ON (KCU.CONSTRAINT_NAME = TC.CONSTRAINT_NAME AND KCU.TABLE_NAME = TC.TABLE_NAME AND KCU.CONSTRAINT_SCHEMA = TC.CONSTRAINT_SCHEMA)
+                     WHERE TC.CONSTRAINT_TYPE='PRIMARY KEY'
+                     ORDER BY ORDINAL_POSITION ASC
+2019-03-01 21:07:52,281 [23280] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 92ms
+2019-03-01 21:07:52,283 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:52,290 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:52,292 [23280] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT * FROM [SYS_Department] WHERE 1=1 ORDER BY  [Rank] ASC
+2019-03-01 21:07:52,293 [23280] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [SYS_Department] WHERE 1=1 ORDER BY  [Rank] ASC
+2019-03-01 21:07:52,306 [23280] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 12ms
+2019-03-01 21:07:52,307 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:52,331 [23280] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [SYS_DataDictionary]
+2019-03-01 21:07:52,363 [23280] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [SYS_DataDictionaryItems]
+2019-03-01 21:07:52,383 [23280] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/Department，Form：，耗时：199
+2019-03-01 21:07:52,686 [23292] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:52,687 [23292] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.DepartmentEntity.Tree'
+2019-03-01 21:07:52,688 [23292] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+        DepartmentId id,
+        ParentId pId,
+        DepartmentName name,
+        'true' [open]
+        FROM SYS_Department
+2019-03-01 21:07:52,718 [23292] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.DepartmentEntity.Tree' Used 29ms
+2019-03-01 21:07:52,719 [23292] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:52,720 [23292] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.DepartmentEntity.Tree
+，耗时：34
+2019-03-01 21:07:58,834 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:58,835 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT * FROM [SYS_Permission] WHERE 1=1 ORDER BY [PermissionId]
+2019-03-01 21:07:58,836 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [SYS_Permission] WHERE 1=1 ORDER BY [PermissionId]
+2019-03-01 21:07:58,859 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 22ms
+2019-03-01 21:07:58,860 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:58,862 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/Permission，Form：，耗时：37
+2019-03-01 21:07:58,978 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:07:58,980 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.PermissionEntity.Tree'
+2019-03-01 21:07:58,981 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+select PermissionId id,
+      ParentId pId,
+      Url pUrl,
+      PermissionType typeId,
+      PermissionName name,
+      Icon icon ,
+      Rank 
+      from SYS_Permission 
+      where PermissionType IN (1,2) 
+      and Status='Enabled'
+      order by Rank
+2019-03-01 21:07:58,993 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.PermissionEntity.Tree' Used 12ms
+2019-03-01 21:07:58,994 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:07:58,996 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.PermissionEntity.Tree
+，耗时：19
+2019-03-01 21:08:00,304 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:00,306 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.UserEntity.Select'
+2019-03-01 21:08:00,312 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM SYS_User
+        WHERE 1=1
+        
+        
+        
+        and 1=1
+2019-03-01 21:08:00,326 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.UserEntity.Select' Used 18ms
+2019-03-01 21:08:00,328 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:00,330 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/User，Form：，耗时：32
+2019-03-01 21:08:00,408 [23272] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:00,410 [23272] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.DepartmentEntity.Tree'
+2019-03-01 21:08:00,411 [23272] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+        DepartmentId id,
+        ParentId pId,
+        DepartmentName name,
+        'true' [open]
+        FROM SYS_Department
+2019-03-01 21:08:00,424 [23272] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.DepartmentEntity.Tree' Used 12ms
+2019-03-01 21:08:00,425 [23272] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:00,427 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.DepartmentEntity.Tree
+，耗时：18
+2019-03-01 21:08:01,304 [23260] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:01,306 [23260] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT * FROM [SYS_RoleType] WHERE 1=1 ORDER BY [RoleTypeId]
+2019-03-01 21:08:01,307 [23260] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [SYS_RoleType] WHERE 1=1 ORDER BY [RoleTypeId]
+2019-03-01 21:08:01,327 [23260] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 20ms
+2019-03-01 21:08:01,328 [23260] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:01,330 [23260] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/RoleType，Form：，耗时：31
+2019-03-01 21:08:02,539 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:02,541 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.RoleEntity.Select'
+2019-03-01 21:08:02,542 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT r.*,rt.RoleTypeName FROM SYS_Role r INNER JOIN SYS_RoleType rt ON r.RoleTypeId=rt.RoleTypeId
+        WHERE  1=1
+2019-03-01 21:08:02,554 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.RoleEntity.Select' Used 11ms
+2019-03-01 21:08:02,555 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:02,557 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/Role，Form：，耗时：20
+2019-03-01 21:08:04,360 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:04,361 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT * FROM [SYS_DataDictionary] WHERE 1=1 ORDER BY [DictionaryId]
+2019-03-01 21:08:04,363 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [SYS_DataDictionary] WHERE 1=1 ORDER BY [DictionaryId]
+2019-03-01 21:08:04,375 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 12ms
+2019-03-01 21:08:04,377 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:04,379 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/DataDictionary，Form：，耗时：22
+2019-03-01 21:08:06,808 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/AllCache，Form：，耗时：9
+2019-03-01 21:08:09,924 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/PageDesigner/Index，Form：，耗时：933
+2019-03-01 21:08:10,001 [23272] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:10,003 [23272] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.PageEntity.Tree'
+2019-03-01 21:08:10,004 [23272] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 1 Rank,
+        '' id,
+        null pId, 
+        '所有功能' name,
+        '/PageDesigner/PageManagement/null?type=0' url1,
+        'true' [open],
+        '/Content/icons/root.gif' icon
+        UNION
+        SELECT 
+        1 Rank, 
+        PageId id,
+        ParentId pId,
+        PageTitle name,
+        '/PageDesigner/PageManagement/'+PageId+'?type='+PageType+'&parentName='+PageName url1,
+        'false' [open],
+        (case when PageType='0' then '/Content/icons/folder.gif' else '/Content/icons/application.gif' end) icon
+        FROM APP_Page
+2019-03-01 21:08:10,025 [23272] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.PageEntity.Tree' Used 20ms
+2019-03-01 21:08:10,026 [23272] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:10,027 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.PageEntity.Tree
+，耗时：26
+2019-03-01 21:08:14,014 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:14,017 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT * FROM [APP_ExternalFile] WHERE 1=1 ORDER BY  [FileType] DESC, [Rank] ASC
+2019-03-01 21:08:14,018 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [APP_ExternalFile] WHERE 1=1 ORDER BY  [FileType] DESC, [Rank] ASC
+2019-03-01 21:08:14,031 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 13ms
+2019-03-01 21:08:14,033 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:14,035 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/ExternalFile，Form：，耗时：22
+2019-03-01 21:08:15,055 [23272] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:15,057 [23272] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT * FROM [APP_Layout] WHERE 1=1 ORDER BY [LayoutId]
+2019-03-01 21:08:15,058 [23272] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [APP_Layout] WHERE 1=1 ORDER BY [LayoutId]
+2019-03-01 21:08:15,070 [23272] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 12ms
+2019-03-01 21:08:15,072 [23272] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:15,075 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/Layout，Form：，耗时：23
+2019-03-01 21:08:16,279 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:16,281 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.DataFieldEntity.Select'
+2019-03-01 21:08:16,282 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+      C.name FieldName,
+      C.column_id Rank,
+      C.column_id FieldID,
+      ISNULL(P.value,C.name) FieldComment,
+      C.is_nullable FieldIsNullable,
+      C.is_identity FieldIsAutoIncrease,
+      (case when  C.max_length='-1' then 'MAX' when T.name='decimal' or T.name='numeric' then CAST( C.precision as varchar)+','+ cast(C.scale as varchar) when T.name='varchar' or T.name='char' then CAST(C.max_length as varchar) when T.name = 'nvarchar' then CAST(C.max_length/2 as varchar) end) FieldLength,
+      T.name FieldType,
+      ISNULL(ICI.is_primary_key,0) FieldIsKey,
+      'True' FieldEditable,
+      'True' FieldDisplayable,
+      'True' FieldSortable,
+      'True' FieldSearchable
+      FROM SYS.columns C 
+      LEFT JOIN SYS.systypes T 
+      ON C.system_type_id=T.xusertype 
+	    left Join(
+		  select IC.object_id,IC.column_id,IC.index_id,I.is_primary_key from  sys.index_columns IC
+		  inner JOIN SYS.indexes I
+		  ON IC.object_id=I.object_id AND IC.index_id=I.index_id  and is_primary_key=1
+	    ) as ICI on 
+	     c.object_id=ICI.object_id and c.column_id=ICI.column_id
+      LEFT OUTER JOIN  sys.extended_properties P
+      ON  P.major_id = C.object_id AND P.minor_id = C.column_id  AND P.name = 'MS_Description'  
+      WHERE C.OBJECT_ID=OBJECT_ID(@TreeNodeText_)
+2019-03-01 21:08:16,283 [23248] DEBUG SummerFresh.Data.GenericDao -   #Parameter : 'TreeNodeText_' = ''
+2019-03-01 21:08:16,313 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.DataFieldEntity.Select' Used 30ms
+2019-03-01 21:08:16,315 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:16,317 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/DataField，Form：，耗时：44
+2019-03-01 21:08:16,387 [23272] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:16,389 [23272] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.DataFieldEntity.Tree'
+2019-03-01 21:08:16,391 [23272] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 0 id,
+      'SummerFreshData' name,
+      '/Content/icons/DataSource.gif' icon,
+      null pId,
+      'true' [open]
+      UNION
+      SELECT object_id id,
+      name,
+      (case when type='U' then '/Content/icons/list.gif' else '/Content/icons/icon_vtable.gif' end) icon,
+      parent_object_id pId,
+      'false' [open]
+      FROM sys.objects WHERE type IN ('U','V')
+      UNION
+      SELECT c.column_id id,
+      c.name,
+      '/Content/icons/Control.gif' icon,
+      c.object_id pId,
+      'false' [open]
+      FROM SYS.columns c
+      inner join sys.objects o on c.object_id=o.object_id
+      where o.type in ('U','V')
+      order by name
+2019-03-01 21:08:16,416 [23272] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.DataFieldEntity.Tree' Used 25ms
+2019-03-01 21:08:16,417 [23272] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:16,419 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.DataFieldEntity.Tree
+，耗时：32
+2019-03-01 21:08:17,375 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:17,377 [23280] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT * FROM [APP_CRUD] WHERE 1=1 ORDER BY [CRUDId]
+2019-03-01 21:08:17,378 [23280] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [APP_CRUD] WHERE 1=1 ORDER BY [CRUDId]
+2019-03-01 21:08:17,394 [23280] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 16ms
+2019-03-01 21:08:17,396 [23280] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:17,398 [23280] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/List/CRUD，Form：，耗时：29
+2019-03-01 21:08:25,350 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/ChangePassword，Form：，耗时：3
+2019-03-01 21:08:51,613 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/，Form：，耗时：1
+2019-03-01 21:08:51,679 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:51,680 [23248] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.PermissionEntity.Tree'
+2019-03-01 21:08:51,682 [23248] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+select PermissionId id,
+      ParentId pId,
+      Url pUrl,
+      PermissionType typeId,
+      PermissionName name,
+      Icon icon ,
+      Rank 
+      from SYS_Permission 
+      where PermissionType IN (1,2) 
+      and Status='Enabled'
+      order by Rank
+2019-03-01 21:08:51,698 [23248] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.PermissionEntity.Tree' Used 16ms
+2019-03-01 21:08:51,699 [23248] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:51,700 [23248] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetMenu，Form：，耗时：21
+2019-03-01 21:08:51,731 [23272] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/Department，Form：，耗时：1
+2019-03-01 21:08:51,820 [23260] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 21:08:51,821 [23260] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.DepartmentEntity.Tree'
+2019-03-01 21:08:51,822 [23260] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+        DepartmentId id,
+        ParentId pId,
+        DepartmentName name,
+        'true' [open]
+        FROM SYS_Department
+2019-03-01 21:08:51,837 [23260] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.DepartmentEntity.Tree' Used 14ms
+2019-03-01 21:08:51,839 [23260] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 21:08:51,840 [23260] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.DepartmentEntity.Tree
+，耗时：20
+2019-03-01 22:04:20,169 [24832] DEBUG SummerFresh.Util.ObjectHelper - Load 1 Unity Configuration Files in dir 'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\Unity'
+2019-03-01 22:04:20,180 [24832] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Basic
+2019-03-01 22:04:20,181 [24832] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Business
+2019-03-01 22:04:20,182 [24832] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Controls
+2019-03-01 22:04:20,183 [24832] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Data
+2019-03-01 22:04:20,184 [24832] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Environment
+2019-03-01 22:04:20,185 [24832] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.MVC
+2019-03-01 22:04:20,186 [24832] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Security
+2019-03-01 22:04:20,187 [24832] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.SSOKit
+2019-03-01 22:04:20,187 [24832] DEBUG SummerFresh.Util.Assemblies - Load assembly : SummerFresh.Util
+2019-03-01 22:04:20,234 [24832] DEBUG SummerFresh.Util.ObjectHelper - Config Unity File : Security.config
+2019-03-01 22:04:20,266 [24832] DEBUG SummerFresh.Util.ObjectHelper - Load 5 Registered Objects by Unity Container
+2019-03-01 22:04:22,244 [24848] INFO  PageAccessLogger - 用户：，Url:/Home/Logon，Form：，耗时：930
+2019-03-01 22:07:31,102 [24776] DEBUG SummerFresh.Data.DaoFactory - Found 1 Action Executors
+2019-03-01 22:07:31,113 [24776] DEBUG SummerFresh.Data.DaoFactory - Found Parameter Type : SummerFresh.Environment.EnvironmentParameters
+2019-03-01 22:07:31,115 [24776] DEBUG SummerFresh.Data.DaoFactory - Found Parameter Type : SummerFresh.Environment.HttpContextParameters
+2019-03-01 22:07:31,119 [24776] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\Business.config'
+2019-03-01 22:07:31,135 [24776] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\PageDesign.config'
+2019-03-01 22:07:31,138 [24776] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\PageDesign.mysql.config'
+2019-03-01 22:07:31,140 [24776] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\Security.config'
+2019-03-01 22:07:31,142 [24776] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\Security.mysql.config'
+2019-03-01 22:07:31,144 [24776] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\System.config'
+2019-03-01 22:07:31,147 [24776] DEBUG SummerFresh.Data.Sql.SqlSource - loading sql commands from  'D:\Projects\SummerFresh\SummerFresh.MVC\App_Config\SqlCommands\System.mysql.config'
+2019-03-01 22:07:31,197 [24776] DEBUG SummerFresh.Data.Sql.SqlSource - calling GetManifestResourceNames in assembly 'Anonymously Hosted DynamicMethods Assembly' error
+System.NotSupportedException: 动态程序集中不支持已调用的成员。
+   在 System.Reflection.Emit.InternalAssemblyBuilder.GetManifestResourceNames()
+   在 SummerFresh.Data.Sql.SqlSource.LoadSqlsFromAssembly(Assembly assembly) 位置 D:\Projects\SummerFresh\SummerFresh.Data\Sql\SqlSource.cs:行号 324
+2019-03-01 22:07:31,332 [24776] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:31,334 [24776] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetUserLoginInfo'
+2019-03-01 22:07:31,344 [24776] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT TOP 1 Password FROM SYS_User u LEFT JOIN SYS_Department d ON u.DepartmentId=d.DepartmentId
+        WHERE LoginId = @LoginId_  
+        AND u.Status='Enabled'
+        AND d.Status='Enabled'
+2019-03-01 22:07:31,346 [24776] DEBUG SummerFresh.Data.GenericDao -   #Parameter : 'LoginId_' = 'liuhf'
+2019-03-01 22:07:31,666 [24776] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetUserLoginInfo' Used 331ms
+2019-03-01 22:07:31,667 [24776] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:31,683 [24776] INFO  LogOnLogger - 用户：liuhf,IP：::1
+2019-03-01 22:07:31,696 [24776] INFO  PageAccessLogger - 用户：，Url:/Home/Logon，Form：userName=liuhf
+password=111
+，耗时：624
+2019-03-01 22:07:31,709 [24832] DEBUG SummerFresh.Environment.SessionProvider - Create Session State For User : liuhf
+2019-03-01 22:07:31,713 [24832] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:31,714 [24832] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetUserByLoginId'
+2019-03-01 22:07:31,715 [24832] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+      u.*,d.DepartmentCode,d.DepartmentName
+      FROM SYS_User u 
+      INNER JOIN SYS_Department d 
+      ON u.DepartmentId=d.DepartmentId 
+      WHERE u.LoginId = @LoginId_
+2019-03-01 22:07:31,716 [24832] DEBUG SummerFresh.Data.GenericDao -   #Parameter : 'LoginId_' = 'liuhf'
+2019-03-01 22:07:31,741 [24832] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetUserByLoginId' Used 25ms
+2019-03-01 22:07:31,742 [24832] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:31,746 [24832] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:31,748 [24832] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetAllUserRoles'
+2019-03-01 22:07:31,750 [24832] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT ur.RoleId AS Id, rt.RoleTypeName as Name
+        FROM   SYS_UserRole AS ur 
+        INNER JOIN SYS_Role r on r.RoleId=ur.RoleId
+	      INNER JOIN SYS_RoleType rt ON r.RoleTypeId = rt.RoleTypeId
+        WHERE ur.UserId = @UserId_
+2019-03-01 22:07:31,752 [24832] DEBUG SummerFresh.Data.GenericDao -   #Parameter : 'UserId_' = '4a786d06-0382-4c1a-85a0-165747283a66'
+2019-03-01 22:07:31,767 [24832] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetAllUserRoles' Used 17ms
+2019-03-01 22:07:31,769 [24832] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:31,774 [24832] DEBUG SummerFresh.Security.SecurityProvider - Store User In Session : Id = '4a786d06-0382-4c1a-85a0-165747283a66',Name = '刘海峰'
+2019-03-01 22:07:31,781 [24832] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:31,782 [24832] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetAllUrlPermissions'
+2019-03-01 22:07:31,784 [24832] DEBUG SummerFresh.Environment.EnvironmentParameters - Resolving Parmeter 'AppPath' As Variable
+2019-03-01 22:07:31,788 [24832] DEBUG SummerFresh.Environment.EnvironmentFactory - Using Environment Parser : SummerFresh.Environment.EnvironmentParser
+2019-03-01 22:07:31,799 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - Found 5 configured providers
+2019-03-01 22:07:31,801 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - provider prefix : '' , type : ''
+2019-03-01 22:07:31,806 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - config variable 'GUID',factory : '', type : 'SummerFresh.Environment.Variable.GuidVariable,SummerFresh.Environment', value : ''
+2019-03-01 22:07:31,807 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - Create Variable 'GUID' By Default Factory
+2019-03-01 22:07:31,810 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - Load Variable 'GUID',Type : 'SummerFresh.Environment.Variable.GuidVariable'
+2019-03-01 22:07:31,812 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - config variable 'Now',factory : '', type : 'SummerFresh.Environment.Variable.DateTimeVariable,SummerFresh.Environment', value : ''
+2019-03-01 22:07:31,813 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - Create Variable 'Now' By Default Factory
+2019-03-01 22:07:31,814 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - Load Variable 'Now',Type : 'SummerFresh.Environment.Variable.DateTimeVariable'
+2019-03-01 22:07:31,816 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - config variable 'AppPath',factory : '', type : 'SummerFresh.Environment.Variable.ApplicationPathVariable,SummerFresh.Environment', value : ''
+2019-03-01 22:07:31,817 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - Create Variable 'AppPath' By Default Factory
+2019-03-01 22:07:31,818 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - Load Variable 'AppPath',Type : 'SummerFresh.Environment.Variable.ApplicationPathVariable'
+2019-03-01 22:07:31,819 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - config variable 'SystemManager',factory : '', type : 'System.String', value : 'liuhf'
+2019-03-01 22:07:31,820 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - Create Variable 'SystemManager' By Default Factory
+2019-03-01 22:07:31,822 [24832] DEBUG SummerFresh.Environment.Variable.VariableFactory - Create Simple Variable 'SystemManager' = liuhf
+2019-03-01 22:07:31,823 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - Load Variable 'SystemManager',Type : 'SummerFresh.Environment.Variable.SimpleVariable'
+2019-03-01 22:07:31,824 [24832] DEBUG SummerFresh.Environment.EnvironmentProvider - found 4 configured variables
+2019-03-01 22:07:31,825 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - provider prefix : 'User' , type : 'User'
+2019-03-01 22:07:31,827 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - provider prefix : 'DateTime' , type : 'DateTime'
+2019-03-01 22:07:31,828 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - provider prefix : 'QueryString' , type : 'QueryString'
+2019-03-01 22:07:31,829 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - provider prefix : 'AppSetting' , type : 'AppSetting'
+2019-03-01 22:07:31,831 [24832] DEBUG SummerFresh.Environment.EnvironmentFactory - Using Environment Container : SummerFresh.Environment.EnvironmentContainer
+2019-03-01 22:07:31,833 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' not found in resolved cache
+2019-03-01 22:07:31,835 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - Resolving variable from providers...
+2019-03-01 22:07:31,836 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - Try to resolving variable from provider : SummerFresh.Environment.EnvironmentProvider
+2019-03-01 22:07:31,837 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable was resolved as 'SummerFresh.Environment.Variable.ApplicationPathVariable' by provider : SummerFresh.Environment.EnvironmentProvider
+2019-03-01 22:07:31,838 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved from providers
+2019-03-01 22:07:31,841 [24832] DEBUG SummerFresh.Environment.EnvironmentContainer - variable scope is none,evaluate it's value
+2019-03-01 22:07:31,842 [24832] INFO  SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' was resolved , value : 
+2019-03-01 22:07:31,844 [24832] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+        PermissionCode Operation,
+        PermissionName Name,
+        ''+Url as Url
+        FROM SYS_Permission 
+        WHERE Url LIKE '/%'
+		    AND PermissionType = 2
+2019-03-01 22:07:31,869 [24832] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetAllUrlPermissions' Used 84ms
+2019-03-01 22:07:31,870 [24832] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:31,885 [24832] INFO  PageAccessLogger - 用户：liuhf，Url:/，Form：，耗时：8
+2019-03-01 22:07:32,001 [24852] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:32,002 [24852] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.PermissionEntity.Tree'
+2019-03-01 22:07:32,003 [24852] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+select PermissionId id,
+      ParentId pId,
+      Url pUrl,
+      PermissionType typeId,
+      PermissionName name,
+      Icon icon ,
+      Rank 
+      from SYS_Permission 
+      where PermissionType IN (1,2) 
+      and Status='Enabled'
+      order by Rank
+2019-03-01 22:07:32,020 [24852] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.PermissionEntity.Tree' Used 17ms
+2019-03-01 22:07:32,021 [24852] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:32,030 [24852] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:32,031 [24852] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetAllUserPermissions'
+2019-03-01 22:07:32,033 [24852] DEBUG SummerFresh.Environment.EnvironmentParameters - Resolving Parmeter 'AppPath' As Variable
+2019-03-01 22:07:32,034 [24852] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved cache
+2019-03-01 22:07:32,035 [24852] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved from providers
+2019-03-01 22:07:32,036 [24852] DEBUG SummerFresh.Environment.EnvironmentContainer - variable scope is none,evaluate it's value
+2019-03-01 22:07:32,038 [24852] INFO  SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' was resolved , value : 
+2019-03-01 22:07:32,041 [24852] DEBUG SummerFresh.Environment.EnvironmentParameters - Resolving Parmeter 'AppPath' As Variable
+2019-03-01 22:07:32,043 [24852] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved cache
+2019-03-01 22:07:32,044 [24852] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved from providers
+2019-03-01 22:07:32,044 [24852] DEBUG SummerFresh.Environment.EnvironmentContainer - variable scope is none,evaluate it's value
+2019-03-01 22:07:32,045 [24852] INFO  SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' was resolved , value : 
+2019-03-01 22:07:32,046 [24852] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+        sp.PermissionCode Operation,
+        sp.PermissionName Name,
+        ''+(case when sp.Url is null then (select Url From SYS_Permission where PermissionId = sp.ParentId) else sp.Url end) as Url,
+        sr.RuleContent [Rule],
+        sr.Priority,
+        sp.ElementId,
+        '' Behaviour
+        FROM SYS_RolePermission AS rp 
+        INNER JOIN SYS_Permission  AS sp ON rp.PermissionId = sp.PermissionId 
+        LEFT  JOIN SYS_PermissionRule AS sr ON rp.PermissionRuleId = sr.PermissionRuleId
+        WHERE rp.RoleId in ('1ee75600-5109-4eab-bcba-f54c18b3acfb')      
+        union
+        SELECT 
+        sp.PermissionCode Operation,
+        sp.PermissionName Name,
+        ''+(case when sp.Url is null then (select Url From SYS_Permission where PermissionId = sp.ParentId) else sp.Url end) as Url,
+        sr.RuleContent [Rule],
+        sr.Priority,
+        sp.ElementId,
+        '' Behaviour
+        FROM SYS_RoleTypePermission AS rtp 
+        INNER JOIN SYS_Permission  AS sp ON rtp.PermissionId = sp.PermissionId 
+        LEFT  JOIN SYS_PermissionRule AS sr ON rtp.PermissionRuleId = sr.PermissionRuleId
+        WHERE rtp.RoleTypeId IN (SELECT RoleTypeId FROM SYS_Role WHERE RoleId in ('1ee75600-5109-4eab-bcba-f54c18b3acfb'))
+2019-03-01 22:07:32,116 [24852] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetAllUserPermissions' Used 83ms
+2019-03-01 22:07:32,118 [24852] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:32,136 [24852] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetMenu，Form：，耗时：136
+2019-03-01 22:07:32,947 [24848] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:32,949 [24848] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'Security.GetAllUIPermissions'
+2019-03-01 22:07:32,950 [24848] DEBUG SummerFresh.Environment.EnvironmentParameters - Resolving Parmeter 'AppPath' As Variable
+2019-03-01 22:07:32,951 [24848] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved cache
+2019-03-01 22:07:32,952 [24848] DEBUG SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' found in resolved from providers
+2019-03-01 22:07:32,954 [24848] DEBUG SummerFresh.Environment.EnvironmentContainer - variable scope is none,evaluate it's value
+2019-03-01 22:07:32,955 [24848] INFO  SummerFresh.Environment.EnvironmentContainer - Variable 'AppPath' was resolved , value : 
+2019-03-01 22:07:32,956 [24848] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+         p1.PermissionCode Operation,
+			   p1.PermissionName Name,
+			   p1.ParentId Parent,
+			   ''+(case when isnull(p1.url,'')='' then (select url from SYS_Permission where PermissionId = p1.ParentId) else p1.url end) as Url,
+			   p1.ElementId,
+			   '' ElementBehaviour 
+		 FROM SYS_Permission AS p1 
+        WHERE p1.PermissionType = 3 and p1.ElementId is not null and p1.ElementId<>''
+2019-03-01 22:07:32,988 [24848] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'Security.GetAllUIPermissions' Used 38ms
+2019-03-01 22:07:32,990 [24848] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:33,007 [24848] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:33,009 [24848] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT TABLE_SCHEMA AS [Schema],TABLE_NAME AS [Name] 
+                     FROM INFORMATION_SCHEMA.TABLES 
+                     WHERE TABLE_TYPE='BASE TABLE' OR TABLE_TYPE='VIEW'
+2019-03-01 22:07:33,011 [24848] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT TABLE_SCHEMA AS [Schema],TABLE_NAME AS [Name] 
+                     FROM INFORMATION_SCHEMA.TABLES 
+                     WHERE TABLE_TYPE='BASE TABLE' OR TABLE_TYPE='VIEW'
+2019-03-01 22:07:33,077 [24848] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 65ms
+2019-03-01 22:07:33,079 [24848] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:33,082 [24848] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:33,085 [24848] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT C.TABLE_SCHEMA AS [Schema], 
+		                    C.TABLE_NAME AS [Table], 
+		                    C.COLUMN_NAME AS [Name],
+		                    ISNULL(P.value,C.COLUMN_NAME) [Comment],
+		                    CASE WHEN  C.IS_NULLABLE='NO' THEN 0 ELSE 1 END [IsNullable],
+		                    C.DATA_TYPE [Type],
+		                    C.CHARACTER_MAXIMUM_LENGTH [Length],
+		                    C.ORDINAL_POSITION [Rank],
+		                    COLUMNPROPERTY(object_id('[' + TABLE_SCHEMA + '].[' + TABLE_NAME + ']'), COLUMN_NAME, 'IsIdentity') AS [IsAutoIncrement]
+                    FROM INFORMATION_SCHEMA.COLUMNS C
+                    LEFT JOIN sys.extended_properties P
+                    ON  OBJECT_NAME(P.major_id) = C.TABLE_NAME AND P.minor_id = C.ORDINAL_POSITION  AND P.name = 'MS_Description'  
+                    ORDER BY TABLE_NAME ASC, ORDINAL_POSITION ASC
+2019-03-01 22:07:33,086 [24848] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT C.TABLE_SCHEMA AS [Schema], 
+		                    C.TABLE_NAME AS [Table], 
+		                    C.COLUMN_NAME AS [Name],
+		                    ISNULL(P.value,C.COLUMN_NAME) [Comment],
+		                    CASE WHEN  C.IS_NULLABLE='NO' THEN 0 ELSE 1 END [IsNullable],
+		                    C.DATA_TYPE [Type],
+		                    C.CHARACTER_MAXIMUM_LENGTH [Length],
+		                    C.ORDINAL_POSITION [Rank],
+		                    COLUMNPROPERTY(object_id('[' + TABLE_SCHEMA + '].[' + TABLE_NAME + ']'), COLUMN_NAME, 'IsIdentity') AS [IsAutoIncrement]
+                    FROM INFORMATION_SCHEMA.COLUMNS C
+                    LEFT JOIN sys.extended_properties P
+                    ON  OBJECT_NAME(P.major_id) = C.TABLE_NAME AND P.minor_id = C.ORDINAL_POSITION  AND P.name = 'MS_Description'  
+                    ORDER BY TABLE_NAME ASC, ORDINAL_POSITION ASC
+2019-03-01 22:07:33,142 [24848] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 56ms
+2019-03-01 22:07:33,143 [24848] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:33,151 [24848] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:33,152 [24848] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT KCU.TABLE_SCHEMA AS [Schema],
+	                        KCU.TABLE_NAME AS [Table],
+	                        KCU.COLUMN_NAME AS [Column]
+                     FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU
+                          JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS TC
+                          ON (KCU.CONSTRAINT_NAME = TC.CONSTRAINT_NAME AND KCU.TABLE_NAME = TC.TABLE_NAME AND KCU.CONSTRAINT_SCHEMA = TC.CONSTRAINT_SCHEMA)
+                     WHERE TC.CONSTRAINT_TYPE='PRIMARY KEY'
+                     ORDER BY ORDINAL_POSITION ASC
+2019-03-01 22:07:33,154 [24848] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT KCU.TABLE_SCHEMA AS [Schema],
+	                        KCU.TABLE_NAME AS [Table],
+	                        KCU.COLUMN_NAME AS [Column]
+                     FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU
+                          JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS TC
+                          ON (KCU.CONSTRAINT_NAME = TC.CONSTRAINT_NAME AND KCU.TABLE_NAME = TC.TABLE_NAME AND KCU.CONSTRAINT_SCHEMA = TC.CONSTRAINT_SCHEMA)
+                     WHERE TC.CONSTRAINT_TYPE='PRIMARY KEY'
+                     ORDER BY ORDINAL_POSITION ASC
+2019-03-01 22:07:33,236 [24848] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 83ms
+2019-03-01 22:07:33,238 [24848] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:33,245 [24848] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:33,247 [24848] DEBUG SummerFresh.Data.GenericDao - Dao -> Parse Statement For Sql : 
+SELECT * FROM [SYS_Department] WHERE 1=1 ORDER BY  [Rank] ASC
+2019-03-01 22:07:33,249 [24848] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [SYS_Department] WHERE 1=1 ORDER BY  [Rank] ASC
+2019-03-01 22:07:33,262 [24848] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Sql Used 13ms
+2019-03-01 22:07:33,264 [24848] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:33,288 [24848] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [SYS_DataDictionary]
+2019-03-01 22:07:33,322 [24848] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT * FROM [SYS_DataDictionaryItems]
+2019-03-01 22:07:33,343 [24848] INFO  PageAccessLogger - 用户：liuhf，Url:/Entity/TreeList/Department，Form：，耗时：142
+2019-03-01 22:07:33,506 [24852] DEBUG SummerFresh.Data.GenericDao - 
+------------Begin-----------
+
+2019-03-01 22:07:33,508 [24852] DEBUG SummerFresh.Data.GenericDao - Dao -> Found Statement For Key : 
+'SummerFresh.Business.Entity.DepartmentEntity.Tree'
+2019-03-01 22:07:33,509 [24852] DEBUG SummerFresh.Data.GenericDao - 
+
+Sql -> 
+SELECT 
+        DepartmentId id,
+        ParentId pId,
+        DepartmentName name,
+        'true' [open]
+        FROM SYS_Department
+2019-03-01 22:07:33,526 [24852] INFO  SummerFresh.Data.GenericDao - Dao -> Execute Command 'SummerFresh.Business.Entity.DepartmentEntity.Tree' Used 16ms
+2019-03-01 22:07:33,527 [24852] DEBUG SummerFresh.Data.GenericDao - 
+------------End-----------
+
+2019-03-01 22:07:33,529 [24852] INFO  PageAccessLogger - 用户：liuhf，Url:/Home/GetDataBySqlId，Form：sqlId=SummerFresh.Business.Entity.DepartmentEntity.Tree
+，耗时：22
